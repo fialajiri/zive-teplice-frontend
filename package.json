@@ -2,6 +2,7 @@
   "name": "zive-teplice",
   "private": true,
   "scripts": {
+    "watch:sass": "node-sass sass/main.scss styles/globals.css -w",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -14,6 +15,7 @@
   },
   "devDependencies": {
     "eslint": "7.32.0",
-    "eslint-config-next": "12.0.3"
+    "eslint-config-next": "12.0.3",
+    "node-sass": "^6.0.1"
   }
 }
