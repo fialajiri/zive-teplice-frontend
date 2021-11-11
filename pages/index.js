@@ -1,11 +1,12 @@
-import Head from 'next/head'
-import Image from 'next/image'
-
+import { Fragment } from "react";
+import Header from "../components/layout/Header";
+import HomePage from "../components/pages/Home/HomePage";
 
 export default function Home() {
   return (
-    <div className='heading-primary heading-primary--main'>
-      Živé Teplice
-    </div>
-  )
+    <Fragment>
+      <Header />
+      <HomePage />
+    </Fragment>
+  );
 }
