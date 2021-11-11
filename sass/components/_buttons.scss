@@ -1,0 +1,57 @@
+.btn {
+    font-family: $font-display;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $color-brown;
+
+    padding: 1.5rem 4rem;
+    border: none;   
+    border-radius: 3rem;         
+    background-color: $color-primary;
+    cursor: pointer;
+    transition: all 200ms;
+    position: relative;
+
+    &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+    
+        &::after {
+          transform: scaleX(1.4) scaleY(1.6);
+          opacity: 0;
+        }
+    }
+
+    &--green {
+        background-color: $color-primary;
+        
+    
+        &::after {
+          background-color: $color-primary;
+        }
+      }
+
+    &::after {
+        content: "";
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        border-radius: 10rem;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        transition: all 400ms;
+        opacity: 1;
+      }
+
+      &--animated {
+        animation: moveInBottom 500ms ease-out 750ms;
+        animation-fill-mode: backwards;
+      }
+
+    
+
+}

@@ -1,4 +1,67 @@
-.icon {
-    width: 2.5rem;
-    height: 2.5rem;
+.hero {
+  grid-column: 1 / -1;
+  grid-row: 1 /2;
+
+  margin: 12rem 0;
+  padding: 0 6rem;
+  color: $color-grey-light-2;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(25rem, 1fr));
+  grid-template-rows: repeat(4, min-content);
+  row-gap: 8rem;
+
+  &__heading {
+    grid-column: 1/-1;
+    justify-self: center;
+  }
+
+  &__paragraphs {
+    grid-column: 1 / -1;
+
+    display: flex;
+    gap: 5rem;
+  }
+
+  
+
+  &__cards {
+    grid-column: 1 / -1;
+    grid-row: 3/4;
+
+    display: flex;
+    gap: 4rem;
+  }
+
+  &__card {
+    padding: 3rem;
+    border-radius: 2rem;
+    // border: 3px solid $color-primary-dark-2;
+    box-shadow: 0 3rem 8rem rgba($color-black, 0.3);
+    background-color: $color-secondary-light;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    color: $color-brown-2;
+
+    transition: all 400ms;
+
+    &:hover{
+        transform: translateY(-2rem);
+        box-shadow: 0 5rem 10rem rgba($color-black, 0.5);
+    }
+
+    &__heading {
+        align-self: center;
+    }
+
+    
+  }
+
+  &__buttons {
+    grid-column: 1 / -1;
+    grid-row: 4 / 5;
+    display: flex;
+    justify-content: space-around;
+  }
 }
