@@ -1,6 +1,9 @@
 import React, { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 
+
+
+
 import NavLinks from "./nav-links";
 import Logo from "../logo";
 
@@ -10,9 +13,11 @@ import SideDrawer from "./side-drawer";
 
 
 
-const MainNavigation = () => {
+const MainNavigation = (props) => {
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
-  const [renderDrawer, setRenderDrawwer] = useState(false)
+  const [renderDrawer, setRenderDrawwer] = useState(false);
+
+  
 
   const openDrawerHandler = () => {
     setDrawerIsOpen(true);
@@ -34,7 +39,7 @@ const MainNavigation = () => {
           <NavLinks />
         </nav>
       </SideDrawer>} */}
-      <div className="main__navigation">
+      <div className={props.isVisible ? "main__navigation" : 'main__navigation main__navigation--sticky'} >
         <button
           className="main__navigation__button"
           onClick={openDrawerHandler}

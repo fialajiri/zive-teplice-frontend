@@ -3,7 +3,7 @@ import Image from "next/image";
 const HeaderGallery = props => {
 
     return (
-        <div className="header__gallery">
+        <div className="header__gallery" ref={props.containerRef}>
         <figure className="header__gallery__item header__gallery__item--1">
           <Image
             src="/img/header/img-1.jpg"
