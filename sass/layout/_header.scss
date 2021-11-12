@@ -2,10 +2,17 @@
   padding: 2rem;
 
   &__heading__container {
+    background-color: $color-white;
+    // background-image: radial-gradient(circle, $color-white 60%, $color-grey-dark-3 40%);
+    border-radius: 2rem; 
+   
+   
+
       
   }
 
   &__gallery {
+    margin-top: 2rem;
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-template-rows: repeat(8, 6vw);

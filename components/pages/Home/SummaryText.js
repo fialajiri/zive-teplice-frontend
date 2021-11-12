@@ -12,6 +12,7 @@ const SummaryText = (props) => {
         <h3 className="heading-tertiary summary__text__heading-tertiary">
           21.8.2021 - 6. ročník
         </h3>
+        <div className='summary__text__paragraphs'> 
         <p className="paragraph summary__text__paragraph">
           Děkuji všem, kteří včera oživili Šanovský park! Troufám si říct, že to
           bylo skvělé a pozitivní atmosféra byla cítit na každém
@@ -19,6 +20,7 @@ const SummaryText = (props) => {
           🤩Pokud jste fotili nebo natáčeli, klidně to s námi sdílejte. Ať nám
           příjemné naladění vydrží ještě pár dní...🥰{" "}
         </p>
+        </div>
         <button className="btn btn--green summary__text__btn">
           kompletní galerie
         </button>
@@ -35,8 +37,9 @@ const SummaryText = (props) => {
         Teplice v sobotu ožily
         </h2>
         <h3 className="heading-tertiary summary__text__heading-tertiary">
-          21.8.2021 - 6. ročník
+          30.6.2021 - 5. ročník
         </h3>
+        <div className='summary__text__paragraphs'> 
         <p className="paragraph summary__text__paragraph">
         Pátý ročník sousedské slavnosti byl krásný. Ani letos nás počasí nezradilo a pozitivní energie tekla proudem. :-)
         </p>
@@ -48,6 +51,7 @@ const SummaryText = (props) => {
           Šanovský park ožívá, je plný barev a lidi nezávisle na věku si
           slavnost užívají...
         </p>
+        </div>
         <button className="btn btn--green summary__text__btn">
           kompletní galerie
         </button>
