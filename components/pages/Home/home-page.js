@@ -1,4 +1,4 @@
-import Hero from './hero'
+import Hero from './hero.js'
 import YearSummary from "./year-summary";
 
 const HomePage = (props) => {
