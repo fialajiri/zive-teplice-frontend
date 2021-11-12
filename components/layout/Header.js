@@ -10,7 +10,7 @@ const Header = (props) => {
         </h1>
       </div>
       <div className="header__gallery">
-        <figure class="header__gallery__item header__gallery__item--1">
+        <figure className="header__gallery__item header__gallery__item--1">
           <Image
             src="/img/header/img-1.jpg"
             alt="Gallery image 1"
@@ -19,7 +19,7 @@ const Header = (props) => {
             objectFit='cover'
           />
         </figure>
-        <figure class="header__gallery__item header__gallery__item--2">
+        <figure className="header__gallery__item header__gallery__item--2">
           <Image
             src="/img/header/img-2.jpg"
             alt="Gallery image 2"
@@ -29,7 +29,7 @@ const Header = (props) => {
 
           />
         </figure>
-        <figure class="header__gallery__item header__gallery__item--3">
+        <figure className="header__gallery__item header__gallery__item--3">
           <Image
             src="/img/header/img-3.jpg"
             alt="Gallery image 3"
@@ -39,7 +39,7 @@ const Header = (props) => {
           />
         </figure>
 
-        <figure class="header__gallery__item header__gallery__item--4">
+        <figure className="header__gallery__item header__gallery__item--4">
           <Image
             src="/img/header/img-4.jpg"
             alt="Gallery image 4"
@@ -49,7 +49,7 @@ const Header = (props) => {
           />
         </figure>
 
-        <figure class="header__gallery__item header__gallery__item--5">
+        <figure className="header__gallery__item header__gallery__item--5">
           <Image
             src="/img/header/img-5.jpg"
             alt="Gallery image 4"
@@ -59,7 +59,7 @@ const Header = (props) => {
           />
         </figure>
 
-        <figure class="header__gallery__item header__gallery__item--6">
+        <figure className="header__gallery__item header__gallery__item--6">
           <Image
             src="/img/header/img-6.jpg"
             alt="Gallery image 4"
@@ -69,7 +69,7 @@ const Header = (props) => {
           />
         </figure>
 
-        <figure class="header__gallery__item header__gallery__item--7">
+        <figure className="header__gallery__item header__gallery__item--7">
           <Image
             src="/img/header/img-7.jpg"
             alt="Gallery image 4"
@@ -79,7 +79,7 @@ const Header = (props) => {
           />
         </figure>
 
-        <figure class="header__gallery__item header__gallery__item--8">
+        <figure className="header__gallery__item header__gallery__item--8">
           <Image
             src="/img/header/img-8.jpg"
             alt="Gallery image 8"
@@ -89,7 +89,7 @@ const Header = (props) => {
           />
         </figure>
 
-        <figure class="header__gallery__item header__gallery__item--9">
+        <figure className="header__gallery__item header__gallery__item--9">
           <Image
             src="/img/header/img-9.jpg"
             alt="Gallery image 9"
@@ -99,7 +99,7 @@ const Header = (props) => {
           />
         </figure>
 
-        <figure class="header__gallery__item header__gallery__item--10">
+        <figure className="header__gallery__item header__gallery__item--10">
           <Image
             src="/img/header/img-10.jpg"
             alt="Gallery image 10"
@@ -109,7 +109,7 @@ const Header = (props) => {
           />
         </figure>
 
-        <figure class="header__gallery__item header__gallery__item--11">
+        <figure className="header__gallery__item header__gallery__item--11">
           <Image
             src="/img/header/img-11.jpg"
             alt="Gallery image 11"
@@ -119,7 +119,7 @@ const Header = (props) => {
           />
         </figure>
 
-        <figure class="header__gallery__item header__gallery__item--12">
+        <figure className="header__gallery__item header__gallery__item--12">
           <Image
             src="/img/header/img-12.jpg"
             alt="Gallery image 12"
@@ -129,7 +129,7 @@ const Header = (props) => {
           />
         </figure>
 
-        <figure class="header__gallery__item header__gallery__item--13">
+        <figure className="header__gallery__item header__gallery__item--13">
           <Image
             src="/img/header/img-13.jpg"
             alt="Gallery image 13"

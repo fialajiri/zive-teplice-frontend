@@ -7,7 +7,7 @@ const SummaryGallery = (props) => {
     const path = '/img/' + props.year + '/';
   
   return <div className={`summary__gallery ${props.flip===true? 'summary__gallery--flip' : ''}` }>
-      <figure class="summary__gallery__item summary__gallery__item--1">
+      <figure className="summary__gallery__item summary__gallery__item--1">
           <Image
             src={`${path}img-1.jpg`}
             alt="Gallery image 1"
@@ -16,7 +16,7 @@ const SummaryGallery = (props) => {
             objectFit='cover'
           />
         </figure>
-        <figure class="summary__gallery__item summary__gallery__item--2">
+        <figure className="summary__gallery__item summary__gallery__item--2">
           <Image
             src={`${path}img-2.jpg`}
             alt="Gallery image 2"
@@ -25,7 +25,7 @@ const SummaryGallery = (props) => {
             objectFit='cover'
           />
         </figure>
-        <figure class="summary__gallery__item summary__gallery__item--3">
+        <figure className="summary__gallery__item summary__gallery__item--3">
           <Image
             src={`${path}img-3.jpg`}
             alt="Gallery image 3"
@@ -34,7 +34,7 @@ const SummaryGallery = (props) => {
             objectFit='cover'
           />
         </figure>
-        <figure class="summary__gallery__item summary__gallery__item--4">
+        <figure className="summary__gallery__item summary__gallery__item--4">
           <Image
             src={`${path}img-4.jpg`}
             alt="Gallery image 4"
@@ -43,7 +43,7 @@ const SummaryGallery = (props) => {
             objectFit='cover'
           />
         </figure>
-        <figure class="summary__gallery__item summary__gallery__item--5">
+        <figure className="summary__gallery__item summary__gallery__item--5">
           <Image
             src={`${path}img-5.jpg`}
             alt="Gallery image 5"
@@ -52,7 +52,7 @@ const SummaryGallery = (props) => {
             objectFit='cover'
           />
         </figure>
-        <figure class="summary__gallery__item summary__gallery__item--6">
+        <figure className="summary__gallery__item summary__gallery__item--6">
           <Image
             src={`${path}img-6.jpg`}
             alt="Gallery image 6"
@@ -61,7 +61,7 @@ const SummaryGallery = (props) => {
             objectFit='cover'
           />
         </figure>
-        <figure class="summary__gallery__item summary__gallery__item--7">
+        <figure className="summary__gallery__item summary__gallery__item--7">
           <Image
             src={`${path}img-7.jpg`}
             alt="Gallery image 7"
@@ -70,7 +70,7 @@ const SummaryGallery = (props) => {
             objectFit='cover'
           />
         </figure>
-        <figure class="summary__gallery__item summary__gallery__item--8">
+        <figure className="summary__gallery__item summary__gallery__item--8">
           <Image
             src={`${path}img-8.jpg`}
             alt="Gallery image 8"
@@ -79,7 +79,7 @@ const SummaryGallery = (props) => {
             objectFit='cover'
           />
         </figure>
-        <figure class="summary__gallery__item summary__gallery__item--9">
+        <figure className="summary__gallery__item summary__gallery__item--9">
           <Image
             src={`${path}img-9.jpg`}
             alt="Gallery image 9"
