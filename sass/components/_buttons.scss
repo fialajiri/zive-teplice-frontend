@@ -8,11 +8,17 @@
 
     padding: 1.5rem 4rem;
     border: none;   
-    border-radius: 3rem;         
+    border-radius: $border-radius;         
     background-color: $color-primary;
     cursor: pointer;
     transition: all 200ms;
     position: relative;
+
+    animation-name: shakeItBaby;
+    animation-delay: 10s;
+    animation-iteration-count: infinite;
+    animation-duration: 4s;
+    
 
     &:hover {
         transform: translateY(-3px);
@@ -38,7 +44,7 @@
         display: inline-block;
         height: 100%;
         width: 100%;
-        border-radius: 10rem;
+        border-radius: $border-radius;
         position: absolute;
         top: 0;
         left: 0;

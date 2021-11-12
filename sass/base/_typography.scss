@@ -3,13 +3,15 @@ body {
   font-weight: 400;
   line-height: 1.7;
   color: $color-white;
- 
 
   text-align: left;
 }
 
 .heading-primary {
   font-family: $font-display;
+  display: flex;
+  justify-content: center;
+  gap: 6rem;
 
   font-weight: 400;
   font-style: normal;
@@ -19,10 +21,9 @@ body {
   backface-visibility: hidden;
   font-size: 8rem;
   letter-spacing: 4.5rem;
+  text-align: center;
 
-  &--main {
-    display: block;
-    text-align: center;
+  &--main {       
 
     animation-name: moveInLeft;
     animation-duration: 1s;
@@ -30,8 +31,8 @@ body {
   }
 
   &--sub {
-    display: block;
-    text-align: center;
+   
+    
 
     animation-name: moveInRight;
     animation-duration: 1s;
@@ -45,8 +46,8 @@ body {
   font-weight: 700;
   background-image: linear-gradient(
     to right,
-    $color-primary-light-2,
-    $color-primary
+    $color-primary,
+    $color-primary-light-1
   );
   display: inline-block;
   -webkit-background-clip: text;
@@ -72,20 +73,11 @@ body {
   font-size: 7rem;
   font-family: $font-display;
   text-align: center;
-  background-image: linear-gradient(
-    to right,
-    $color-secondary-light,
-    $color-secondary-dark
-  );
-
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  font-weight: 400;
+  color: $color-primary;
   letter-spacing: 3px;
+
   transition: all 200ms;
-
-
-  
 }
 
 .paragraph {

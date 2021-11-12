@@ -1,15 +1,16 @@
 .summary__gallery {
   grid-column: 3 / -1;
+  
 
   &--flip {
     grid-column: 1 / 5;
-    grid-row: 1 / 2;
+    
   }
   padding: 2rem;
 
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, minmax(15vh, 15vw));
+  grid-template-rows: repeat(3, minmax(15vh, 1fr));
   
   gap: 2rem;
 
@@ -28,7 +29,7 @@
 
     &:hover {
       box-shadow: $shadow-dark;
-      border-radius: 3rem;
+      border-radius: $border-radius;
     }
   }
 }

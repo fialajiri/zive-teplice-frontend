@@ -7,11 +7,16 @@
 @import "base/typography";
 @import "base/utilities";
 
-@import "layout/header";
+@import "layout/header/header-headings";
+@import "layout/header/header";
+@import "layout/logo";
+@import "layout/nav-links";
+@import "layout/main-navigation";
 
 @import "components/hero";
 @import "components/buttons";
 
+@import "components/header-gallery";
 @import "components/year-summary";
 @import "components/summary-text";
 @import "components//summary-gallery";

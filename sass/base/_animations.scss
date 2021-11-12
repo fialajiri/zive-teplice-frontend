@@ -41,3 +41,28 @@
     transform: translateY(0);
   }
 }
+
+@keyframes shakeItBaby {
+  0% {
+    
+    transform: rotateZ(2deg)
+  }
+
+  2% {
+    transform: rotateZ(-2deg)
+  }
+
+  4% {
+    transform: rotateZ(2deg)
+  }
+  6% {
+    transform: rotateZ(-2deg)
+  }
+  8% {
+    transform: rotateZ(2deg)
+  }
+  10% {
+    transform: rotateZ(0deg)
+  }
+  
+}

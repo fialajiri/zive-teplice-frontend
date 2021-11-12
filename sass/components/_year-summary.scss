@@ -1,7 +1,20 @@
 .section__summary {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    padding: 0 4rem;
-    margin-bottom: 10rem;
+    grid-template-rows: min-content max-content;
+
+    align-items: c;
+    
+    padding: 5rem 4rem 12rem 4rem;
+
+    &--flip {
+        background-color: $color-grey-dark-2;
+        border-radius: $border-radius;
+    }
+
+    &__heading{
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+    }
 }
 

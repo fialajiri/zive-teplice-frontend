@@ -1,0 +1,28 @@
+.main__navigation {
+  background-color: $color-grey-light-5;
+
+  padding: 6rem 4rem 5rem 4rem ;
+
+  grid-row: 1 /2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  position: fixed;
+  left: 2rem;
+  top: 0;
+  bottom: 0;
+  width: calc(100% - 4rem);  
+  z-index: 1000;
+  height: 8rem;
+  
+  
+  &__button {
+    display: none;
+  }
+}

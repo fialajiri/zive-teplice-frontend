@@ -1,15 +1,9 @@
 import Image from "next/image";
 
-const Header = (props) => {
-  return (
-    <header className="header">
-      <div className="header__heading__container">
-        <h1 className="heading-primary">
-          <span className="heading-primary--main  ">Živé</span>
-          <span className="heading-primary--sub ">Teplice</span>
-        </h1>
-      </div>
-      <div className="header__gallery">
+const HeaderGallery = props => {
+
+    return (
+        <div className="header__gallery">
         <figure className="header__gallery__item header__gallery__item--1">
           <Image
             src="/img/header/img-1.jpg"
@@ -139,8 +133,8 @@ const Header = (props) => {
           />
         </figure>
       </div>
-    </header>
-  );
-};
+    )
 
-export default Header;
+}
+
+export default HeaderGallery;
