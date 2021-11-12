@@ -1,6 +1,6 @@
 import SummaryText from "./summary-text";
 import SummaryGallery from "./summary-gallery";
-import { Fragment } from "react";
+
 
 const YearSummary = (props) => {
   return (

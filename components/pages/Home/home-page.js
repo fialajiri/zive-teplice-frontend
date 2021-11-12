@@ -1,4 +1,4 @@
-import Hero from "./hero";
+import Hero from './hero'
 import YearSummary from "./year-summary";
 
 const HomePage = (props) => {
@@ -12,7 +12,7 @@ const HomePage = (props) => {
       <YearSummary year={2017} heading='Živé Teplice 2017' />
       <YearSummary year={2016} flip={true} heading='Živé Teplice 2016' />
     </div>
-    
+
   );
 };
 
