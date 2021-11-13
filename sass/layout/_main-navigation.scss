@@ -1,17 +1,17 @@
 .main__navigation {
-  background-color: $color-grey-light-5;
+  
 
-  padding: 6rem 4rem 5rem 4rem ;
+  padding: 6rem 3rem 5rem 3rem ;
+  
 
   grid-row: 1 /2;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  // position: -webkit-sticky;
-  // position: sticky;
-  // top: 0;
-  // z-index: 100;
+  @include respond(tab-land){
+    padding: 6rem 2rem 5rem 2rem ;
+  }  
 
   &--sticky{
     
@@ -23,6 +23,8 @@
   z-index: 1000;
   height: 8rem;
   }
+
+  
 
   
 

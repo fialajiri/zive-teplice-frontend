@@ -12,7 +12,7 @@ const Hero = (props) => {
         Nějvětší sousedská slavnost v Teplicích
       </h2>
       <div className="hero__paragraphs">
-        <p className="paragraph ">
+        <p className="paragraph hero__paragraph">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
           ultricies commodo finibus. Quisque suscipit non nisi sit amet
           facilisis. Maecenas id blandit augue, vitae condimentum augue. Aliquam
@@ -23,7 +23,7 @@ const Hero = (props) => {
           gravida.
         </p>
 
-        <p className="paragraph ">
+        <p className="paragraph hero__paragraph">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
           ultricies commodo finibus. Quisque suscipit non nisi sit amet
           facilisis. Maecenas id blandit augue, vitae condimentum augue. Aliquam
@@ -53,7 +53,7 @@ const Hero = (props) => {
             height={60}
             width={60}
           />
-          <h3 className="heading-tertiary hero__card__heading">Živá muzika</h3>
+          <h3 className="heading-tertiary hero__card__heading">Živé umění</h3>
           <p className="paragraph hero__card__paragraph">
             Phasellus a euismod dolor. Duis aliquam dui ac consectetur porta.
             Etiam accumsan sed tortor in sollicitudin. Suspendisse venenatis ex
@@ -67,6 +67,7 @@ const Hero = (props) => {
             height={60}
             width={60}
           />
+
           <h3 className="heading-tertiary hero__card__heading">
             Ruční výrobky
           </h3>
@@ -77,7 +78,14 @@ const Hero = (props) => {
           </p>
         </div>
         <div className="hero__card">
-          <Image className="card__icon" src={kidsIcon} height={60} width={60} />
+          
+          <Image
+            className="hero__card__icon"
+            src={kidsIcon}
+            height={60}
+            width={60}
+          />
+          
           <h3 className="heading-tertiary hero__card__heading">Děti sebou</h3>
           <p className="paragraph hero__card__paragraph">
             Phasellus a euismod dolor. Duis aliquam dui ac consectetur porta.
@@ -86,10 +94,12 @@ const Hero = (props) => {
           </p>
         </div>
       </div>
-      <div className="hero__buttons">
-        <button className="btn btn--green">Obděr novinek</button>
-        <button className="btn btn--green">Chci prodávat/hrát na ŽT</button>
-      </div>
+      {/* <div className="hero__buttons"> */}
+      <button className="btn btn--green hero__button--1">Obděr novinek</button>
+      <button className="btn btn--green hero__button--2">
+        Chci prodávat/hrát na ŽT
+      </button>
+      {/* </div> */}
     </section>
   );
 };

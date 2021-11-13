@@ -5,15 +5,11 @@ import HeaderHeading from "./header-heading";
 import { useElementOnScreen } from "../../../hooks/use-elements-on-screen";
 
 const Header = (props) => {
-
   const [containerRef, isVisible] = useElementOnScreen({
-    root:null,
-    rootMargin: '0px',
-    threshold: 0
-  })
-
-
-  console.log(isVisible)
+    root: null,
+    rootMargin: "0px",
+    threshold: 0,
+  });
 
   return (
     <header className="header">

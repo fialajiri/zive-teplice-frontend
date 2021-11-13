@@ -3,7 +3,12 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 10rem max-content max-content;
-  // margin-top: 9rem;
+  
+
+  @include respond(tab-port) {
+    
+    
+  }
 
   
 }

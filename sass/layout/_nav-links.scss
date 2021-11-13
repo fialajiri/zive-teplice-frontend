@@ -4,7 +4,15 @@
     display: flex;
     flex: 1;
     align-items: center;
-    gap: 6rem;
+    gap: 4rem;
+
+    @include respond(tab-land) {
+      gap: 1rem;
+    }
+
+    @include respond(tab-port) {
+      display: none;
+    }
 
     &__item {
       position: relative;
@@ -35,7 +43,9 @@
       left: 0;
       height: 100%;
       width: 3px;
-      background-color: $color-grey;
+      background-color: $color-white;
+      border-radius: $border-radius;
+
       transform: scaleY(0);
       transition: transform 0.2s, width 0.4s cubic-bezier(1, 0, 0, 1) 0.2s,
         background-color 0.1s;
