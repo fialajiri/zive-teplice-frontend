@@ -33,14 +33,14 @@ html {
 
   @include respond(big-desktop){
     font-size: 75%;   // 1 rem = 12px
-    
+
   }  
 
 }
 
 body {
   box-sizing: border-box;
-  background-color: $color-grey-dark-3 ;
+  background-color: $color-grey ;
   height: 50rem;
   
   

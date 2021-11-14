@@ -8,6 +8,10 @@
     grid-template-rows: repeat(8, 6vw);
     gap: 2rem;
 
+    @include respond(phone) {
+      gap: .5rem;
+    }
+
 
     &__img {
       transition: all 300ms;

@@ -3,12 +3,8 @@
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 10rem max-content max-content;
-  
 
-  @include respond(tab-port) {
-    
-    
+  @include respond(phone) {
+    padding: .5rem;
   }
-
-  
 }

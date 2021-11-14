@@ -28,7 +28,7 @@ html {
 
 body {
   box-sizing: border-box;
-  background-color: #525252;
+  background-color: #666666;
   height: 50rem; }
 
 ::selection {
@@ -94,7 +94,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 6rem;
+  gap: 2rem;
   font-weight: 400;
   font-style: normal;
   color: #fff;
@@ -107,6 +107,11 @@ body {
     .heading-primary {
       flex-direction: row;
       gap: 6rem;
+      letter-spacing: 2rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .heading-primary {
+      flex-direction: column;
+      gap: 2rem;
       letter-spacing: 2rem; } }
   .heading-primary--main {
     animation-name: moveInLeft;
@@ -172,8 +177,7 @@ body {
   margin-top: 10rem !important; }
 
 .header__heading__container {
-  margin-top: 2rem;
-  padding: 1rem; }
+  margin: 8rem 0 4rem 0; }
   @media only screen and (max-width: 56.25em) {
     .header__heading__container {
       padding: 0 1rem; } }
@@ -183,6 +187,9 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 10rem max-content max-content; }
+  @media only screen and (max-width: 37.5em) {
+    .header {
+      padding: .5rem; } }
 
 @media only screen and (max-width: 75em) {
   .logo__container {
@@ -261,9 +268,8 @@ body {
 .hero {
   grid-column: 1 / -1;
   grid-row: 1 /2;
-  margin: 16rem 0 0 0;
+  margin: 12rem 0 0 0;
   padding: 5rem 6rem 10rem 6rem;
-  background-color: #606060;
   display: grid;
   grid-template-columns: repeat(4, minmax(25rem, 1fr));
   grid-template-rows: repeat(4, min-content);
@@ -275,9 +281,13 @@ body {
     .hero {
       grid-template-columns: repeat(2, minmax(25rem, 1fr));
       padding: 3rem 3rem 6rem 3rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .hero {
+      margin: 6rem 0 0 0;
+      padding: 3rem 0rem 6rem 0rem; } }
   .hero__heading {
     grid-column: 1/-1;
-    justify-self: center; }
+    text-align: center; }
   .hero__paragraphs {
     grid-column: 1 / -1;
     display: flex;
@@ -285,9 +295,11 @@ body {
     @media only screen and (max-width: 75em) {
       .hero__paragraphs {
         margin: 0 3rem; } }
-    @media only screen and (max-width: 56.25em) {
+    @media only screen and (max-width: 37.5em) {
       .hero__paragraphs {
-        margin: 0 3rem; } }
+        flex-direction: column;
+        margin: 0 1.5rem;
+        gap: 2rem; } }
   @media only screen and (max-width: 56.25em) {
     .hero__paragraph {
       margin: 0 3rem; } }
@@ -300,7 +312,13 @@ body {
         display: grid;
         grid-template-columns: 1fr 1fr;
         justify-items: center; } }
+    @media only screen and (max-width: 37.5em) {
+      .hero__cards {
+        display: flex;
+        flex-direction: column;
+        align-items: center; } }
   .hero__card {
+    max-width: 30rem;
     padding: 3rem;
     border-radius: 2rem;
     box-shadow: 0 3rem 8rem rgba(0, 0, 0, 0.3);
@@ -316,6 +334,10 @@ body {
     @media only screen and (max-width: 56.25em) {
       .hero__card {
         margin: 0 3rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .hero__card {
+        max-width: 35rem;
+        padding: 3rem 4rem; } }
     .hero__card:hover {
       transform: translateY(-2rem);
       box-shadow: 0 5rem 10rem rgba(0, 0, 0, 0.5); }
@@ -328,6 +350,9 @@ body {
     @media only screen and (max-width: 56.25em) {
       .hero__button--1 {
         grid-column: 1 / 2; } }
+    @media only screen and (max-width: 37.5em) {
+      .hero__button--1 {
+        grid-column: 1 / -1; } }
   .hero__button--2 {
     justify-self: center;
     grid-row: 4 / 5;
@@ -335,6 +360,10 @@ body {
     @media only screen and (max-width: 56.25em) {
       .hero__button--2 {
         grid-column: 2 / 3; } }
+    @media only screen and (max-width: 37.5em) {
+      .hero__button--2 {
+        grid-row: 5 / 6;
+        grid-column: 1 / -1; } }
 
 .btn {
   font-family: "Roboto", sans-serif;
@@ -342,7 +371,7 @@ body {
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: #525252;
+  color: #333333;
   padding: 1.5rem 4rem;
   border: none;
   border-radius: 3rem;
@@ -388,6 +417,9 @@ body {
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 6vw);
   gap: 2rem; }
+  @media only screen and (max-width: 37.5em) {
+    .header__gallery {
+      gap: .5rem; } }
   .header__gallery__img {
     transition: all 300ms; }
     .header__gallery__img:hover {
@@ -442,14 +474,10 @@ body {
 .section__summary {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: min-content max-content;
-  align-items: c;
   padding: 5rem 4rem 12rem 4rem; }
   @media only screen and (max-width: 56.25em) {
     .section__summary {
       padding: 5rem 2rem 8rem 2rem; } }
-  .section__summary--flip {
-    background-color: #606060; }
   .section__summary__heading {
     grid-column: 1 / -1;
     grid-row: 1 / 2; }
@@ -467,6 +495,12 @@ body {
   .summary__text--flip {
     grid-column: 5 / -1;
     grid-row: 2 / 3; }
+  @media only screen and (max-width: 56.25em) {
+    .summary__text {
+      grid-column: 1 / -1;
+      max-width: 50rem;
+      justify-self: center;
+      margin-bottom: 6rem; } }
   .summary__text__heading-secondary {
     margin-top: 1rem;
     text-align: center; }
@@ -484,8 +518,28 @@ body {
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, minmax(15vh, 1fr));
   gap: 2rem; }
+  @media only screen and (max-width: 56.25em) {
+    .summary__gallery {
+      grid-column: 1 / -1;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, minmax(15vh, 1fr)); } }
+  @media only screen and (max-width: 37.5em) {
+    .summary__gallery {
+      grid-column: 1 / -1;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, minmax(15vh, 1fr)); } }
   .summary__gallery--flip {
     grid-column: 1 / 5; }
+    @media only screen and (max-width: 56.25em) {
+      .summary__gallery--flip {
+        grid-column: 1 / -1;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, minmax(15vh, 1fr)); } }
+    @media only screen and (max-width: 37.5em) {
+      .summary__gallery--flip {
+        grid-column: 1 / -1;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, minmax(15vh, 1fr)); } }
   .summary__gallery__img {
     transition: all 300ms; }
     .summary__gallery__img:hover {
@@ -494,6 +548,9 @@ body {
     overflow: hidden;
     position: relative;
     transition: all 300ms; }
+    @media only screen and (max-width: 56.25em) {
+      .summary__gallery__item--9 {
+        display: none; } }
     .summary__gallery__item:hover {
       box-shadow: 0 3rem 8rem rgba(0, 0, 0, 0.3);
       border-radius: 3rem; }

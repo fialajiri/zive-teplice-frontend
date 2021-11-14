@@ -1,19 +1,18 @@
 .section__summary {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: min-content max-content;
+    grid-template-columns: repeat(6, 1fr);    
 
-    align-items: c;
-    
+        
     padding: 5rem 4rem 12rem 4rem;
 
     @include respond(tab-port){
         padding: 5rem 2rem 8rem 2rem;
       } 
 
+
+
     &--flip {
-        background-color: $color-grey-dark-2;
-        // border-radius: $border-radius;
+       
     }
 
     &__heading{
