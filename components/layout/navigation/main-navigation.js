@@ -33,18 +33,18 @@ const MainNavigation = (props) => {
   
   return (
     <Fragment>
-      {/* {drawerIsOpen && <Backdrop onClick={closeDrawerHandler} />}
+      {drawerIsOpen && <Backdrop onClick={closeDrawerHandler} />}
       {renderDrawer && <SideDrawer show={drawerIsOpen} onClick={closeDrawerHandler}>
         <nav className={classes.navigationDrawer}>
           <NavLinks />
         </nav>
-      </SideDrawer>} */}
+      </SideDrawer>}
       <div className={props.isVisible ? "main__navigation" : 'main__navigation main__navigation--sticky'} >
         <button
           className="main__navigation__button"
           onClick={openDrawerHandler}
         >
-         {/* <List className={classes.listIcon}/> */}
+         <span class="main__navigation__icon">&nbsp;</span>
         </button>
         <Link href="/">
           <a>

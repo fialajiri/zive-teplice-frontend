@@ -13,7 +13,7 @@ const SideDrawer = (props) => {
       mountOnEnter
       unmountOnExit
     >
-      <aside className={classes.sideDrawer} onClick={props.onClick}>
+      <aside className='side-drawer' onClick={props.onClick}>
         {props.children}
       </aside>
     </CSSTransition>

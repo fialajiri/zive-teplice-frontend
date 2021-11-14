@@ -9,14 +9,25 @@
 
 @import "layout/header/header-headings";
 @import "layout/header/header";
-@import "layout/logo";
-@import "layout/nav-links";
-@import "layout/main-navigation";
+@import "layout/header/header-gallery";
+@import "layout/navigation/main-navigation";
+@import "layout/navigation/nav-links";
+@import "layout/navigation/side-drawer";
 
-@import "components/hero";
+@import "layout/logo";
+
 @import "components/buttons";
 
-@import "components/header-gallery";
-@import "components/year-summary";
-@import "components/summary-text";
-@import "components//summary-gallery";
+@import "components/form-elements/image-upload";
+@import "components/form-elements/input";
+
+@import "components/ui-elements/button";
+@import "components/ui-elements/loading-spinner";
+@import "components/ui-elements/modal";
+@import "components/ui-elements/notification";
+@import "components/ui-elements/backdrop";
+
+@import "pages/home/hero";
+@import "pages/home/summary-gallery";
+@import "pages/home/summary-text";
+@import "pages/home/year-summary";
