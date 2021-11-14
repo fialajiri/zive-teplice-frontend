@@ -11,6 +11,7 @@
   row-gap: 8rem;
 
   @include respond(tab-land) {
+    grid-template-columns: repeat(4, minmax(23rem, 1fr));
     padding: 3rem 4rem 6rem 4rem;
   }
 
@@ -20,6 +21,7 @@
   }
 
   @include respond(phone) {
+    grid-template-columns: repeat(2, minmax(15rem, 1fr));
     margin: 6rem 0 0 0;
     padding: 3rem 0rem 6rem 0rem;
   }
