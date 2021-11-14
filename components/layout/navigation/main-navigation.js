@@ -9,7 +9,7 @@ import Logo from "../logo";
 
 
 import SideDrawer from "./side-drawer";
-// import Backdrop from "../ui-elements/Backdrop";
+import Backdrop from "../ui-elements/Backdrop";
 
 
 
@@ -44,7 +44,7 @@ const MainNavigation = (props) => {
           className="main__navigation__button"
           onClick={openDrawerHandler}
         >
-         <span class="main__navigation__icon">&nbsp;</span>
+         <span className="main__navigation__icon">&nbsp;</span>
         </button>
         <Link href="/">
           <a>
