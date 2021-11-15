@@ -1,22 +1,21 @@
 import { Fragment, useContext, useState } from "react";
 import { useRouter } from "next/router";
 
-import Input from "../form-elements/input";
-import LoadingSpinner from "../ui-elements/loading-spinner";
-import ErrorModal from "../ui-elements/error-modal";
+import Input from "../../form-elements/input";
+import LoadingSpinner from "../../ui-elements/loading-spinner";
+import ErrorModal from "../../ui-elements/error-modal";
+import Button from "../../ui-elements/button";
 
 import {
   VALIDATOR_EMAIL,
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH,
-} from "../../validators/validators";
+} from "../../../validators/validators";
 
-import { useForm } from "../../hooks/form-hook";
-import { useHttpClient } from "../../hooks/http-hook";
-import { AuthContext } from "../../context/auth-context";
-import NotificationContext from "../../context/notification-context";
-
-
+import { useForm } from "../../../hooks/form-hook";
+import { useHttpClient } from "../../../hooks/http-hook";
+import { AuthContext } from "../../../context/auth-context";
+import NotificationContext from "../../../context/notification-context";
 
 const Auth = () => {
   const router = useRouter();
@@ -78,10 +77,10 @@ const Auth = () => {
   return (
     <Fragment>
       <ErrorModal error={error} onClear={clearError} />
-      <div className='authentication'>
+      <div className="authentication">
         {isLoading && <LoadingSpinner asOverlay />}
         <h2 className="heading-secondary">Přihlašte se, prosím.</h2>
-        <hr />
+
         <form onSubmit={submitFormHandler}>
           <Input
             element="input"
@@ -101,13 +100,15 @@ const Auth = () => {
             errorText="Prosím zadejte platné heslo."
             onInput={inputHandler}
           />
-          <button
-            className='btn'
-            type="submit"
-            disabled={!formState.isValid}
-          >
-            Přihlásit se
-          </button>
+          <div className="authentication__buttons">
+            <Button pulsating type="submit" disabled={!formState.isValid}>
+            Registrovat
+            </Button>
+
+            <Button pulsating link="/register" inverse>
+              Registrovat
+            </Button>
+          </div>
         </form>
       </div>
     </Fragment>

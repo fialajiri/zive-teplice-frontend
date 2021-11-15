@@ -1,0 +1,141 @@
+.button {
+  line-height: 1.2 !important;
+  
+  text-decoration: 0;
+  font-family: $font-primary;
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: $color-grey-dark-3;
+
+  padding: 1rem 3rem;
+  
+    border: 2px solid transparent;
+  border-radius: $border-radius;
+  background-color: $color-primary;
+  cursor: pointer;
+  transition: all 200ms;
+  position: relative;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  &::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: $border-radius;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 400ms;
+    opacity: 1;
+  }
+
+  &--pulsating {
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+
+  //   &--pulsating&--inverse{
+
+  //   }
+
+  &--inverse {
+    background: transparent;
+    color: $color-secondary-light;
+    border: 2px solid $color-secondary-light;
+    &::after {
+      background-color: transparent;
+    }
+  }
+
+  &--inverse:hover,
+  &--inverse:active {
+    color: $color-primary-dark-3;
+    background: $color-secondary-light;
+  }
+
+  &--danger {
+    background: #830000;
+    border-color: #830000;
+    color: $color-white;
+    &::after {
+      background-color: transparent;
+    }
+
+    &:hover {
+      &::after {
+        background-color: #830000;
+      }
+    }
+  }
+
+  &--danger:hover,
+  &--danger:active {
+    background: #f34343;
+    border-color: #f34343;
+    color: $color-grey-dark-3;
+  }
+
+  &:disabled,
+  &:hover:disabled,
+  &:active:disabled {
+    background: $color-grey-light-4;
+    color: $color-grey-dark-3;
+    border-color: $color-grey-light-4;
+    cursor: not-allowed;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  &--animated {
+    &--shake {
+      animation-name: shakeItBaby;
+      animation-delay: 10s;
+      animation-iteration-count: infinite;
+      animation-duration: 4s;
+    }
+
+    &--move-in {
+      animation: moveInBottom 500ms ease-out 750ms;
+      animation-fill-mode: backwards;
+    }
+  }
+
+  &--small {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+
+  &--big {
+    padding: 1.5rem 4rem;
+    font-size: 2rem;
+    font-weight: 500;
+  }
+}
+
+.button--pulsating.button--inverse {
+  &::after {
+    background-color: transparent;
+  }
+  &:hover {
+    &::after {
+      background-color: $color-secondary-light;
+    }
+  }
+}

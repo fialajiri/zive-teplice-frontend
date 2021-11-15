@@ -1,4 +1,4 @@
-import Auth from "../../components/auth-page/auth";
+import Auth from "../../components/pages/auth/auth";
 
 const LoginPage = () => {
     return <Auth />

@@ -1,0 +1,59 @@
+.form-control {
+  margin: 1rem 0;
+
+  & label,
+  & input,
+  & textarea,
+  & select {
+    display: block;
+  }
+
+  & label {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  & p {
+      font-size: 1.4rem;
+      
+  }
+
+  & input,
+  & textarea,
+  & select {
+    border-radius: $border-radius;
+    width: 33%;
+    font: inherit;
+    font-size: 1.6rem;
+    line-height: 1.6;
+    border: 1px solid $color-primary;
+    background-color: $color-grey-light-5;
+    padding: 0.6rem 1rem;
+  }
+
+  & input,
+  & textarea{
+    width: 100%;
+  }
+
+   & input:focus,
+   & textarea:focus,
+   & select:focus {
+    outline: none;
+    background: $color-grey-light-4;
+  }
+
+  &--invalid label,
+  &--invalid p {
+    margin-top: 0.4rem;    
+    color: #ffd1d1;
+  }
+
+  &--invalid input,
+  &--invalid textarea,
+  &--invalid select {
+    border-color: red;
+    background: #ffd1d1;
+  }
+}
