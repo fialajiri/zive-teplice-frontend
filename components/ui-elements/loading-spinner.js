@@ -1,11 +1,16 @@
 import React from 'react';
+import Logo from '../layout/logo'
 
-import classes from  './LoadingSpinner.module.css';
 
 const LoadingSpinner = props => {
+
+  
+
   return (
-    <div className={`${props.asOverlay && classes.loadingSpinnerOverlay}`}>
-      <div className={classes.ldsDualRing}></div>
+    <div className={`${props.asOverlay && 'loading-spinner__as-overlay'}`}>
+      <div className={ `${props.logo ? 'loading-spinner__logo' : 'loading-spinner__dual-ring'}`}>
+        {props.logo && <Logo />}
+      </div>
     </div>
   );
 };

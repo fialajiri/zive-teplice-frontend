@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 
-import classes from './Notification.module.css';
 import NotificationContext from '../../context/notification-context';
 
 function Notification(props) {
@@ -22,7 +21,7 @@ function Notification(props) {
     statusClasses = classes.pending;
   }
 
-  const activeClasses = `${classes.notification} ${statusClasses}`;
+  const activeClasses = `${'notification'} ${statusClasses}`;
 
   return (
     <div className={activeClasses} onClick={notificationCtx.hideNotification}>

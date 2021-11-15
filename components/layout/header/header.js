@@ -7,15 +7,15 @@ import { useElementOnScreen } from "../../../hooks/use-elements-on-screen";
 const Header = (props) => {
   const [containerRef, isVisible] = useElementOnScreen({
     root: null,
-    rootMargin: "0px",
+    rootMargin: "600px",
     threshold: 0,
   });
 
   return (
     <header className="header">
       <MainNavigation isVisible={isVisible} />
-      <HeaderHeading />
-      <HeaderGallery containerRef={containerRef} />
+      <HeaderHeading containerRef={containerRef} />
+      {/* <HeaderGallery containerRef={containerRef} /> */}
     </header>
   );
 };

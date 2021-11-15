@@ -1,8 +1,7 @@
 .nav {
   &__list {
     list-style: none;
-    display: flex;
-    flex: 1;
+    display: flex;   
     align-items: center;
     gap: 4rem;
 
@@ -11,19 +10,35 @@
     }
 
     @include respond(tab-port) {
-      display: none;
+      flex-direction: column;      
+      align-items: flex-start;
+      gap: 6rem;
+      margin-top: 14rem; 
+      margin-left: 2rem;  
+       
+      
+      
     }
+
+    
 
     &__item {
       position: relative;
       text-transform: uppercase;
       display: block;
+      
       z-index: 10;
       padding: 1.5rem 3rem;
 
       font-size: 1.8rem;
       font-weight: 500;
       transition: all 300ms;
+
+      @include respond(tab-port) {
+        
+        
+      }
+      
 
       & a {
         text-decoration: none;

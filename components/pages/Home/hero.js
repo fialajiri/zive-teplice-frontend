@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import HeroGallery from "./hero-gallery";
+
 import foodIcon from "../../../public/icons/food.svg";
 import musicIcon from "../../../public/icons/music.svg";
 import craftIcon from "../../../public/icons/craft.svg";
@@ -8,6 +10,7 @@ import kidsIcon from "../../../public/icons/kids.svg";
 const Hero = (props) => {
   return (
     <section className="hero">
+      <HeroGallery />
       <h2 className="heading-secondary hero__heading">
         Nějvětší sousedská slavnost v Teplicích
       </h2>

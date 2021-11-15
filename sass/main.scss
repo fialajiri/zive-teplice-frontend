@@ -27,7 +27,11 @@
 @import "components/ui-elements/notification";
 @import "components/ui-elements/backdrop";
 
+
 @import "pages/home/hero";
+@import "pages/home/hero-gallery";
 @import "pages/home/summary-gallery";
 @import "pages/home/summary-text";
 @import "pages/home/year-summary";
+
+@import "pages/auth/auth";

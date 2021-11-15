@@ -1,8 +1,8 @@
 import React, { useReducer, useEffect } from "react";
 
-import { validate } from "../validators/validators";
+import { validate } from '../../validators/validators'
 
-import classes from "./Input.module.css";
+
 
 const inputReducer = (state, action) => {
   switch (action.type) {
@@ -70,8 +70,8 @@ const Input = (props) => {
 
   return (
     <div
-      className={`${classes.formControl} ${
-        !inputState.isValid && inputState.isTouched && classes.formControlInvalid
+      className={`'form-control' ${
+        !inputState.isValid && inputState.isTouched && 'form-control--invalid'
       }`}
     >
       <label htmlFor={props.id}>{props.label}</label>
