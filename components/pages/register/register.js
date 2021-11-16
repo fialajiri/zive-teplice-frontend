@@ -5,6 +5,7 @@ import Input from "../../form-elements/input";
 import LoadingSpinner from "../../ui-elements/loading-spinner";
 import ErrorModal from "../../ui-elements/error-modal";
 import Button from "../../ui-elements/button";
+import ImageUpload from "../../form-elements/image-upload";
 
 import {
   VALIDATOR_EMAIL,
@@ -33,6 +34,10 @@ const Register = (props) => {
         value: "",
         isValid: false,
       },
+      passwordVerify: {
+        value: "",
+        isValid: false,
+      },
       name: {
         value: "",
         isValid: false,
@@ -49,38 +54,43 @@ const Register = (props) => {
         value: "",
         isValid: false,
       },
+      image: {
+        value: null,
+        isValid: false,
+      },
     },
     false
   );
 
   const submitFormHandler = async (event) => {
     notificationCtx.showNotification({
-      title: "Přihlašuji...",
-      message: "Přihlašuji do systému",
+      title: "Registruji...",
+      message: "Registruji Vás do aplikace. Chvilku strpení.",
       status: "pending",
     });
 
     event.preventDefault();
     try {
+      const formData = new FormData();
+      formData.append("email", formState.inputs.email.value);
+      formData.append("password", formState.inputs.password.value);
+      formData.append("name", formState.inputs.name.value);
+      formData.append("keywords", formState.inputs.keywords.value);
+      formData.append("description", formState.inputs.description.value);
+      formData.append("type", formState.inputs.type.value);
+      formData.append("image", formState.inputs.image.value);
       const responseData = await sendRequest(
         `${process.env.REACT_APP_BACKEND_URL}/admin/login`,
         "POST",
-        JSON.stringify({
-          email: formState.inputs.email.value,
-          password: formState.inputs.password.value,
-        }),
-        {
-          "Content-Type": "application/json",
-        }
+        formData
       );
 
-      auth.login(responseData.adminId, responseData.token);
       notificationCtx.showNotification({
         title: "Skvělé!!!",
-        message: "Přihlašení proběhlo úspěšně",
+        message: "Registrace proběhla úspěšně",
         status: "success",
       });
-      router.push("/");
+      router.push("/login");
     } catch (err) {
       notificationCtx.showNotification({
         title: "Chyba!!!",
@@ -113,7 +123,7 @@ const Register = (props) => {
             type="text"
             label="Název prodejce/jméno umělce"
             validators={[VALIDATOR_REQUIRE()]}
-            errorText="Prosím zadejte své jméno"
+            errorText="Prosím zadejte své jméno."
             onInput={inputHandler}
           />
           <Input
@@ -127,7 +137,7 @@ const Register = (props) => {
           />
           <Input
             element="input"
-            id="password2"
+            id="passwordVerify"
             type="password"
             label="Potvrďte heslo"
             validators={[VALIDATOR_MINLENGTH(8)]}
@@ -143,6 +153,7 @@ const Register = (props) => {
             errorText="Prosím klíčová slova o celkové délce alespoň 30 znaků."
             onInput={inputHandler}
           />
+
           <Input
             id="description"
             element="textarea"
@@ -152,23 +163,28 @@ const Register = (props) => {
             errorText="Prosím napište něco o sobě v minimální délce alespoň 150 znaků."
             onInput={inputHandler}
           />
-           <Input
-            id="type"
-            element="select"
-            options={['','Prodejce', 'Umělec']}
-            label="Zvolte zdali jste umělec nebo prodejce"
-            validators={[VALIDATOR_REQUIRE()]}
-            errorText="Prosím vyberte jednu z možností."
-            onInput={inputHandler}
-          />
-          
-
-          <div className="authentication__buttons">
-          <Button pulsating type="submit" disabled={!formState.isValid}>
-              Přihlásit se
+          <div className="registration__form__container">
+            <div className="registration__form__select">
+              <Input
+                id="type"
+                element="select"
+                options={["", "Prodejce", "Umělec"]}
+                label="Zvolte zdali jste umělec nebo prodejce"
+                validators={[VALIDATOR_REQUIRE()]}
+                errorText="Prosím vyberte jednu z možností."
+                onInput={inputHandler}
+              />
+            </div>
+            <ImageUpload
+              id="image"
+              onInput={inputHandler}
+              errorText="Prosím vyberte obrázek."
+            />
+          </div>
+          <div ckassName="registration__form__button">
+            <Button pulsating type="submit" disabled={!formState.isValid}>
+              Registrovat
             </Button>
-            
-            
           </div>
         </form>
       </div>

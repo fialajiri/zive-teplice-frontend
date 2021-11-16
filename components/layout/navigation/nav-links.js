@@ -15,17 +15,17 @@ const NavLinks = (props) => {
       <li className={router.pathname === "/" ? "nav__list__item nav__list__item--active" : "nav__list__item"}>
         <Link href="/">Domů</Link>
       </li>
-      <li className={router.pathname === "/program" ? "nav__list__item nav__list--active" : "nav__list__item"}>
+      <li className={router.pathname === "/program" ? "nav__list__item nav__list__item--active" : "nav__list__item"}>
         <Link href="/program">Program</Link>
       </li>
-      <li className={router.pathname === "/galerie" ? "nav__list__item nav__list--active" : "nav__list__item"}>
+      <li className={router.pathname === "/galerie" ? "nav__list__item nav__list__item--active" : "nav__list__item"}>
         <Link href="/galerie">Galerie</Link>
       </li>
-      <li className={router.pathname === "/aktuality" ? "nav__list__item nav__list--active" : "nav__list__item"}>
-        <Link href="/aktuality">Aktuality</Link>
+      <li className={router.pathname === "/aktuality" ? "nav__list__item nav__list__item--active" : "nav__list__item"}>
+        <Link href="/admin">Admin</Link>
       </li>
 
-      <li className={router.pathname === "/login" ? "nav__list__item nav__list--active" : "nav__list__item"}>
+      <li className={router.pathname === "/login" ? "nav__list__item nav__list__item--active" : "nav__list__item"}>
         <Link href="/login">Přihlásit se</Link>
       </li>
 

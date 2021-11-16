@@ -1,0 +1,41 @@
+.tab {
+  font: inherit;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: $color-grey-dark-3;
+  padding: 2.2rem 3rem;
+  border: none;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  line-height: 1.2rem;
+  background-color: $color-grey-light-5;
+  transition: all 100ms;
+
+  &::after {
+    content: "";
+    width: 100%;
+    height: 1.4rem;
+    background-image: linear-gradient($color-grey, $color-grey 50%, $color-grey-light-5 50%, $color-grey-light-5);
+    background-size: 101% 200%;
+    /*trasition effect for background*/
+    transition: background-position 200ms, background-size 200ms;
+    position: absolute;
+    top: 100%;
+    left: 0;  
+      z-index: -1;
+    
+  }
+
+  &--selected {
+    color: $color-primary-dark-2;
+    position: relative;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+
+    &::after {
+        background-position: 100% 100%;
+        
+    }
+  }
+}

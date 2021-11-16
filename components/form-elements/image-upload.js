@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 
-import Button from "../ui-elements/Button";
+import Button from "../ui-elements/button";
 
-import classes from "./ImageUpload.module.css";
+
 
 const ImageUpload = (props) => {
   const [file, setFile] = useState();
@@ -44,7 +44,7 @@ const ImageUpload = (props) => {
   };
 
   return (
-    <div className={classes.formControl}>
+    <div className='form-control'>
       <input
         id={props.id}
         style={{ display: "none" }}
@@ -53,14 +53,14 @@ const ImageUpload = (props) => {
         accept=".jpg,.png,.jpeg"
         onChange={pickedHandler}
       />
-      <div className={classes.imageUpload}>
-        <div className={classes.imageUploadPreview}>
+      <div className='image-upload'>
+        <div className='image-upload__preview'>
           {previewUrl && <img src={previewUrl} alt="preview" />}
           {!previewUrl && (
             <p>vyberte obrázek (typu png/jpg/jpeg a max. vel. 500kb) </p>
           )}
         </div>
-        <Button  type="button" onClick={pickImageHandler} sx={{ marginBottom: "2em" }}>Vyberte obrázek</Button>
+        <Button  type="button" size='small'  onClick={pickImageHandler} >Vyberte obrázek</Button>
       </div>
       {!isValid && <p>{props.errorText}</p>}
     </div>

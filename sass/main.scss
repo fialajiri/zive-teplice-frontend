@@ -21,11 +21,16 @@
 @import "components/form-elements/image-upload";
 @import "components/form-elements/input";
 
+@import 'components/performers/performer-item';
+@import 'components/performers/performer-list';
+
 @import "components/ui-elements/button";
 @import "components/ui-elements/loading-spinner";
 @import "components/ui-elements/modal";
 @import "components/ui-elements/notification";
 @import "components/ui-elements/backdrop";
+
+@import 'components/ui-elements/tabs/tab';
 
 
 @import "pages/home/hero";
@@ -33,6 +38,8 @@
 @import "pages/home/summary-gallery";
 @import "pages/home/summary-text";
 @import "pages/home/year-summary";
+
+@import 'pages/program/program';
 
 @import "pages/auth/auth";
 @import 'pages/register/register'

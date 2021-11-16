@@ -1,0 +1,7 @@
+.performer {
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+    }
+}
