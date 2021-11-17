@@ -9,14 +9,18 @@
   border-radius: 0.5rem;
   text-decoration: none;
   line-height: 1.2rem;
-  background-color: $color-grey-light-5;
+  background-color: $color-grey-light-3;
   transition: all 100ms;
+
+  @include respond(phone) {
+    padding: 2rem ;
+  }
 
   &::after {
     content: "";
     width: 100%;
     height: 1.4rem;
-    background-image: linear-gradient($color-grey, $color-grey 50%, $color-grey-light-5 50%, $color-grey-light-5);
+    background-image: linear-gradient($color-grey, $color-grey 50%, $color-grey-light-3 50%, $color-grey-light-3);
     background-size: 101% 200%;
     /*trasition effect for background*/
     transition: background-position 200ms, background-size 200ms;
@@ -28,7 +32,7 @@
   }
 
   &--selected {
-    color: $color-primary-dark-2;
+    color: $color-white;
     position: relative;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;

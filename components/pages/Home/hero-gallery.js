@@ -11,6 +11,7 @@ const HeroGallery = props => {
             className="hero__gallery__img"
             layout='fill'
             objectFit='cover'
+            priority
           />
         </figure>
         <figure className="hero__gallery__item hero__gallery__item--2">
@@ -20,6 +21,7 @@ const HeroGallery = props => {
             className="hero__gallery__img"
             layout='fill'
             objectFit='cover'
+            priority
 
           />
         </figure>
@@ -30,6 +32,7 @@ const HeroGallery = props => {
             className="hero__gallery__img"
             layout='fill'
             objectFit='cover'
+            priority
           />
         </figure>
 
@@ -40,6 +43,7 @@ const HeroGallery = props => {
             className="hero__gallery__img"
             layout='fill'
             objectFit='cover'
+            priority
           />
         </figure>
 
@@ -50,6 +54,7 @@ const HeroGallery = props => {
             className="hero__gallery__img"
             layout='fill'
             objectFit='cover'
+            priority
           />
         </figure>
 
@@ -60,6 +65,7 @@ const HeroGallery = props => {
             className="hero__gallery__img"
             layout='fill'
             objectFit='cover'
+            priority
           />
         </figure>
 
@@ -70,6 +76,7 @@ const HeroGallery = props => {
             className="hero__gallery__img"
             layout='fill'
             objectFit='cover'
+            priority
           />
         </figure>
 
@@ -80,6 +87,7 @@ const HeroGallery = props => {
             className="hero__gallery__img"
             layout='fill'
             objectFit='cover'
+            priority
           />
         </figure>
 
@@ -90,6 +98,7 @@ const HeroGallery = props => {
             className="hero__gallery__img"
             layout='fill'
             objectFit='cover'
+            priority
           />
         </figure>
 
@@ -100,6 +109,7 @@ const HeroGallery = props => {
             className="hero__gallery__img"
             layout='fill'
             objectFit='cover'
+            priority
           />
         </figure>
 
@@ -110,6 +120,7 @@ const HeroGallery = props => {
             className="hero__gallery__img"
             layout='fill'
             objectFit='cover'
+            priority
           />
         </figure>
 
@@ -120,6 +131,7 @@ const HeroGallery = props => {
             className="hero__gallery__img"
             layout='fill'
             objectFit='cover'
+            priority
           />
         </figure>
 
@@ -130,6 +142,7 @@ const HeroGallery = props => {
             className="hero__gallery__img"
             layout='fill'
             objectFit='cover'
+            priority
           />
         </figure>
       </div>

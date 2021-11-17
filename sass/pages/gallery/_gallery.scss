@@ -1,0 +1,62 @@
+.gallery {
+  &__container {
+    margin-top: 2rem;
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__heading {
+    margin-left: 4rem;
+    align-self: flex-start;
+  }
+
+  &__years {
+    padding: 4rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+
+    gap: 4rem;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: $border-radius;
+    overflow: hidden;
+    box-shadow: $shadow-light;
+    transition: all 300ms;
+
+    &:hover {
+      box-shadow: $shadow-dark;
+      transform: translateY(-1rem);
+    }
+
+    &:hover &__year {
+      box-shadow: $shadow-dark-2;
+      color: $color-primary-light-1
+    }
+
+    &__year {
+      font-size: 3rem;
+      font-weight: 500;
+      padding: 1rem 2rem;
+      border-radius: $border-radius;
+      color: $color-primary;
+      background-color: $color-grey-light-1;
+      text-decoration: none;
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+
+    & img {
+      width: 100%;
+      object-fit: cover;
+      height: 10rem;
+    }
+  }
+}

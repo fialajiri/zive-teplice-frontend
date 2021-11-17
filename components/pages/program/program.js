@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 
 import { useEffect } from "react";
 import PerformerList from "../../performers/performer-list";
@@ -11,18 +11,13 @@ import { getPerformers } from "../../../lib/dummy_data";
 
 const Program = (props) => {
   const { query } = useRouter();
-  console.log(query);
-
-  let isTabOneSelected = !!query.tabOne;
-  const isTabTwoSelected = !!query.tabTwo;
-  const isTabThreeSelected = !!query.tabThree;
 
   const performers = getPerformers();
 
-  useEffect(() => {
-    if (!isTabOneSelected && !isTabTwoSelected && !isTabThreeSelected)
-      isTabOneSelected = true;
-  }, []);
+  const isTabOneSelected =
+    !!query.tabOne || !(!!query.tabOne || !!query.tabTwo || !!query.tabThree);
+  const isTabTwoSelected = !!query.tabTwo;
+  const isTabThreeSelected = !!query.tabThree;
 
   return (
     <div className="program">

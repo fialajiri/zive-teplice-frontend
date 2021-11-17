@@ -11,6 +11,7 @@ import {
   VALIDATOR_EMAIL,
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH,
+  VALIDATOR_MAXLENGTH
 } from "../../../validators/validators";
 
 import { useForm } from "../../../hooks/form-hook";
@@ -159,8 +160,8 @@ const Register = (props) => {
             element="textarea"
             rows="6"
             label="Krátký medajlonek"
-            validators={[VALIDATOR_MINLENGTH(100)]}
-            errorText="Prosím napište něco o sobě v minimální délce alespoň 150 znaků."
+            validators={[VALIDATOR_MINLENGTH(150), VALIDATOR_MAXLENGTH(350)]}
+            errorText="Prosím napište něco o sobě v minimální délce alespoň 150 znaků a maximálně 350 znaků."
             onInput={inputHandler}
           />
           <div className="registration__form__container">
@@ -181,7 +182,7 @@ const Register = (props) => {
               errorText="Prosím vyberte obrázek."
             />
           </div>
-          <div ckassName="registration__form__button">
+          <div className="registration__form__button">
             <Button pulsating type="submit" disabled={!formState.isValid}>
               Registrovat
             </Button>

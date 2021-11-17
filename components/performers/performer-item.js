@@ -10,7 +10,7 @@ const PerformerItem = ({ email, name, keywords, description, type, image }) => {
           <div className="performer__email">{email}</div>
           <div className="performer__keywords">{keywords}</div>
         </div>
-        <div className="performer__descrioption">{description}</div>
+        <div className="paragraph performer__description">{description}</div>
       </div>
     </li>
   );
