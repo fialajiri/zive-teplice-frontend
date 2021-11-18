@@ -18,10 +18,10 @@ const NavLinks = (props) => {
       <li className={router.pathname === "/program" ? "nav__list__item nav__list__item--active" : "nav__list__item"}>
         <Link href="/program">Program</Link>
       </li>
-      <li className={router.pathname === "/galerie" ? "nav__list__item nav__list__item--active" : "nav__list__item"}>
+      <li className={router.pathname === "/gallery" ? "nav__list__item nav__list__item--active" : "nav__list__item"}>
         <Link href="/gallery">Galerie</Link>
       </li>
-      <li className={router.pathname === "/aktuality" ? "nav__list__item nav__list__item--active" : "nav__list__item"}>
+      <li className={router.pathname === "/admin" ? "nav__list__item nav__list__item--active" : "nav__list__item"}>
         <Link href="/admin">Admin</Link>
       </li>
 

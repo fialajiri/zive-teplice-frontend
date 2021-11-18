@@ -1,4 +1,4 @@
-import PerformerItem from "./performer-item";
+import PerformerItem from "./performer-list-item";
 
 const PerformerList = ({ performers, type }) => {
     

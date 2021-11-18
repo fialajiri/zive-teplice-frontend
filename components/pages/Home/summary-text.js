@@ -1,3 +1,5 @@
+import Button from '../../ui-elements/button'
+
 const SummaryText = (props) => {
   if (props.year === 2021) {
     return (
@@ -21,9 +23,11 @@ const SummaryText = (props) => {
             sdílejte. Ať nám příjemné naladění vydrží ještě pár dní...🥰{" "}
           </p>
         </div>
-        <button className="btn btn--green summary__text__btn">
+        
+        <Button link='/gallery/2021' size='big' pulsating shake className='summary__text__btn' >
           kompletní galerie
-        </button>
+        </Button>
+       
       </div>
     );
   } else if (props.year === 2020) {
@@ -53,9 +57,9 @@ const SummaryText = (props) => {
             slavnost užívají...
           </p>
         </div>
-        <button className="btn btn--green summary__text__btn">
+        <Button link='/gallery/2020' size='big' pulsating shake className='summary__text__btn'>
           kompletní galerie
-        </button>
+        </Button>
       </div>
     );
   } else if (props.year === 2019) {
@@ -85,9 +89,9 @@ const SummaryText = (props) => {
             roku 2020.
           </p>
         </div>
-        <button className="btn btn--green summary__text__btn">
+        <Button link='/gallery/2019' size='big' pulsating shake className='summary__text__btn'>
           kompletní galerie
-        </button>
+        </Button>
       </div>
     );
   } else if (props.year === 2018) {
@@ -112,9 +116,9 @@ const SummaryText = (props) => {
             Pokud byste se chtěli jakkoliv zapojit, neváhejte mne kontaktovat.
           </p>
         </div>
-        <button className="btn btn--green summary__text__btn">
+        <Button link='/gallery/2018' size='big' pulsating shake className='summary__text__btn'>
           kompletní galerie
-        </button>
+        </Button>
       </div>
     );
   } else if (props.year === 2017) {
@@ -148,9 +152,9 @@ const SummaryText = (props) => {
             specialitami, lákaly k ochutnán
           </p>
         </div>
-        <button className="btn btn--green summary__text__btn">
+        <Button link='/gallery/2017' size='big' pulsating shake className='summary__text__btn'>
           kompletní galerie
-        </button>
+        </Button>
       </div>
     );
   } else if (props.year === 2016) {
@@ -187,9 +191,9 @@ const SummaryText = (props) => {
             úspěch a přilákala další posluchače.
           </p>
         </div>
-        <button className="btn btn--green summary__text__btn">
+        <Button link='/gallery/2016' size='big' pulsating shake className='summary__text__btn'>
           kompletní galerie
-        </button>
+        </Button>
       </div>
     );
   }

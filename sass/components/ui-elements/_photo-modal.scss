@@ -1,0 +1,105 @@
+.photo-modal {
+  z-index: 100;
+  position: fixed;
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: 100%;
+
+  background-color: orangered;
+  box-shadow: $shadow-dark;
+
+  &__header {
+  }
+
+  &__content {
+    position: relative;
+  }
+
+  &__image {
+    display: flex;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  &__icon {
+    font-size: 4rem;
+    font-weight: 500;
+
+    &--left {
+    }
+  }
+
+  &__buttons {
+  }
+
+  &__button {
+    border: none;
+    padding: 1rem 2rem;
+    color: $color-white;
+    background-color: transparent;
+    z-index: 100;
+    cursor: pointer;
+
+    &--left {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translate(10%, -50%);
+      transition: all 300ms;
+
+      &:hover {
+        transform: translate(-10%, -50%) scale(1.1);
+        color: $color-black;
+      }
+    }
+
+    &--right {
+      position: absolute;
+      top: 50%;
+      right: 0%;
+      transform: translate(-10%, -50%);
+      transition: all 300ms;
+
+      &:hover {
+        transform: translate(10%, -50%) scale(1.1);
+        color: $color-black;
+      }
+    }
+
+    &--close {
+      position: absolute;
+      bottom: 0%;
+      left: 50%;
+      transform: translate(-50%, 0%);
+      transition: all 300ms;
+
+      &:hover {
+        transform:  translate(-50%, 0%) scale(1.2);
+        color: $color-black;
+      }
+    }
+  }
+
+  &-enter {
+    transform: translateY(-10rem);
+    opacity: 0;
+  }
+
+  &-enter-active {
+    transform: translateY(0);
+    opacity: 1;
+    transition: all 200ms;
+  }
+
+  &-exit {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  &-exit-active {
+    transform: translateY(-10rem);
+    opacity: 0;
+    transition: all 200ms;
+  }
+}

@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import Button from "../../ui-elements/button";
+
 import HeroGallery from "./hero-gallery";
 
 import foodIcon from "../../../public/icons/food.svg";
@@ -39,7 +41,13 @@ const Hero = (props) => {
       </div>
       <div className="hero__cards">
         <div className="hero__card">
-          <Image className="card__icon" src={foodIcon} height={60} width={60} alt='Cart Icon' />
+          <Image
+            className="card__icon"
+            src={foodIcon}
+            height={60}
+            width={60}
+            alt="Cart Icon"
+          />
           <h3 className="heading-tertiary hero__card__heading">
             Vynikající občerstvení
           </h3>
@@ -55,7 +63,7 @@ const Hero = (props) => {
             src={musicIcon}
             height={60}
             width={60}
-            alt = 'Music instrument icon'
+            alt="Music instrument icon"
           />
           <h3 className="heading-tertiary hero__card__heading">Živé umění</h3>
           <p className="paragraph hero__card__paragraph">
@@ -70,7 +78,7 @@ const Hero = (props) => {
             src={craftIcon}
             height={60}
             width={60}
-            alt='Paper bird and scissors'
+            alt="Paper bird and scissors"
           />
 
           <h3 className="heading-tertiary hero__card__heading">
@@ -83,15 +91,14 @@ const Hero = (props) => {
           </p>
         </div>
         <div className="hero__card">
-          
           <Image
             className="hero__card__icon"
             src={kidsIcon}
             height={60}
             width={60}
-            alt='Ice-cream on a stick'
+            alt="Ice-cream on a stick"
           />
-          
+
           <h3 className="heading-tertiary hero__card__heading">Děti sebou</h3>
           <p className="paragraph hero__card__paragraph">
             Phasellus a euismod dolor. Duis aliquam dui ac consectetur porta.
@@ -100,12 +107,13 @@ const Hero = (props) => {
           </p>
         </div>
       </div>
-      {/* <div className="hero__buttons"> */}
-      <button className="btn btn--green hero__button--1">Obděr novinek</button>
-      <button className="btn btn--green hero__button--2">
+
+      <Button size="big" pulsating shake className="hero__button--1">
+        Obděr novinek
+      </Button>
+      <Button size="big" pulsating shake className="hero__button--2">
         Chci prodávat/hrát na ŽT
-      </button>
-      {/* </div> */}
+      </Button>
     </section>
   );
 };

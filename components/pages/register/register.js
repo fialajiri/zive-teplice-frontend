@@ -31,6 +31,10 @@ const Register = (props) => {
         value: "",
         isValid: false,
       },
+      phoneNumber: {
+        value: "",
+        isValid: false,
+      },
       password: {
         value: "",
         isValid: false,
@@ -74,6 +78,7 @@ const Register = (props) => {
     try {
       const formData = new FormData();
       formData.append("email", formState.inputs.email.value);
+      formData.append("phoneNumber", formState.inputs.phoneNumber.value);
       formData.append("password", formState.inputs.password.value);
       formData.append("name", formState.inputs.name.value);
       formData.append("keywords", formState.inputs.keywords.value);
@@ -116,6 +121,15 @@ const Register = (props) => {
             label="Email"
             validators={[VALIDATOR_EMAIL()]}
             errorText="Prosím zadejte platný email."
+            onInput={inputHandler}
+          />
+          <Input
+            element="input"
+            id="phoneNumber"
+            type="text"
+            label="Telefonní číslo"
+            validators={[VALIDATOR_MINLENGTH(9)]}
+            errorText="Prosím zadejte telefonní číslo."
             onInput={inputHandler}
           />
           <Input

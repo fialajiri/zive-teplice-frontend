@@ -1,47 +1,65 @@
 import React, { Fragment, useState } from "react";
 
-import { useEffect } from "react";
+
 import PerformerList from "../../performers/performer-list";
-import Head from "next/head";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import Tab from "../../ui-elements/tabs/tab";
+
+import TabContainer from "../../ui-elements/tabs/tab-container";
+import TabHead from "../../ui-elements/tabs/tab-head";
+import TabBody from "../../ui-elements/tabs/tab-body";
+import TabButton from "../../ui-elements/tabs/tab-button";
 
 import { getPerformers } from "../../../lib/dummy_data";
 
 const Program = (props) => {
-  const { query } = useRouter();
+  const [tabOneIsActive, setTabOneIsActive] = useState(true);
+  const [tabTwoIsActive, setTabTwoIsActive] = useState(false);
+  const [tabThreeIsActive, setTabThreeIsActive] = useState(false);
 
+  const clickTabHandler = (tabNumber) => {
+    if (tabNumber === 1) {
+      setTabOneIsActive(true);
+      setTabTwoIsActive(false);
+      setTabThreeIsActive(false);
+    }
+    if (tabNumber === 2) {
+      setTabOneIsActive(false);
+      setTabTwoIsActive(true);
+      setTabThreeIsActive(false);
+    }
+    if (tabNumber === 3) {
+      setTabOneIsActive(false);
+      setTabTwoIsActive(false);
+      setTabThreeIsActive(true);
+    }
+  };
+  
   const performers = getPerformers();
 
-  const isTabOneSelected =
-    !!query.tabOne || !(!!query.tabOne || !!query.tabTwo || !!query.tabThree);
-  const isTabTwoSelected = !!query.tabTwo;
-  const isTabThreeSelected = !!query.tabThree;
+  
 
   return (
     <div className="program">
       <h2 className="heading-secondary program__heading">Program </h2>
-      <div className="tab__container">
-        <div className="tab__container__head">
-          <Tab
-            href="/program/?tabOne=true"
+      <TabContainer >
+        <TabHead >
+          <TabButton
+            onClick={()=> clickTabHandler(1)}
             title="Program"
-            isSelected={isTabOneSelected}
+            isSelected={tabOneIsActive}
           />
-          <Tab
-            href="/program/?tabTwo=true"
+          <TabButton
+            onClick={()=> clickTabHandler(2)}
             title="Prodejci"
-            isSelected={isTabTwoSelected}
+            isSelected={tabTwoIsActive}
           />
-          <Tab
-            href="/program/?tabThree=true"
+          <TabButton
+            onClick={()=> clickTabHandler(3)}
             title="Účinkující"
-            isSelected={isTabThreeSelected}
+            isSelected={tabThreeIsActive}
           />
-        </div>
-        <div className="tab__container__body">
-          {isTabOneSelected && (
+        </TabHead>
+        <TabBody >
+          {tabOneIsActive && (
             <Fragment>
               Fusce lacus enim, accumsan vel commodo quis, tristique a eros.
               Phasellus porttitor nulla sem, vel vehicula velit consequat non.
@@ -60,19 +78,14 @@ const Program = (props) => {
               sagittis odio ante at erat. Vivamus at enim leo.
             </Fragment>
           )}
-          {isTabTwoSelected && (
-            <Fragment>
-              <PerformerList performers={performers} type="prodejce" />
-            </Fragment>
+          {tabTwoIsActive && (
+            <PerformerList performers={performers} type="prodejce" />
           )}
-          {isTabThreeSelected && (
-            <Fragment>
-              {" "}
-              <PerformerList performers={performers} type="učinkující" />
-            </Fragment>
+          {tabThreeIsActive && (
+            <PerformerList performers={performers} type="učinkující" />
           )}
-        </div>
-      </div>
+        </TabBody>
+      </TabContainer>
     </div>
   );
 };

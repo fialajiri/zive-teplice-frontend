@@ -6,7 +6,8 @@ const Button = (props) => {
   } ${props.danger && "button--danger"}
     ${props.shake && "button--animated--shake"}
     ${props.moveIn && "button--animated--move-in"}
-    ${props.pulsating && "button--pulsating"}`;
+    ${props.pulsating && "button--pulsating"} 
+    ${props.className}`;
 
   if (props.link) {
     return (

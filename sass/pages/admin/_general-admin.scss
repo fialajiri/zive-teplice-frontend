@@ -1,0 +1,18 @@
+.general-admin {
+  &__container {
+    padding: 0 2rem;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+
+    @include respond(tab-port) {
+        padding: 0 1rem;
+      }
+
+  }
+
+  &__heading {
+    margin-left: 2rem;
+    align-self: flex-start;
+  }
+}
