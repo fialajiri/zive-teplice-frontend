@@ -20,10 +20,7 @@
     }
 
     &:hover {
-        
-        transform: translateY(-5px);
-        
-
+      transform: translateY(-5px);
     }
   }
 
@@ -36,9 +33,9 @@
   }
 
   &__summary {
-      display: flex;
-      flex-direction: column;
-      gap: .3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
   }
 
   &__title {
@@ -51,15 +48,5 @@
   &__email {
     color: $color-blue;
     font-size: 1.6rem;
-    
-  }
-
-  &__keywords {
-    font-style: italic;
-    font-size: 1.4rem;
-    color: $color-primary;
-  }
-
-  &__description {
   }
 }

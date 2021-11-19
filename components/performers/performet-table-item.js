@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { Trash, Pencil, Circle, CalendarCheck } from "phosphor-react";
+import { Trash, Pencil, Circle, CalendarCheck, Envelope } from "phosphor-react";
 import foodTruck from "../../public/icons/food-truck.svg";
 import artist from "../../public/icons/artist.svg";
 
@@ -34,11 +34,15 @@ const PerformerTableItem = (props) => {
 
   return (
     <li className={`performer-table__item ${props.className}`}>
-      <Image src={image} alt={name} width={100} height={100} />
-
+      <div className='performer-table__item__image'>
+      <Image  src={image} alt={name} width={100} height={100} />
+      </div>
       <h4 className="performer-table__item__name">{name}</h4>
-      <a href={`mailto:${email}`} className="performer-table__item__email">
-        {email}
+      <a href={`mailto:${email}`} className="performer-table__item__email performer-table__item__icon">
+        <Envelope />
+        <p className=" performer-table__item__email__helper-text performer-table__item__helper-text">
+          {email}
+        </p>
       </a>
       <div className="performer-table__item__tel">{tel}</div>
       <div className="performer-table__item__type performer-table__item__actions">
@@ -47,7 +51,7 @@ const PerformerTableItem = (props) => {
         {performerType}
         </p>
       </div>
-      <div className="performer-table__item__keywords">{keywords}</div>
+      
 
       <div className="performer-table__item__description">{description}</div>
 

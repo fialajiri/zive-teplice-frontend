@@ -1,9 +1,11 @@
 import Link from "next/link";
 
 const Button = (props) => {
-  const classes = `button button--${props.size || "default"} ${
-    props.inverse && "button--inverse"
-  } ${props.danger && "button--danger"}
+  const classes = props.unstyled
+    ? `${props.className}`
+    : `button button--${props.size || "default"} ${
+        props.inverse && "button--inverse"
+      } ${props.danger && "button--danger"}
     ${props.shake && "button--animated--shake"}
     ${props.moveIn && "button--animated--move-in"}
     ${props.pulsating && "button--pulsating"} 

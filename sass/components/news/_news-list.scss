@@ -1,0 +1,21 @@
+.news__list {
+  padding: 3rem 0 0 2rem;
+  font-size: 1.6rem;
+  flex: 4;
+  list-style: none;
+  display: flex;
+ 
+
+  overflow-x: scroll;
+  position: relative;
+
+  &::-webkit-scrollbar-track {
+    background: $color-grey;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 5rem;
+    background-color: $color-grey-dark-2;
+    border-radius: $border-radius;
+  }
+}

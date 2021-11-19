@@ -6,8 +6,9 @@ import TabBody from "../../ui-elements/tabs/tab-body";
 import TabButton from "../../ui-elements/tabs/tab-button";
 
 import PerformerTable from "../../performers/performer-table";
+import NewsTable from "../../news/news-table";
 
-import { getPerformers } from "../../../lib/dummy_data";
+import { getNews, getPerformers } from "../../../lib/dummy_data";
 
 
 const GeneralAdmin = () => {
@@ -34,6 +35,7 @@ const GeneralAdmin = () => {
   };
 
   const performers = getPerformers();
+  const news = getNews();
 
   
 
@@ -63,6 +65,9 @@ const GeneralAdmin = () => {
         <TabBody>
         {tabOneIsActive && (
             <PerformerTable performers={performers} />
+          )}
+           {tabThreeIsActive && (
+            <NewsTable news={news} />
           )}
         </TabBody>
       </TabContainer>

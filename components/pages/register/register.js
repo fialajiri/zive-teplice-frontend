@@ -11,7 +11,7 @@ import {
   VALIDATOR_EMAIL,
   VALIDATOR_REQUIRE,
   VALIDATOR_MINLENGTH,
-  VALIDATOR_MAXLENGTH
+  VALIDATOR_MAXLENGTH,
 } from "../../../validators/validators";
 
 import { useForm } from "../../../hooks/form-hook";
@@ -47,10 +47,7 @@ const Register = (props) => {
         value: "",
         isValid: false,
       },
-      keywords: {
-        value: "",
-        isValid: false,
-      },
+
       description: {
         value: "",
         isValid: false,
@@ -80,8 +77,7 @@ const Register = (props) => {
       formData.append("email", formState.inputs.email.value);
       formData.append("phoneNumber", formState.inputs.phoneNumber.value);
       formData.append("password", formState.inputs.password.value);
-      formData.append("name", formState.inputs.name.value);
-      formData.append("keywords", formState.inputs.keywords.value);
+      formData.append("name", formState.inputs.name.value);      
       formData.append("description", formState.inputs.description.value);
       formData.append("type", formState.inputs.type.value);
       formData.append("image", formState.inputs.image.value);
@@ -157,15 +153,6 @@ const Register = (props) => {
             label="Potvrďte heslo"
             validators={[VALIDATOR_MINLENGTH(8)]}
             errorText="Prosím zopakujte heslo."
-            onInput={inputHandler}
-          />
-          <Input
-            element="input"
-            id="keywords"
-            type="text"
-            label="Klíčová slova"
-            validators={[VALIDATOR_MINLENGTH(30)]}
-            errorText="Prosím klíčová slova o celkové délce alespoň 30 znaků."
             onInput={inputHandler}
           />
 

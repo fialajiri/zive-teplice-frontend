@@ -15,7 +15,7 @@ const PhotoModalOverlay = (props) => {
         <h2>{props.header}</h2>
       </div>
       <div className="photo-modal__content">
-        <img src={props.src} alt='' className="photo-modal__image"/>
+        <img src={props.src} alt='gallery photo' className="photo-modal__image"/>
 
         <div className="photo-modal__buttons">
         <button

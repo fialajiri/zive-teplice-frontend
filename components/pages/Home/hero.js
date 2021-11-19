@@ -12,33 +12,11 @@ import kidsIcon from "../../../public/icons/kids.svg";
 const Hero = (props) => {
   return (
     <section className="hero">
-      <HeroGallery />
+     
       <h2 className="heading-secondary hero__heading">
         Nějvětší sousedská slavnost v Teplicích
       </h2>
-      <div className="hero__paragraphs">
-        <p className="paragraph hero__paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-          ultricies commodo finibus. Quisque suscipit non nisi sit amet
-          facilisis. Maecenas id blandit augue, vitae condimentum augue. Aliquam
-          ullamcorper elit eget turpis luctus, nec mattis turpis tincidunt. Nam
-          id tincidunt leo, ac mollis nisl. Morbi vestibulum ut dui quis
-          finibus. Suspendisse potenti. Vestibulum quam diam, tristique quis
-          porta in, condimentum et mi. Donec et risus imperdiet metus consequat
-          gravida.
-        </p>
-
-        <p className="paragraph hero__paragraph">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-          ultricies commodo finibus. Quisque suscipit non nisi sit amet
-          facilisis. Maecenas id blandit augue, vitae condimentum augue. Aliquam
-          ullamcorper elit eget turpis luctus, nec mattis turpis tincidunt. Nam
-          id tincidunt leo, ac mollis nisl. Morbi vestibulum ut dui quis
-          finibus. Suspendisse potenti. Vestibulum quam diam, tristique quis
-          porta in, condimentum et mi. Donec et risus imperdiet metus consequat
-          gravida.
-        </p>
-      </div>
+     
       <div className="hero__cards">
         <div className="hero__card">
           <Image
@@ -106,6 +84,29 @@ const Hero = (props) => {
             in vestibulum iaculis.
           </p>
         </div>
+      </div>
+      <div className="hero__paragraphs">
+        <p className="paragraph hero__paragraph">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+          ultricies commodo finibus. Quisque suscipit non nisi sit amet
+          facilisis. Maecenas id blandit augue, vitae condimentum augue. Aliquam
+          ullamcorper elit eget turpis luctus, nec mattis turpis tincidunt. Nam
+          id tincidunt leo, ac mollis nisl. Morbi vestibulum ut dui quis
+          finibus. Suspendisse potenti. Vestibulum quam diam, tristique quis
+          porta in, condimentum et mi. Donec et risus imperdiet metus consequat
+          gravida.
+        </p>
+
+        <p className="paragraph hero__paragraph">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
+          ultricies commodo finibus. Quisque suscipit non nisi sit amet
+          facilisis. Maecenas id blandit augue, vitae condimentum augue. Aliquam
+          ullamcorper elit eget turpis luctus, nec mattis turpis tincidunt. Nam
+          id tincidunt leo, ac mollis nisl. Morbi vestibulum ut dui quis
+          finibus. Suspendisse potenti. Vestibulum quam diam, tristique quis
+          porta in, condimentum et mi. Donec et risus imperdiet metus consequat
+          gravida.
+        </p>
       </div>
 
       <Button size="big" pulsating shake className="hero__button--1">

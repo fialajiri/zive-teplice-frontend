@@ -19,6 +19,14 @@
   box-sizing: inherit;
 }
 
+* {
+  scrollbar-width: thin;   
+  scrollbar-color: $color-grey-dark-2 $color-grey;
+  
+}
+
+
+
 html {
   font-size: 62.5%;
 
@@ -42,6 +50,8 @@ body {
   box-sizing: border-box;
   background-color: $color-grey ;
   height: 50rem;
+
+ 
   
   
 
