@@ -1,3 +1,27 @@
-module.exports = {
-  reactStrictMode: true,
-}
+const {
+  PHASE_PRODUCTION_SERVER,
+  PHASE_DEVELOPMENT_SERVER,
+} = require("next/constants");
+
+module.exports = (phase) => {
+  if (phase === PHASE_DEVELOPMENT_SERVER) {
+    return {
+      images: {
+        domains: ["vpt-images.s3.eu-central-1.amazonaws.com"],
+      },
+      env: {        
+        REACT_APP_BACKEND_URL: "http://localhost:8081",
+      },
+    };
+  }
+
+  return {
+    images: {
+      domains: ["vpt-images.s3.eu-central-1.amazonaws.com"],
+    },
+
+    env: {      
+      REACT_APP_BACKEND_URL: "",
+    },
+  };
+};

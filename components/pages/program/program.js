@@ -1,5 +1,4 @@
-import React, { Fragment, useState } from "react";
-
+import React, { Fragment, useState, useReducer } from "react";
 
 import PerformerList from "../../performers/performer-list";
 
@@ -10,56 +9,63 @@ import TabButton from "../../ui-elements/tabs/tab-button";
 
 import { getPerformers } from "../../../lib/dummy_data";
 
+const tabStateReducer = (currTabState, action) => {
+  switch (action.type) {
+    case "tabOne":
+      return {
+        tabOneIsActive: true,
+        tabTwoIsActive: false,
+        tabThreeIsActive: false,
+      };
+    case "tabTwo":
+      return {
+        tabOneIsActive: false,
+        tabTwoIsActive: true,
+        tabThreeIsActive: false,
+      };
+    case "tabThree":
+      return {
+        tabOneIsActive: false,
+        tabTwoIsActive: false,
+        tabThreeIsActive: true,
+      };
+    default:
+      throw new Error("Should not be reached");
+  }
+};
+
 const Program = (props) => {
-  const [tabOneIsActive, setTabOneIsActive] = useState(true);
-  const [tabTwoIsActive, setTabTwoIsActive] = useState(false);
-  const [tabThreeIsActive, setTabThreeIsActive] = useState(false);
+  const [tabState, dispatch] = useReducer(tabStateReducer, {
+    tabOneIsActive: true,
+    tabTwoIsActive: false,
+    tabThreeIsActive: false,
+  });
 
-  const clickTabHandler = (tabNumber) => {
-    if (tabNumber === 1) {
-      setTabOneIsActive(true);
-      setTabTwoIsActive(false);
-      setTabThreeIsActive(false);
-    }
-    if (tabNumber === 2) {
-      setTabOneIsActive(false);
-      setTabTwoIsActive(true);
-      setTabThreeIsActive(false);
-    }
-    if (tabNumber === 3) {
-      setTabOneIsActive(false);
-      setTabTwoIsActive(false);
-      setTabThreeIsActive(true);
-    }
-  };
-  
   const performers = getPerformers();
-
-  
 
   return (
     <div className="program">
       <h2 className="heading-secondary program__heading">Program </h2>
-      <TabContainer >
-        <TabHead >
+      <TabContainer>
+        <TabHead>
           <TabButton
-            onClick={()=> clickTabHandler(1)}
+            onClick={() => dispatch({ type: "tabOne" })}
             title="Program"
-            isSelected={tabOneIsActive}
+            isSelected={tabState.tabOneIsActive}
           />
           <TabButton
-            onClick={()=> clickTabHandler(2)}
+            onClick={() => dispatch({ type: "tabTwo" })}
             title="Prodejci"
-            isSelected={tabTwoIsActive}
+            isSelected={tabState.tabTwoIsActive}
           />
           <TabButton
-            onClick={()=> clickTabHandler(3)}
+            onClick={() => dispatch({ type: "tabThree" })}
             title="Účinkující"
-            isSelected={tabThreeIsActive}
+            isSelected={tabState.tabThreeIsActive}
           />
         </TabHead>
-        <TabBody >
-          {tabOneIsActive && (
+        <TabBody>
+          {tabState.tabOneIsActive && (
             <Fragment>
               Fusce lacus enim, accumsan vel commodo quis, tristique a eros.
               Phasellus porttitor nulla sem, vel vehicula velit consequat non.
@@ -78,10 +84,10 @@ const Program = (props) => {
               sagittis odio ante at erat. Vivamus at enim leo.
             </Fragment>
           )}
-          {tabTwoIsActive && (
+          {tabState.tabTwoIsActive && (
             <PerformerList performers={performers} type="prodejce" />
           )}
-          {tabThreeIsActive && (
+          {tabState.tabThreeIsActive && (
             <PerformerList performers={performers} type="učinkující" />
           )}
         </TabBody>

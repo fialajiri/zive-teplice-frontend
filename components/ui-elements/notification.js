@@ -10,15 +10,15 @@ function Notification(props) {
   let statusClasses = '';
 
   if (status === 'success') {
-    statusClasses = classes.success;
+    statusClasses = 'success';
   }
 
   if (status === 'error') {
-    statusClasses = classes.error;
+    statusClasses = 'error';
   }
 
   if (status === 'pending') {
-    statusClasses = classes.pending;
+    statusClasses = 'pending';
   }
 
   const activeClasses = `${'notification'} ${statusClasses}`;

@@ -39,11 +39,11 @@ const Register = (props) => {
         value: "",
         isValid: false,
       },
-      passwordVerify: {
+      confirmPassword: {
         value: "",
         isValid: false,
       },
-      name: {
+      username: {
         value: "",
         isValid: false,
       },
@@ -56,10 +56,10 @@ const Register = (props) => {
         value: "",
         isValid: false,
       },
-      image: {
-        value: null,
-        isValid: false,
-      },
+      // image: {
+      //   value: null,
+      //   isValid: false,
+      // },
     },
     false
   );
@@ -72,21 +72,27 @@ const Register = (props) => {
     });
 
     event.preventDefault();
+
     try {
       const formData = new FormData();
+      
       formData.append("email", formState.inputs.email.value);
       formData.append("phoneNumber", formState.inputs.phoneNumber.value);
       formData.append("password", formState.inputs.password.value);
-      formData.append("name", formState.inputs.name.value);      
+      formData.append("confirmPassword", formState.inputs.confirmPassword.value);
+      formData.append("username", formState.inputs.username.value);      
       formData.append("description", formState.inputs.description.value);
       formData.append("type", formState.inputs.type.value);
-      formData.append("image", formState.inputs.image.value);
+      // formData.append("image", formState.inputs.image.value);
+      
       const responseData = await sendRequest(
-        `${process.env.REACT_APP_BACKEND_URL}/admin/login`,
+        `${process.env.REACT_APP_BACKEND_URL}/auth/signup`,
         "POST",
         formData
-      );
+      );      
 
+      auth.login(responseData.token, responseData.role);
+      
       notificationCtx.showNotification({
         title: "Skvělé!!!",
         message: "Registrace proběhla úspěšně",
@@ -130,7 +136,7 @@ const Register = (props) => {
           />
           <Input
             element="input"
-            id="name"
+            id="username"
             type="text"
             label="Název prodejce/jméno umělce"
             validators={[VALIDATOR_REQUIRE()]}
@@ -148,7 +154,7 @@ const Register = (props) => {
           />
           <Input
             element="input"
-            id="passwordVerify"
+            id="confirmPassword"
             type="password"
             label="Potvrďte heslo"
             validators={[VALIDATOR_MINLENGTH(8)]}
@@ -177,11 +183,11 @@ const Register = (props) => {
                 onInput={inputHandler}
               />
             </div>
-            <ImageUpload
+            {/* <ImageUpload
               id="image"
               onInput={inputHandler}
               errorText="Prosím vyberte obrázek."
-            />
+            /> */}
           </div>
           <div className="registration__form__button">
             <Button pulsating type="submit" disabled={!formState.isValid}>

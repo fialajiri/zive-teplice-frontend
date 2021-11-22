@@ -47,7 +47,7 @@ const Auth = () => {
     event.preventDefault();
     try {
       const responseData = await sendRequest(
-        `${process.env.REACT_APP_BACKEND_URL}/admin/login`,
+        `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
         "POST",
         JSON.stringify({
           email: formState.inputs.email.value,
@@ -58,7 +58,9 @@ const Auth = () => {
         }
       );
 
-      auth.login(responseData.adminId, responseData.token);
+      console.log(responseData.role)
+      auth.login(responseData.token, responseData.role);
+
       notificationCtx.showNotification({
         title: "Skvělé!!!",
         message: "Přihlašení proběhlo úspěšně",
@@ -102,7 +104,7 @@ const Auth = () => {
           />
           <div className="authentication__buttons">
             <Button pulsating type="submit" disabled={!formState.isValid}>
-            Registrovat
+            Přihlásit se
             </Button>
 
             <Button pulsating link="/register" inverse>

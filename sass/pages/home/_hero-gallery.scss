@@ -11,13 +11,17 @@
 
   @include respond(phone) {
     gap: 0.5rem;
+    padding:1rem;
+
   }
 
   &__img {
     transition: all 300ms;
 
     &:hover {
-      transform: scale(1.1);
+      @include respond(phone) {
+        transform: scale(1.05);
+      }
     }
   }
 
@@ -31,6 +35,10 @@
     &:hover {
       transform: translateY(-1rem);
       box-shadow: $shadow-dark;
+
+      @include respond(phone) {
+        transform: translateY(-0.25rem);
+      }
     }
 
     &--1 {

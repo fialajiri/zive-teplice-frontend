@@ -8,7 +8,7 @@ const NewsCard = (props) => {
   return (
     <li className="news__list__item">
       <div className="news__list__item__date">
-          <span className="news__list__item__word">Novinka</span>
+          <span className="news__list__item__word">Aktualita</span>
         {` z ${humanReadableDate}`}
       </div>
       <div className="news__list__item__title">

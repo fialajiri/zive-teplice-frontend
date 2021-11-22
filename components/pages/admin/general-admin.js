@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useReducer } from "react";
 
 import TabContainer from "../../ui-elements/tabs/tab-container";
 import TabHead from "../../ui-elements/tabs/tab-head";
@@ -10,34 +10,40 @@ import NewsTable from "../../news/news-table";
 
 import { getNews, getPerformers } from "../../../lib/dummy_data";
 
+const tabStateReducer = (currTabState, action) => {
+  switch (action.type) {
+    case "tabOne":
+      return {
+        tabOneIsActive: true,
+        tabTwoIsActive: false,
+        tabThreeIsActive: false,
+      };
+    case "tabTwo":
+      return {
+        tabOneIsActive: false,
+        tabTwoIsActive: true,
+        tabThreeIsActive: false,
+      };
+    case "tabThree":
+      return {
+        tabOneIsActive: false,
+        tabTwoIsActive: false,
+        tabThreeIsActive: true,
+      };
+    default:
+      throw new Error("Should not be reached");
+  }
+};
 
 const GeneralAdmin = () => {
-  const [tabOneIsActive, setTabOneIsActive] = useState(true);
-  const [tabTwoIsActive, setTabTwoIsActive] = useState(false);
-  const [tabThreeIsActive, setTabThreeIsActive] = useState(false);
-
-  const clickTabHandler = (tabNumber) => {
-    if (tabNumber === 1) {
-      setTabOneIsActive(true);
-      setTabTwoIsActive(false);
-      setTabThreeIsActive(false);
-    }
-    if (tabNumber === 2) {
-      setTabOneIsActive(false);
-      setTabTwoIsActive(true);
-      setTabThreeIsActive(false);
-    }
-    if (tabNumber === 3) {
-      setTabOneIsActive(false);
-      setTabTwoIsActive(false);
-      setTabThreeIsActive(true);
-    }
-  };
+  const [tabState, dispatch] = useReducer(tabStateReducer, {
+    tabOneIsActive: true,
+    tabTwoIsActive: false,
+    tabThreeIsActive: false,
+  });
 
   const performers = getPerformers();
   const news = getNews();
-
-  
 
   return (
     <div className="general-admin__container">
@@ -47,28 +53,26 @@ const GeneralAdmin = () => {
       <TabContainer>
         <TabHead>
           <TabButton
-            onClick={() => clickTabHandler(1)}
+            onClick={() => dispatch({ type: "tabOne" })}
             title="Účinkující"
-            isSelected={tabOneIsActive}
+            isSelected={tabState.tabOneIsActive}
           />
           <TabButton
-            onClick={() => clickTabHandler(2)}
+            onClick={() => dispatch({ type: "tabTwo" })}
             title="Program"
-            isSelected={tabTwoIsActive}
+            isSelected={tabState.tabTwoIsActive}
           />
           <TabButton
-            onClick={() => clickTabHandler(3)}
+            onClick={() => dispatch({ type: "tabThree" })}
             title="Aktuality"
-            isSelected={tabThreeIsActive}
+            isSelected={tabState.tabThreeIsActive}
           />
         </TabHead>
         <TabBody>
-        {tabOneIsActive && (
+          {tabState.tabOneIsActive && (
             <PerformerTable performers={performers} />
           )}
-           {tabThreeIsActive && (
-            <NewsTable news={news} />
-          )}
+          {tabState.tabThreeIsActive && <NewsTable news={news} />}
         </TabBody>
       </TabContainer>
     </div>
