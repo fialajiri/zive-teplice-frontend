@@ -21,7 +21,7 @@ module.exports = (phase) => {
     },
 
     env: {      
-      REACT_APP_BACKEND_URL: "",
+      REACT_APP_BACKEND_URL: "http://localhost:8081",
     },
   };
 };
