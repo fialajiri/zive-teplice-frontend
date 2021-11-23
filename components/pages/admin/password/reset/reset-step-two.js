@@ -1,35 +1,29 @@
 import { Fragment, useContext, useState } from "react";
 import { useRouter } from "next/router";
 
-import Input from "../../form-elements/input";
-import LoadingSpinner from "../../ui-elements/loading-spinner";
-import ErrorModal from "../../ui-elements/error-modal";
-import Button from "../../ui-elements/button";
+import Input from "../../../../form-elements/input";
+import LoadingSpinner from "../../../../ui-elements/loading-spinner";
+import ErrorModal from "../../../../ui-elements/error-modal";
+import Button from "../../../../ui-elements/button";
+import NotificationContext from "../../../../../context/notification-context";
 
-import {
-  VALIDATOR_EMAIL,
-  VALIDATOR_REQUIRE,
-  VALIDATOR_MINLENGTH,
-} from "../../../validators/validators";
+import { VALIDATOR_MINLENGTH } from "../../../../../validators/validators";
 
-import { useForm } from "../../../hooks/form-hook";
-import { useHttpClient } from "../../../hooks/http-hook";
-import { AuthContext } from "../../../context/auth-context";
-import NotificationContext from "../../../context/notification-context";
+import { useForm } from "../../../../../hooks/form-hook";
+import { useHttpClient } from "../../../../../hooks/http-hook";
 
-const Auth = () => {
+const ResetPasswordStepTwo = (props) => {
   const router = useRouter();
-  const auth = useContext(AuthContext);
   const notificationCtx = useContext(NotificationContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
   const [formState, inputHandler, setFormData] = useForm(
     {
-      email: {
+      password: {
         value: "",
         isValid: false,
       },
-      password: {
+      confirmPassword: {
         value: "",
         isValid: false,
       },
@@ -39,33 +33,35 @@ const Auth = () => {
 
   const submitFormHandler = async (event) => {
     notificationCtx.showNotification({
-      title: "Přihlašuji...",
-      message: "Přihlašuji do systému",
+      title: "Odesílám...",
+      message: "Odesílám požadavek.",
       status: "pending",
     });
-
     event.preventDefault();
+
     try {
+      console.log("sendign");
       const responseData = await sendRequest(
-        `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
+        `${process.env.REACT_APP_BACKEND_URL}/auth/reset/${props.token}`,
         "POST",
         JSON.stringify({
-          email: formState.inputs.email.value,
           password: formState.inputs.password.value,
+          confirmPassword: formState.inputs.confirmPassword.value,
+          token: props.token,
         }),
         {
           "Content-Type": "application/json",
         }
       );
 
-      auth.login(responseData.token, responseData.role);
+      console.log(responseData);
 
       notificationCtx.showNotification({
         title: "Skvělé!!!",
-        message: "Přihlašení proběhlo úspěšně",
+        message: "Změna hesla proběhla úspěšně. Nyní se můžete přihlásit.",
         status: "success",
       });
-      router.push("/");
+      router.push("/login");
     } catch (err) {
       notificationCtx.showNotification({
         title: "Chyba!!!",
@@ -85,29 +81,26 @@ const Auth = () => {
         <form onSubmit={submitFormHandler}>
           <Input
             element="input"
-            id="email"
-            type="email"
-            label="Email"
-            validators={[VALIDATOR_EMAIL()]}
-            errorText="Prosím zadejte platný email."
+            id="password"
+            type="password"
+            label="Heslo"
+            validators={[VALIDATOR_MINLENGTH(8)]}
+            errorText="Prosím zadejte platné heslo o minimálně 8 znacích."
             onInput={inputHandler}
           />
           <Input
             element="input"
-            id="password"
+            id="confirmPassword"
             type="password"
-            label="Heslo"
-            validators={[VALIDATOR_MINLENGTH(6)]}
-            errorText="Prosím zadejte platné heslo."
+            label="Potvrďte heslo"
+            validators={[VALIDATOR_MINLENGTH(8)]}
+            errorText="Prosím zopakujte heslo."
             onInput={inputHandler}
           />
+
           <div className="authentication__buttons">
             <Button pulsating type="submit" disabled={!formState.isValid}>
-              Přihlásit se
-            </Button>
-
-            <Button pulsating link="/register" inverse>
-              Registrovat
+              Změnit heslo
             </Button>
           </div>
         </form>
@@ -116,4 +109,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default ResetPasswordStepTwo;

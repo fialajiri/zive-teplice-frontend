@@ -1,25 +1,18 @@
 import { Fragment, useContext, useState } from "react";
 import { useRouter } from "next/router";
 
-import Input from "../../form-elements/input";
-import LoadingSpinner from "../../ui-elements/loading-spinner";
-import ErrorModal from "../../ui-elements/error-modal";
-import Button from "../../ui-elements/button";
+import Input from "../../../../form-elements/input";
+import LoadingSpinner from "../../../../ui-elements/loading-spinner";
+import ErrorModal from "../../../../ui-elements/error-modal";
+import Button from "../../../../ui-elements/button";
+import NotificationContext from "../../../../../context/notification-context";
 
-import {
-  VALIDATOR_EMAIL,
-  VALIDATOR_REQUIRE,
-  VALIDATOR_MINLENGTH,
-} from "../../../validators/validators";
+import { VALIDATOR_EMAIL } from "../../../../../validators/validators";
 
-import { useForm } from "../../../hooks/form-hook";
-import { useHttpClient } from "../../../hooks/http-hook";
-import { AuthContext } from "../../../context/auth-context";
-import NotificationContext from "../../../context/notification-context";
+import { useForm } from "../../../../../hooks/form-hook";
+import { useHttpClient } from "../../../../../hooks/http-hook";
 
-const Auth = () => {
-  const router = useRouter();
-  const auth = useContext(AuthContext);
+const ResetPasswordStepOne = (props) => {
   const notificationCtx = useContext(NotificationContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
@@ -29,40 +22,36 @@ const Auth = () => {
         value: "",
         isValid: false,
       },
-      password: {
-        value: "",
-        isValid: false,
-      },
     },
     false
   );
 
   const submitFormHandler = async (event) => {
     notificationCtx.showNotification({
-      title: "Přihlašuji...",
-      message: "Přihlašuji do systému",
+      title: "Odesílám...",
+      message: "Odesílám požadavek.",
       status: "pending",
     });
 
     event.preventDefault();
     try {
       const responseData = await sendRequest(
-        `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
+        `${process.env.REACT_APP_BACKEND_URL}/auth/reset`,
         "POST",
         JSON.stringify({
           email: formState.inputs.email.value,
-          password: formState.inputs.password.value,
         }),
         {
           "Content-Type": "application/json",
         }
       );
 
-      auth.login(responseData.token, responseData.role);
+      console.log(responseData);
 
       notificationCtx.showNotification({
         title: "Skvělé!!!",
-        message: "Přihlašení proběhlo úspěšně",
+        message:
+          "Odeslaní proběhlo úspěšně, zkontolujete svůj email pro další instrukce.",
         status: "success",
       });
       router.push("/");
@@ -92,22 +81,10 @@ const Auth = () => {
             errorText="Prosím zadejte platný email."
             onInput={inputHandler}
           />
-          <Input
-            element="input"
-            id="password"
-            type="password"
-            label="Heslo"
-            validators={[VALIDATOR_MINLENGTH(6)]}
-            errorText="Prosím zadejte platné heslo."
-            onInput={inputHandler}
-          />
+
           <div className="authentication__buttons">
             <Button pulsating type="submit" disabled={!formState.isValid}>
-              Přihlásit se
-            </Button>
-
-            <Button pulsating link="/register" inverse>
-              Registrovat
+              Resetovat heslo
             </Button>
           </div>
         </form>
@@ -116,4 +93,4 @@ const Auth = () => {
   );
 };
 
-export default Auth;
+export default ResetPasswordStepOne;

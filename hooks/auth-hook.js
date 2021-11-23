@@ -1,52 +1,56 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useCallback } from "react";
+import { useHttpClient } from "./http-hook";
 
-let logoutTimer;
-
-export  const useAuth = () => {
+export const useAuth = () => {
+  const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [token, setToken] = useState(false);
-  const [tokenExpirationDate, setTokenExpirationDate] = useState();
   const [adminId, setAdminId] = useState(null);
-  const [userRole, setUserRole] = useState('')
+  const [userName, setUserName] = useState(null);
+  const [userEmail, setUserEmail] = useState(null);
+  const [userRole, setUserRole] = useState("");
 
   const login = useCallback((token, role) => {
-    console.log(role)
-    console.log(token)
-    setToken(token);    
-    setUserRole(role)
-    
+    setToken(token);
+    setUserRole(role);
   }, []);
 
-  const logout = useCallback(() => {
-    setToken(null);
-    
-    setAdminId(null);
-    
+  const logout = useCallback(async (token) => {
+    try {
+      const responseData = await sendRequest(
+        `${process.env.REACT_APP_BACKEND_URL}/auth/logout`,
+        "GET",
+        JSON.stringify(),
+        {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token,
+        }
+      );
+    } catch (err) {
+    } finally {
+      console.log("infinnaly");
+      setToken(null);
+      setAdminId(null);
+      setUserName(null);
+      setUserRole(null);
+      setUserEmail(null);
+      window.localStorage.setItem("logout", Date.now());
+    }
   }, []);
 
-  // useEffect(() => {
-  //   if (token && tokenExpirationDate) {
-  //     const remainingTime =
-  //       tokenExpirationDate.getTime() - new Date().getTime();
-  //     logoutTimer = setTimeout(logout, remainingTime);
-  //   } else {
-  //     clearTimeout(logoutTimer);
-  //   }
-  // }, [token, logout, tokenExpirationDate]);
+  const setUser = useCallback((username, email, role) => {
+    setUserName(username);
+    setUserRole(role);
+    setUserEmail(email);
+  }, []);
 
-  // useEffect(() => {
-  //   const storedData = JSON.parse(localStorage.getItem("userData"));
-  //   if (
-  //     storedData &&
-  //     storedData.token &&
-  //     new Date(storedData.expiration) > new Date()
-  //   ) {
-  //     login(
-  //       storedData.adminId,
-  //       storedData.token,
-  //       new Date(storedData.expiration)
-  //     );
-  //   }
-  // }, [login]);
-
-  return {token, login, logout, adminId, userRole}
+  return {
+    token,
+    adminId,
+    userRole,
+    userName,
+    userEmail,
+    login,
+    logout,
+    setUser,
+  };
 };

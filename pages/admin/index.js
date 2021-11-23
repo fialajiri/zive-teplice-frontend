@@ -8,9 +8,7 @@ import { AuthContext } from "../../context/auth-context";
 const AdminPage = () => {
   const auth = useContext(AuthContext);
 
-  console.log(auth)
-  console.log(auth.userRole)
-  console.log(auth.token)
+  
 
   if (auth.userRole === "admin") {
     return <GeneralAdmin />;

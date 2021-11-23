@@ -5,13 +5,21 @@ import Layout from "../components/layout/layout";
 import { AuthContext } from "../context/auth-context";
 import { NotificationContextProvider } from "../context/notification-context";
 import { useAuth } from "../hooks/auth-hook";
-import { useHttpClient } from "../hooks/http-hook";
 
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
-  const { token, login, logout, adminId, userRole } = useAuth();
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const {
+    token,
+    adminId,
+    userRole,
+    userName,
+    userEmail,
+    login,
+    logout,
+    setUser,
+  } = useAuth();
+
   const verifyUser = useCallback(async () => {
     try {
       const response = await fetch(
@@ -23,17 +31,15 @@ function MyApp({ Component, pageProps }) {
         }
       );
 
-      
       if (response.ok) {
         const responseData = await response.json();
-        console.log(responseData)
         login(responseData.token, responseData.role);
         console.log("Token refreshed");
       } else {
         login(null);
       }
 
-      setTimeout(verifyUser, 5 * 1000);
+      setTimeout(verifyUser, 5 * 60 * 1000);
     } catch (err) {
       throw err;
     }
@@ -43,6 +49,22 @@ function MyApp({ Component, pageProps }) {
     verifyUser();
   }, [verifyUser]);
 
+  // syncLogout across tabs
+
+  const syncLogout = useCallback((event) => {
+    if (event.key === 'logout'){
+      window.location.reload()
+    }
+  }, [])
+
+  useEffect(() => {
+    window.addEventListener("storage", syncLogout);
+
+    return () => {
+      window.removeEventListener('storage', syncLogout)
+    }
+  }, [syncLogout])
+
   return (
     <NotificationContextProvider>
       <AuthContext.Provider
@@ -51,8 +73,11 @@ function MyApp({ Component, pageProps }) {
           token: token,
           userRole: userRole,
           adminId: adminId,
+          userName: userName,
+          userEmail: userEmail,
           login: login,
           logout: logout,
+          setUser: setUser,
         }}
       >
         <Layout>
