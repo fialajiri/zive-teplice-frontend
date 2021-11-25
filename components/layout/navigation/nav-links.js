@@ -1,14 +1,14 @@
 import { useContext } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-// import { AuthContext } from "../../context/auth-context";
+import { AuthContext } from "../../../context/auth-context";
 
 
-// import Button from "../ui-elements/Button";
+import Button from "../../ui-elements/button";
 
 const NavLinks = (props) => {
   const router = useRouter();
-  // const auth = useContext(AuthContext);
+  const auth = useContext(AuthContext);
 
   return (
     <ul className="nav__list">
@@ -25,15 +25,15 @@ const NavLinks = (props) => {
         <Link href="/admin">Admin</Link>
       </li>
 
-      <li className={router.pathname === "/login" ? "nav__list__item nav__list__item--active" : "nav__list__item"}>
+      {!auth.token && <li className={router.pathname === "/login" ? "nav__list__item nav__list__item--active" : "nav__list__item"}>
         <Link href="/login">Přihlásit se</Link>
-      </li>
+      </li>}
 
-      {/* {auth.token && (
-        <li>
-          <Button onClick={auth.logout}>Odhlásit se</Button>
+      {auth.token && (
+         <li className={router.pathname === "/login" ? "nav__list__item nav__list__item--active" : "nav__list__item"}>
+           <div onClick={auth.logout}>Odhlásit se</div>
         </li>
-      )} */}
+      )}
     </ul>
   );
 };

@@ -76,7 +76,7 @@ const ResetPasswordStepTwo = (props) => {
       <ErrorModal error={error} onClear={clearError} />
       <div className="authentication">
         {isLoading && <LoadingSpinner asOverlay />}
-        <h2 className="heading-secondary">Přihlašte se, prosím.</h2>
+        <h2 className="heading-secondary">Zapomenuté heslo</h2>
 
         <form onSubmit={submitFormHandler}>
           <Input

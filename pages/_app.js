@@ -41,7 +41,7 @@ function MyApp({ Component, pageProps }) {
 
       setTimeout(verifyUser, 5 * 60 * 1000);
     } catch (err) {
-      throw err;
+      console.log(err)
     }
   }, [login]);
 

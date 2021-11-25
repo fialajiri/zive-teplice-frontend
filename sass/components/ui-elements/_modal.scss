@@ -3,20 +3,20 @@
   position: fixed;
   top: 22vh;
   left: 10%;
-  width: 90%;
-  background: white;
+  width: 80%;
+  background: $color-grey;
   box-shadow: $shadow-dark;
   border-radius: $border-radius;
 
   &__header {
     width: 100%;
     padding: 1rem;
-    background-color: $color-grey-light-3;
-    color: $color-secondary-light;
+    background-color: $color-primary-dark-1;
+    color: $color-white;
 
     & h2 {
       text-align: center;
-      font-size: 2rem;
+      font-size: 2.5rem;
       font-weight: 500;
       margin: 0.5rem;
     }

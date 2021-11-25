@@ -30,13 +30,17 @@
       @include respond(tab-port) {
       }
 
-      & a {
+      & a,
+      & div {
         text-decoration: none;
         color: $color-primary;
         font-size: 2rem;
         z-index: 10;
         transition: all 300ms;
+        cursor: pointer;
       }
+
+      
 
       &--active {
         & a {
@@ -68,7 +72,8 @@
     }
 
     &__item:hover {
-      & a {
+      & a,
+      & div {
         color: $color-primary-dark-1;
       }
     }

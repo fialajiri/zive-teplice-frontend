@@ -1,0 +1,48 @@
+.editor {
+  border-radius: 10px;
+
+  & label {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.ck-editor__editable_inline {
+  min-height: 500px;
+}
+
+.ck-toolbar {
+  background-color: $color-grey-light-5 !important;
+  border-radius: 10px 10px 0 0 !important;
+  border-top: 1px solid $color-primary !important;
+  border-left: 1px solid $color-primary !important;
+  border-right: 1px solid $color-primary !important;
+}
+.ck .ck-editor__main > .ck-editor__editable {
+  background-color: $color-grey-light-5 !important;
+  border-radius: 0 0 10px 10px !important;
+  border-top: 1px solid $color-primary !important;
+  border-bottom: 1px solid $color-primary !important;
+  border-left: 1px solid $color-primary !important;
+  border-right: 1px solid $color-primary !important;
+  color: $color-black;
+}
+
+.ck .ck-editor__main > .ck-editor__editable:focus {
+  border: none !important;
+  border: 1px solid $color-primary !important;
+  box-shadow: none !important;
+  background: $color-grey-light-4 !important;
+  color: $color-black;
+}
+
+.editor body,
+.editor p,
+.editor ul,
+.editor ol {
+  margin-left: 2rem;
+  font-size: 1.5rem !important;
+  font-family: inherit;
+  line-height: 1.6;
+}

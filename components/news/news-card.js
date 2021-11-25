@@ -1,6 +1,6 @@
 const NewsCard = (props) => {
     
-  let humanReadableDate = new Date(props.newsItem.date).toLocaleDateString("cs-CZ", {
+  let humanReadableDate = new Date(props.newsItem.createdAt).toLocaleDateString("cs-CZ", {
     day: "numeric",
     month: "long",
     year: "numeric",

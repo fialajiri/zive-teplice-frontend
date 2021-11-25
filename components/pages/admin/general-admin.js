@@ -35,7 +35,7 @@ const tabStateReducer = (currTabState, action) => {
   }
 };
 
-const GeneralAdmin = () => {
+const GeneralAdmin = (props) => {
   const [tabState, dispatch] = useReducer(tabStateReducer, {
     tabOneIsActive: true,
     tabTwoIsActive: false,
@@ -43,7 +43,7 @@ const GeneralAdmin = () => {
   });
 
   const performers = getPerformers();
-  const news = getNews();
+  // const news = getNews();
 
   return (
     <div className="general-admin__container">
@@ -72,7 +72,7 @@ const GeneralAdmin = () => {
           {tabState.tabOneIsActive && (
             <PerformerTable performers={performers} />
           )}
-          {tabState.tabThreeIsActive && <NewsTable news={news} />}
+          {tabState.tabThreeIsActive && <NewsTable news={props.news} onDelete={props.onDeleteNews} />}
         </TabBody>
       </TabContainer>
     </div>

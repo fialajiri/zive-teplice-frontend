@@ -1,12 +1,14 @@
-import { Fragment } from "react";
-import Header from "../components/layout/header/header";
 import HomePage from "../components/pages/Home/home-page";
+import { getAllNews } from "../lib/api-util";
 
-export default function Home() {
-  return (
-    <Fragment>
-     
-      <HomePage />
-    </Fragment>
-  );
-}
+const Home = (props) => {
+  return <HomePage news={props.news} />;
+};
+
+export default Home;
+
+export const getStaticProps = async () => {
+  const news = await getAllNews();
+
+  return { props: { news: news }, revalidate: 60 * 60 };
+};

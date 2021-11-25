@@ -102,12 +102,16 @@ const Auth = () => {
             onInput={inputHandler}
           />
           <div className="authentication__buttons">
-            <Button pulsating type="submit" disabled={!formState.isValid}>
+            <Button  className='authentication__buttons__submit' pulsating type="submit" disabled={!formState.isValid}>
               Přihlásit se
             </Button>
 
-            <Button pulsating link="/register" inverse>
+            <Button size='small' pulsating link="/register" inverse>
               Registrovat
+            </Button>
+
+            <Button  size='small'  pulsating link="/admin/password/reset" inverse>
+              Zapomenuté heslo
             </Button>
           </div>
         </form>
