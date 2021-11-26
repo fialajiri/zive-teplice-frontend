@@ -34,38 +34,54 @@ const EditPerformerPage = ({ loadedPerformer }) => {
 
 export default EditPerformerPage;
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
   const { params } = context;
 
   const performerId = params.performerId;
 
-  const performer = await getUserById(performerId);
 
-  if (!performer) {
-    return {
-      redirect: {
-        destination: "/admin",
-        permanent: false,
-      },
-    };
-  }
+  const performer = await getUserById(performerId);
 
   return {
     props: {
       loadedPerformer: performer,
-    }
-    
+    },
+    revalidate: 60 * 60,
   };
 };
 
-// export const getStaticPaths = async () => {
-//   const users = await getAllUsers();
-//   const ids = users.map((user) => user.id);
+// export const getServerSideProps = async (context) => {
+//   const { params } = context;
 
-//   const pathsWithParams = ids.map((id) => ({ params: { performerId: id } }));
+//   const performerId = params.performerId;
+
+//   const performer = await getUserById(performerId);
+
+//   if (!performer) {
+//     return {
+//       redirect: {
+//         destination: "/admin",
+//         permanent: false,
+//       },
+//     };
+//   }
 
 //   return {
-//     paths: pathsWithParams,
-//     fallback: true,
+//     props: {
+//       loadedPerformer: performer,
+//     }
+    
 //   };
 // };
+
+export const getStaticPaths = async () => {
+  const users = await getAllUsers();
+  const ids = users.map((user) => user.id);
+
+  const pathsWithParams = ids.map((id) => ({ params: { performerId: id } }));
+
+  return {
+    paths: pathsWithParams,
+    fallback: true,
+  };
+};

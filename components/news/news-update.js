@@ -11,7 +11,7 @@ import Input from "../form-elements/input";
 import ImageUpload from "../../components/form-elements/image-upload";
 import ErrorModal from "../ui-elements/error-modal";
 import LoadingSpinner from "../ui-elements/loading-spinner";
-import Editor from "../editor/Editor";
+import Editor from "../editor/editor";
 
 import {
   VALIDATOR_MINLENGTH,
