@@ -9,7 +9,7 @@ const HomePage = (props) => {
     <div className="home__container">
       {/* <LoadingSpinner  asOverlay logo/> */}
       <HeroGallery />
-      <NewsSection news={props.news}/>
+      {/* <NewsSection news={props.news}/> */}
 
       <Hero />
       <YearSummary year={2021} heading='Živé Teplice 2021' />
