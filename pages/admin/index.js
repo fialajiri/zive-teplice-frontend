@@ -25,8 +25,8 @@ const AdminPage = (props) => {
 export default AdminPage;
 
 export const getStaticProps = async () => {
-  const responsedata = await fetch("http://127.0.0.1:8081/news");
-  const news = await responsedata.json();
+  // const responsedata = await fetch("http://127.0.0.1:8081/news");
+  // const news = await responsedata.json();
 
   const response = await fetch("http://127.0.0.1:8081/users");
   const users = await response.json();
