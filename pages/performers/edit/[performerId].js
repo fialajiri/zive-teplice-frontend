@@ -12,10 +12,7 @@ const EditPerformerPage = ({ loadedPerformer }) => {
 
   // there news to be an userId in auth oh oh oh
   const isAuth = auth.token && auth.userRole === "admin";
-  console.log(isAuth);
-  console.log("auth role: " + auth.userRole);
-  console.log("auth token: " + auth.token);
-
+ 
   useEffect(() => {
     if (!isAuth) {
       console.log("redirecting");
