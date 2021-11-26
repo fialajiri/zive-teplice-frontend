@@ -1,4 +1,4 @@
-import HomePage from "../components/pages/Home/home-page";
+import HomePage from '../components/pages/home/home-page'
 import { getAllNews } from "../lib/api-util";
 
 const Home = (props) => {
