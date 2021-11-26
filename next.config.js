@@ -7,7 +7,7 @@ module.exports = (phase) => {
   if (phase === PHASE_DEVELOPMENT_SERVER) {
     return {
       images: {
-        domains: ["vpt-images.s3.eu-central-1.amazonaws.com"],
+        domains: ["zive-teplice.s3.eu-central-1.amazonaws.com"],
       },
       env: {        
         REACT_APP_BACKEND_URL: "http://localhost:8081",
@@ -17,7 +17,7 @@ module.exports = (phase) => {
 
   return {
     images: {
-      domains: ["vpt-images.s3.eu-central-1.amazonaws.com"],
+      domains: ["zive-teplice.s3.eu-central-1.amazonaws.com"],
     },
 
     env: {      

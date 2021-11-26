@@ -120,6 +120,9 @@
       align-self: center;
       justify-self: center;
       position: relative;
+      border: none;
+      background-color: transparent;
+      
     }
 
     &__actions:hover &__helper-text {

@@ -1,10 +1,12 @@
 import PerformerTableItem from "./performet-table-item";
 
 const PerformerTable = (props) => {
+  
   return (
     <ul className="performer-table__list">
       {props.performers.map((performer, index) => (
         <PerformerTableItem
+          onDelte={props.onDelte}
           key={performer.id}
           performer={performer}
           className={`performer-table__item--${

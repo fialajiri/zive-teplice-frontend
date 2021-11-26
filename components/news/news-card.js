@@ -1,3 +1,5 @@
+import Button from '../ui-elements/button'
+
 const NewsCard = (props) => {
     
   let humanReadableDate = new Date(props.newsItem.createdAt).toLocaleDateString("cs-CZ", {
@@ -11,9 +13,9 @@ const NewsCard = (props) => {
           <span className="news__list__item__word">Aktualita</span>
         {` z ${humanReadableDate}`}
       </div>
-      <div className="news__list__item__title">
+      <Button unstyled link={`aktuality/${props.newsItem.id}`} className="news__list__item__title-button">
         {props.newsItem.title}
-      </div>
+      </Button>
       <div className="news__list__item__abstract">
         {props.newsItem.abstract}
       </div>

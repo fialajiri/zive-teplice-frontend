@@ -42,9 +42,6 @@ const GeneralAdmin = (props) => {
     tabThreeIsActive: false,
   });
 
-  const performers = getPerformers();
-  // const news = getNews();
-
   return (
     <div className="general-admin__container">
       <h2 className="heading-secondary general-admin__heading">
@@ -70,9 +67,14 @@ const GeneralAdmin = (props) => {
         </TabHead>
         <TabBody>
           {tabState.tabOneIsActive && (
-            <PerformerTable performers={performers} />
+            <PerformerTable
+              performers={props.users}
+              onDelete={props.onDeleteUser}
+            />
           )}
-          {tabState.tabThreeIsActive && <NewsTable news={props.news} onDelete={props.onDeleteNews} />}
+          {tabState.tabThreeIsActive && (
+            <NewsTable news={props.news} onDelete={props.onDeleteNews} />
+          )}
         </TabBody>
       </TabContainer>
     </div>

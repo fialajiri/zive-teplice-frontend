@@ -44,7 +44,7 @@ const UpdateNews = (props) => {
       },
       image: {
         value: "",
-        isValid: false,
+        isValid: true,
       },
     },
     false
@@ -57,8 +57,6 @@ const UpdateNews = (props) => {
       status: "pending",
     });
     event.preventDefault();
-    console.log("dddd");
-    console.log(data);
 
     try {
       const formData = new FormData();
@@ -108,7 +106,7 @@ const UpdateNews = (props) => {
             validators={[VALIDATOR_MINLENGTH(10), VALIDATOR_MAXLENGTH(75)]}
             errorText="Titulek musí mít minimálně 10 a maximálně 75 znaků."
             onInput={inputHandler}
-            initialValue={newsItem.title && newsItem.title}
+            initialValue={newsItem.title}
             initialValid={true}
           />
           <Input
@@ -139,12 +137,19 @@ const UpdateNews = (props) => {
             center
             onInput={inputHandler}
             errorText="Prosím vyberte obrázek."
-            // image={newsItem.image.imageUrl}
+            image={newsItem.image.imageUrl}
           />
 
-          <Button className="add-news__button" disabled={!formState.isValid}>
-            Uložit změny
-          </Button>
+          <div className="add-news__buttons">
+            <Button inverse type="button" link="/admin">
+              Zpět
+            </Button>
+            <Button pulsating type="submit" disabled={!formState.isValid}>
+              Uložit změny
+            </Button>
+          </div>
+
+          
         </form>
       </div>
     </Fragment>

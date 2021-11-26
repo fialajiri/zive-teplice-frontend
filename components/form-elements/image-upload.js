@@ -7,7 +7,8 @@ import Button from "../ui-elements/button";
 const ImageUpload = (props) => {
   const [file, setFile] = useState();
   const [previewUrl, setPreviewUrl] = useState(props.image);
-  const [isValid, setIsValid] = useState(false);
+  const [isValid, setIsValid] = useState(props.initialValid || false);
+  
 
   const filePickerRef = useRef();
 

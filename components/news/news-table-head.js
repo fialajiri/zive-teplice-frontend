@@ -1,11 +1,11 @@
-import { Plus, PlusCircle } from "phosphor-react";
-import Button from "../ui-elements/button";
+import NewsSearch from "./news-search";
+
 
 const NewsTableHead = (props) => {
   return (
     <div className='news__table-head__container'>
         
-      <Button link='/aktuality/add-news' className='news__table-head__button'>Přidej Aktualitu</Button>
+      <NewsSearch onSearch={props.onSearch} />
     </div>
   );
 };

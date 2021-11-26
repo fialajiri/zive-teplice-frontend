@@ -5,18 +5,36 @@ import PerformerAdmin from "../../components/pages/admin/performer-admin";
 
 import { AuthContext } from "../../context/auth-context";
 
+import { getAllNews, getAllUsers } from "../../lib/api-util";
+
 const AdminPage = (props) => {
   const auth = useContext(AuthContext);
-  const [loadedNews, setLoadedNews] = useState(props.news.news);  
+  const [loadedNews, setLoadedNews] = useState(props.news);
+  const [loadedUsers, setLoadedUsers] = useState(props.users);
 
-  const newsDeleteHandler = (deletedNewsId) => {    
+  const newsDeleteHandler = (deletedNewsId) => {
     setLoadedNews((prevNews) =>
       prevNews.filter((newsItem) => newsItem.id !== deletedNewsId)
     );
   };
 
+  const userDeleteHandler = (deletedUserId) => {
+    setLoadedUsers((prevUser) => {
+      prevUser.filter((user) => user.id !== deletedUserId);
+    });
+  };
+
+  
+
   if (auth.userRole === "admin") {
-    return <GeneralAdmin news={loadedNews} onDeleteNews={newsDeleteHandler}/>;
+    return (
+      <GeneralAdmin
+        news={loadedNews}
+        users={loadedUsers}
+        onDeleteNews={newsDeleteHandler}
+        onDeleteUser={userDeleteHandler}
+      />
+    );
   } else if (auth.userRole === "user") {
     return <PerformerAdmin />;
   }
@@ -27,8 +45,8 @@ const AdminPage = (props) => {
 export default AdminPage;
 
 export const getStaticProps = async () => {
-  const responseData = await fetch(process.env.REACT_APP_BACKEND_URL + "/news");
-  const newsData = await responseData.json();
+  const news = await getAllNews();
+  const users = await getAllUsers();
 
-  return { props: { news: newsData }, revalidate: 60 * 60 };
+  return { props: { news: news, users: users }, revalidate: 60 * 60 };
 };

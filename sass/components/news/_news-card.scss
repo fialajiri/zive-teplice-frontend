@@ -4,8 +4,7 @@
     // left: -13rem;
     padding: 2rem;
     border-radius: $border-radius;
-    // box-shadow: $shadow-dark;
-    
+
     min-width: 25rem;
     max-width: 25rem;
     min-height: 30rem;
@@ -21,9 +20,9 @@
     gap: 1rem;
     transition: all 200ms;
 
-    &:not(:first-child){
-        margin-left: -13rem;
-        box-shadow: -3rem 0 3rem -2rem #000;
+    &:not(:first-child) {
+      margin-left: -13rem;
+      box-shadow: -3rem 0 3rem -2rem #000;
     }
 
     &:first-child:hover {
@@ -32,8 +31,6 @@
 
     &:hover {
       transform: translateY(-1rem) rotate(3deg);
-      
-      
     }
 
     &__date {
@@ -43,21 +40,23 @@
 
     &__word {
       text-transform: uppercase;
-      
       font-size: 1.4rem;
-      
-
       font-weight: 500;
-      color: $color-grey-light-3;
       color: $color-primary;
     }
 
-    &__title {
-      font-size: 2rem;
+    &__title-button {
+      font-size: 2.3rem;
+      color: $color-white;
       line-height: 1.2;
       font-weight: 700;
-      letter-spacing: 0.5px;
+      letter-spacing: -0.5px;
       margin-bottom: 3rem;
+      text-decoration: none;
+
+      &:hover {
+        color: $color-grey-light-4;
+      }
     }
 
     &__abstract {

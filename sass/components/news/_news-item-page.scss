@@ -1,0 +1,46 @@
+.news-item {
+  font-size: 1.6rem;
+  max-width: 100rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  background-color: $color-grey-light-1;
+  padding: 6rem;
+  border-radius: $border-radius;
+  box-shadow: $shadow-dark;
+
+  &__container {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 2rem;
+  }
+
+  &__title {
+    
+  }
+
+  &__image {
+    margin: 3rem 0;
+    align-self: center;
+    width: 80%;
+    height: 30rem;
+    position: relative;
+  }
+
+  &__date {
+  }
+
+  &__abstract {
+    font-style: italic;
+  }
+
+  &__message {
+    & ul,
+    & ol {
+      margin-left: 1.7rem;
+
+    }
+  }
+}
