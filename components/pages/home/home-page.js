@@ -10,6 +10,7 @@ const HomePage = (props) => {
       {/* <LoadingSpinner  asOverlay logo/> */}
       <HeroGallery />
       {/* <NewsSection news={props.news}/> */}
+      
       <Hero />
       <YearSummary year={2021} heading='Živé Teplice 2021' />
       <YearSummary year={2020} flip={true} heading='Živé Teplice 2020'/>
