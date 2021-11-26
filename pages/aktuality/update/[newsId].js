@@ -11,34 +11,34 @@ const EditNewsItem = ({ loadedNewsItem }) => {
     );
   }
 
-  return <UpdateNews newsItem={loadedNewsItem} />;
+  // return <UpdateNews newsItem={loadedNewsItem} />;
 };
 
 export default EditNewsItem;
 
-export const getStaticProps = async (context) => {
-  const { params } = context;
+// export const getStaticProps = async (context) => {
+//   const { params } = context;
 
-  const NewsItemId = params.newsId;
+//   const NewsItemId = params.newsId;
 
-  const NewsItem = await getNewsById(NewsItemId);
+//   const NewsItem = await getNewsById(NewsItemId);
 
-  return {
-    props: {
-      loadedNewsItem: NewsItem,
-    },
-    revalidate: 60 * 60,
-  };
-};
+//   return {
+//     props: {
+//       loadedNewsItem: NewsItem,
+//     },
+//     revalidate: 60 * 60,
+//   };
+// };
 
-export const getStaticPaths = async () => {
-  const news = await getAllNews();
-  const ids = news.map((newsItem) => newsItem.id);
+// export const getStaticPaths = async () => {
+//   const news = await getAllNews();
+//   const ids = news.map((newsItem) => newsItem.id);
 
-  const pathsWithParams = ids.map((id) => ({ params: { newsId: id } }));
+//   const pathsWithParams = ids.map((id) => ({ params: { newsId: id } }));
 
-  return {
-    paths: pathsWithParams,
-    fallback: true,
-  };
-};
+//   return {
+//     paths: pathsWithParams,
+//     fallback: true,
+//   };
+// };
