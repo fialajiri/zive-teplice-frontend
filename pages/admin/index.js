@@ -26,27 +26,27 @@ const AdminPage = (props) => {
 
   
 
-  // if (auth.userRole === "admin") {
-  //   return (
-  //     <GeneralAdmin
-  //       news={loadedNews}
-  //       users={loadedUsers}
-  //       onDeleteNews={newsDeleteHandler}
-  //       onDeleteUser={userDeleteHandler}
-  //     />
-  //   );
-  // } else if (auth.userRole === "user") {
-  //   return <PerformerAdmin />;
-  // }
+  if (auth.userRole === "admin") {
+    return (
+      <GeneralAdmin
+        news={loadedNews}
+        users={loadedUsers}
+        onDeleteNews={newsDeleteHandler}
+        onDeleteUser={userDeleteHandler}
+      />
+    );
+  } else if (auth.userRole === "user") {
+    return <PerformerAdmin />;
+  }
 
   return <div>Hello</div>;
 };
 
 export default AdminPage;
 
-// export const getStaticProps = async () => {
-//   const news = await getAllNews();
-//   const users = await getAllUsers();
+export const getStaticProps = async () => {
+  const news = await getAllNews();
+  const users = await getAllUsers();
 
-//   return { props: { news: news, users: users }, revalidate: 60 * 60 };
-// };
+  return { props: { news: news, users: users }, revalidate: 60 * 60 };
+};
