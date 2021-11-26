@@ -65,7 +65,7 @@ const UpdateNews = (props) => {
       formData.append("message", data);
       formData.append("image", formState.inputs.image.value);
       await sendRequest(
-        process.env.REACT_APP_BACKEND_URL + "/news" + newsItem.id,
+        process.env.REACT_APP_BACKEND_URL + "/news/" + newsItem.id,
         "PATCH",
         formData,
         {
