@@ -13,7 +13,7 @@ const NewsCard = (props) => {
           <span className="news__list__item__word">Aktualita</span>
         {` z ${humanReadableDate}`}
       </div>
-      <Button unstyled link={`aktuality/${props.newsItem.id}`} className="news__list__item__title-button">
+      <Button unstyled link={`/aktuality/${props.newsItem.id}`} className="news__list__item__title-button">
         {props.newsItem.title}
       </Button>
       <div className="news__list__item__abstract">
