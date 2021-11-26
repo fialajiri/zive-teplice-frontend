@@ -14,9 +14,7 @@ export default EditNewsItem;
 export const getStaticProps = async (context) => {
     const { params } = context;
   
-    const newsItemId = params.newsId;
-
-    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/news`)
+    const newsItemId = params.newsId;   
      
   
     const newsItem = await getNews().filter(newsItem => newsItem.id === newsItemId);
