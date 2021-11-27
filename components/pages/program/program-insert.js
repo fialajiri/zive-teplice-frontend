@@ -1,50 +1,59 @@
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
-import { AuthContext } from "../../context/auth-context";
-import { useHttpClient } from "../../hooks/http-hook";
-import { useForm } from "../../hooks/form-hook";
-import NotificationContext from "../../context/notification-context";
+import { AuthContext } from "../../../context/auth-context";
+import { useHttpClient } from "../../../hooks/http-hook";
+import { useForm } from "../../../hooks/form-hook";
+import NotificationContext from "../../../context/notification-context";
 
-import Button from "../ui-elements/button";
-import Input from "../form-elements/input";
-import ImageUpload from "../../components/form-elements/image-upload";
-import ErrorModal from "../ui-elements/error-modal";
-import LoadingSpinner from "../ui-elements/loading-spinner";
-import Editor from "../editor/editor";
+import Button from "../../ui-elements/button";
+import Input from "../../form-elements/input";
+import ImageUpload from "../../form-elements/image-upload";
+import ErrorModal from "../../ui-elements/error-modal";
+import LoadingSpinner from "../../ui-elements/loading-spinner";
+import Editor from "../../editor/editor";
 
-import {
-  VALIDATOR_MINLENGTH,
-  VALIDATOR_MAXLENGTH,
-} from "../../validators/validators";
+import { VALIDATOR_MAXLENGTH, VALIDATOR_MINLENGTH } from "../../../validators/validators";
 
-const UpdateNews = (props) => {
-  const { newsItem } = props;
-
+const InsertProgram = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [editorLoaded, setEditorLoaded] = useState(false);
   const [data, setData] = useState("");
   const auth = useContext(AuthContext);
   const router = useRouter();
   const notificationCtx = useContext(NotificationContext);
+  const [currentEvent, setCurrentEvent] = useState(null);
+
+  const getCurrentEvent = async () => {
+    try {
+      const responseData = await sendRequest(
+        `${process.env.REACT_APP_BACKEND_URL}/events/current`,
+        "GET",
+        JSON.stringify(),
+        {
+          "Content-Type": "application/json",
+        }
+      );
+      console.log(responseData.event);
+      setCurrentEvent(responseData.event);
+      setEditorLoaded(true);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
-    setEditorLoaded(true);
+    getCurrentEvent();
   }, []);
-
   const [formState, inputHandler] = useForm(
     {
       title: {
         value: "",
         isValid: false,
-      },
-      abstract: {
-        value: "",
-        isValid: false,
-      },
+      },      
       image: {
         value: "",
-        isValid: true,
+        isValid: false,
       },
     },
     false
@@ -53,20 +62,19 @@ const UpdateNews = (props) => {
   const placeSubmitHandler = async (event) => {
     notificationCtx.showNotification({
       title: "Ukládám...",
-      message: "Ukládám změny do databáze.",
+      message: "Ukládám program do databáze. Chvilku strpení.",
       status: "pending",
     });
     event.preventDefault();
 
     try {
       const formData = new FormData();
-      formData.append("title", formState.inputs.title.value);
-      formData.append("abstract", formState.inputs.abstract.value);
+      formData.append("title", formState.inputs.title.value);      
       formData.append("message", data);
       formData.append("image", formState.inputs.image.value);
       await sendRequest(
-        process.env.REACT_APP_BACKEND_URL + "/news/" + newsItem.id,
-        "PATCH",
+        `${process.env.REACT_APP_BACKEND_URL}/events/program/${currentEvent._id}`,
+        "POST",
         formData,
         {
           Authorization: "Bearer " + auth.token,
@@ -74,7 +82,7 @@ const UpdateNews = (props) => {
       );
       notificationCtx.showNotification({
         title: "Skvělé!!!",
-        message: "Ukládání změn proběhlo úspěšně.",
+        message: "Program byl úspěšně uložena",
         status: "success",
       });
 
@@ -94,7 +102,7 @@ const UpdateNews = (props) => {
       <ErrorModal error={error} onClear={clearError} />
       <div className="add-news">
         {isLoading && <LoadingSpinner asOverlay />}
-        <h2 className="heading-secondary">Změn aktualitu</h2>
+        <h2 className="heading-secondary">Přidej program</h2>
         <hr />
         <form className="add-news__form" onSubmit={placeSubmitHandler}>
           {isLoading && <LoadingSpinner asOverlay />}
@@ -104,27 +112,14 @@ const UpdateNews = (props) => {
             label="Titulek"
             type="text"
             validators={[VALIDATOR_MINLENGTH(10), VALIDATOR_MAXLENGTH(75)]}
-            errorText="Titulek musí mít minimálně 10 a maximálně 75 znaků."
+            errorText="Titulek musí mít minimálně 10 a maximálně 100 znaků."
             onInput={inputHandler}
-            initialValue={newsItem.title}
-            initialValid={true}
           />
-          <Input
-            id="abstract"
-            element="textarea"
-            label="abstract"
-            rows={3}
-            validators={[VALIDATOR_MINLENGTH(50), VALIDATOR_MAXLENGTH(175)]}
-            errorText="abstract musí mít minimálně 50 a maximálně 175 znaků."
-            onInput={inputHandler}
-            initialValue={newsItem.abstract}
-            initialValid={true}
-          />
+         
           <div className="editor">
-            <label>Zpráva</label>
+            <label>Obsah</label>
             <Editor
               name="description"
-              value={newsItem.message}
               onChange={(data) => {
                 setData(data);
               }}
@@ -137,23 +132,15 @@ const UpdateNews = (props) => {
             center
             onInput={inputHandler}
             errorText="Prosím vyberte obrázek."
-            image={newsItem.image.imageUrl}
           />
 
-          <div className="add-news__buttons">
-            <Button inverse type="button" onClick={()=>router.back()}>
-              Zpět
-            </Button>
-            <Button pulsating type="submit" disabled={!formState.isValid}>
-              Uložit změny
-            </Button>
-          </div>
-
-          
+          <Button className="add-news__button" disabled={!formState.isValid}>
+            Přidej program
+          </Button>
         </form>
       </div>
     </Fragment>
   );
 };
 
-export default UpdateNews;
+export default InsertProgram;

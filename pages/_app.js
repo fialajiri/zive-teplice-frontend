@@ -10,14 +10,10 @@ import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   const {
-    token,
-    adminId,
-    userRole,
-    userName,
-    userEmail,
+    token,    
+    user,
     login,
-    logout,
-    setUser,
+    logout,   
   } = useAuth();
 
   const verifyUser = useCallback(async () => {
@@ -32,16 +28,16 @@ function MyApp({ Component, pageProps }) {
       );
 
       if (response.ok) {
-        const responseData = await response.json();
-        login(responseData.token, responseData.role);
-        console.log("Token refreshed");
+        const responseData = await response.json();                
+        login(responseData.token, responseData.user);
+        console.log("Token refreshed");       
       } else {
         login(null);
       }
 
       setTimeout(verifyUser, 5 * 60 * 1000);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   }, [login]);
 
@@ -52,32 +48,29 @@ function MyApp({ Component, pageProps }) {
   // syncLogout across tabs
 
   const syncLogout = useCallback((event) => {
-    if (event.key === 'logout'){
-      window.location.reload()
+    if (event.key === "logout") {
+      window.location.reload();
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
     window.addEventListener("storage", syncLogout);
 
     return () => {
-      window.removeEventListener('storage', syncLogout)
-    }
-  }, [syncLogout])
+      window.removeEventListener("storage", syncLogout);
+    };
+  }, [syncLogout]);
 
   return (
     <NotificationContextProvider>
       <AuthContext.Provider
         value={{
           isLoggedIn: !!token,
-          token: token,
-          userRole: userRole,
-          adminId: adminId,
-          userName: userName,
-          userEmail: userEmail,
+          token: token,          
+          user:user,
           login: login,
           logout: logout,
-          setUser: setUser,
+          
         }}
       >
         <Layout>

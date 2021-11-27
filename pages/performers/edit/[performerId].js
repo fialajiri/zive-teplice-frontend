@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import router from "next/router";
+import router, { useRouter } from "next/router";
 
 import EditPerformer from "../../../components/performers/performer-edit";
 import { getAllUsers, getUserById } from "../../../lib/api-util";
@@ -9,9 +9,10 @@ import { AuthContext } from "../../../context/auth-context";
 const EditPerformerPage = ({ loadedPerformer }) => {
   const [isLoading, setIsLoading] = useState(true);
   const auth = useContext(AuthContext);
+  const router = useRouter()
 
   // there news to be an userId in auth oh oh oh
-  const isAuth = auth.token && auth.userRole === "admin";
+  const isAuth = auth.token && (auth.user.role === "admin" || auth.user._id === router.query.performerId)
  
   useEffect(() => {
     if (!isAuth) {

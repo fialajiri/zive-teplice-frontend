@@ -1,17 +1,17 @@
+import { useRouter } from "next/router";
 import { useState, useCallback } from "react";
 import { useHttpClient } from "./http-hook";
 
 export const useAuth = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [token, setToken] = useState(false);
-  const [adminId, setAdminId] = useState(null);
-  const [userName, setUserName] = useState(null);
-  const [userEmail, setUserEmail] = useState(null);
-  const [userRole, setUserRole] = useState("");
+  const [user, setUser] = useState(false);
+  const router = useRouter()
 
-  const login = useCallback((token, role) => {
+  const login = useCallback((token, user) => {
     setToken(token);
-    setUserRole(role);
+    setUser(user);
+    
   }, []);
 
   const logout = useCallback(async (token) => {
@@ -27,30 +27,18 @@ export const useAuth = () => {
       );
     } catch (err) {
     } finally {
-      console.log("infinnaly");
       setToken(null);
-      setAdminId(null);
-      setUserName(null);
-      setUserRole(null);
-      setUserEmail(null);
+      setUser(null);
+      router.push('/')
+
       window.localStorage.setItem("logout", Date.now());
     }
   }, []);
 
-  const setUser = useCallback((username, email, role) => {
-    setUserName(username);
-    setUserRole(role);
-    setUserEmail(email);
-  }, []);
-
   return {
     token,
-    adminId,
-    userRole,
-    userName,
-    userEmail,
+    user,
     login,
     logout,
-    setUser,
   };
 };

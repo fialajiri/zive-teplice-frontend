@@ -115,6 +115,7 @@ const EditPerformer = (props) => {
           onInput={inputHandler}
           initialValue={performer.email}
           initialValid={true}
+          readonly={'readonly'}
         />
         <Input
           element="input"
@@ -175,7 +176,7 @@ const EditPerformer = (props) => {
           />
         </div>
         <div className="registration__form__button performer-edit__buttons">
-          <Button inverse type="button" link="/admin">
+          <Button inverse type="button" onClick={()=>router.back()}>
             Zpět
           </Button>
           <Button pulsating type="submit" disabled={!formState.isValid}>

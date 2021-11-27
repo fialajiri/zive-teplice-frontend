@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 
 import GeneralAdmin from "../../components/pages/admin/general-admin";
 import PerformerAdmin from "../../components/pages/admin/performer-admin";
+import LoadingSpinner from "../../components/ui-elements/loading-spinner";
 
 import { AuthContext } from "../../context/auth-context";
 
@@ -26,7 +27,7 @@ const AdminPage = (props) => {
 
   
 
-  if (auth.userRole === "admin") {
+  if (auth.user && auth.user.role === "admin") {
     return (
       <GeneralAdmin
         news={loadedNews}
@@ -35,11 +36,12 @@ const AdminPage = (props) => {
         onDeleteUser={userDeleteHandler}
       />
     );
-  } else if (auth.userRole === "user") {
+  } else if (auth.user && auth.user.role === "user") {
     return <PerformerAdmin />;
   }
 
-  return <div>Hello</div>;
+  return <LoadingSpinner asOverlay/>
+
 };
 
 export default AdminPage;

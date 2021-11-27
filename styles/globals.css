@@ -699,6 +699,71 @@ body {
   display: flex;
   justify-content: space-between; }
 
+.dashboard {
+  background-color: #5c5c5c;
+  padding: 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; }
+  .dashboard__info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; }
+    .dashboard__info__heading {
+      font-size: 3rem;
+      color: #a6d637;
+      font-weight: 700; }
+      .dashboard__info__heading span {
+        color: #E19315; }
+    .dashboard__info__email {
+      font-size: 1.5rem;
+      color: #8cb8e1; }
+    .dashboard__info__text {
+      font-size: 2rem;
+      text-transform: uppercase;
+      font-weight: 500; }
+  .dashboard__body {
+    display: flex;
+    gap: 3rem; }
+    .dashboard__body__image {
+      margin: 3rem 0;
+      width: 50%;
+      border-radius: 3rem;
+      overflow: hidden;
+      height: 40rem;
+      position: relative; }
+    .dashboard__body__description {
+      padding: 4rem;
+      font-size: 1.6rem; }
+    .dashboard__body__actions {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5rem; }
+      .dashboard__body__actions button {
+        width: 70%; }
+  .dashboard__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .dashboard__actions__send-mail {
+      line-height: 1.2 !important;
+      background-color: #E19315;
+      padding: 1rem 3rem;
+      text-transform: uppercase;
+      color: #324010;
+      border-radius: 3rem;
+      text-decoration: none;
+      font-size: 1.6rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      border: 2px solid transparent;
+      transition: all 300ms; }
+      .dashboard__actions__send-mail:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2); }
+
 .button {
   line-height: 1.2 !important;
   text-decoration: 0;
@@ -1217,6 +1282,56 @@ body {
     width: 100%; }
   .form button {
     width: 20%; } }
+
+.program-tab__head__heading {
+  font-size: 2.8rem;
+  color: #333333; }
+
+.program-tab__head span {
+  color: #536b1c; }
+
+.program-tab__body {
+  background-color: #757575;
+  margin-top: 3rem;
+  padding: 3rem 2rem;
+  border-radius: 3rem; }
+  .program-tab__body__title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    letter-spacing: 1px; }
+  .program-tab__body__container {
+    margin-top: 2rem;
+    display: flex;
+    gap: 5rem;
+    align-items: flex-start; }
+  .program-tab__body__image {
+    border-radius: 3rem;
+    overflow: hidden;
+    width: 30%;
+    height: 50rem;
+    position: relative;
+    align-self: flex-start; }
+  .program-tab__body__message {
+    width: 70%;
+    font-size: 1.6rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center; }
+    .program-tab__body__message:empty {
+      background-color: black; }
+    .program-tab__body__message ol {
+      grid-row: 2 / 3; }
+    .program-tab__body__message p {
+      grid-row: 1 /2; }
+  .program-tab__body__actions {
+    display: flex;
+    justify-content: flex-end; }
+
+.program-tab__tail {
+  margin-top: 5rem;
+  border-radius: 3rem;
+  display: flex;
+  justify-content: flex-end; }
 
 .tab__container {
   padding: 2rem;

@@ -4,7 +4,6 @@ import { AuthContext } from "../../context/auth-context";
 import { useHttpClient } from "../../hooks/http-hook";
 import Modal from "../ui-elements/modal";
 import ErrorModal from "../ui-elements/error-modal";
-import LoadingSpinner from "../ui-elements/loading-spinner";
 import { Trash, Pencil } from "phosphor-react";
 
 import Button from "../ui-elements/button";

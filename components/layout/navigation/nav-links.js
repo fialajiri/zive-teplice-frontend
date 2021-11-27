@@ -21,9 +21,9 @@ const NavLinks = (props) => {
       <li className={router.pathname === "/gallery" ? "nav__list__item nav__list__item--active" : "nav__list__item"}>
         <Link href="/gallery">Galerie</Link>
       </li>
-      <li className={router.pathname === "/admin" ? "nav__list__item nav__list__item--active" : "nav__list__item"}>
+     {auth.token && <li className={router.pathname === "/admin" ? "nav__list__item nav__list__item--active" : "nav__list__item"}>
         <Link href="/admin">Admin</Link>
-      </li>
+      </li>}
 
       {!auth.token && <li className={router.pathname === "/login" ? "nav__list__item nav__list__item--active" : "nav__list__item"}>
         <Link href="/login">Přihlásit se</Link>
@@ -31,7 +31,7 @@ const NavLinks = (props) => {
 
       {auth.token && (
          <li className={router.pathname === "/login" ? "nav__list__item nav__list__item--active" : "nav__list__item"}>
-           <div onClick={auth.logout}>Odhlásit se</div>
+           <div onClick={() => auth.logout(auth.token)}>Odhlásit se</div>
         </li>
       )}
     </ul>

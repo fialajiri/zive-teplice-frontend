@@ -1,0 +1,98 @@
+.dashboard {
+  background-color: $color-grey-dark;
+  padding: 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &__heading {
+      font-size: 3rem;
+      color: $color-primary;
+      font-weight: 700;
+
+      & span {
+        color: $color-secondary;
+      }
+    }
+
+    &__email {
+      font-size: 1.5rem;
+      color: $color-blue;
+    }
+
+    &__text {
+      font-size: 2rem;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+  }
+
+  &__body {
+    display: flex;
+    gap: 3rem;
+    
+
+
+    &__image {
+      margin: 3rem 0;
+      width: 50%;
+      border-radius: $border-radius;
+      overflow: hidden;
+      height: 40rem;
+      position: relative;      
+      
+      
+    }
+
+    &__description {
+      padding: 4rem;
+      font-size: 1.6rem;
+    }
+
+    &__actions {
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5rem;
+      // justify-content: space-around;
+
+      & button {
+        width: 70%;
+        // justify-self: center;
+        // align-self: center;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__send-mail {
+      line-height: 1.2 !important;
+      background-color: $color-secondary;
+      padding: 1rem 3rem;
+      text-transform: uppercase;
+      color: $color-primary-dark-3;
+      border-radius: $border-radius;
+      text-decoration: none;
+      font-size: 1.6rem;
+      font-weight: 500;
+      letter-spacing: 2px;
+      border: 2px solid transparent;
+      transition: all 300ms;
+
+      &:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+      }
+    }
+  }
+}

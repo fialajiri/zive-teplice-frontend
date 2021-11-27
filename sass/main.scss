@@ -26,6 +26,7 @@
 @import "components/performers/performer-table";
 @import "components/performers/performer-table-item";
 @import "components/performers/performer-edit";
+@import "components/performers/dashboard";
 
 @import "components/ui-elements/button";
 @import "components/ui-elements/loading-spinner";
@@ -44,6 +45,8 @@
 @import "components/news/news-item-page";
 @import "components/news/news-table-tail";
 @import "components/news/news-search";
+
+@import 'components/program/program-tab';
 
 @import "components/ui-elements/tabs";
 @import "components/editor/editor";

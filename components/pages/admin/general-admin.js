@@ -9,6 +9,7 @@ import PerformerTable from "../../performers/performer-table";
 import NewsTable from "../../news/news-table";
 
 import { getNews, getPerformers } from "../../../lib/dummy_data";
+import ProgramTab from "../program/program-tab";
 
 const tabStateReducer = (currTabState, action) => {
   switch (action.type) {
@@ -71,6 +72,9 @@ const GeneralAdmin = (props) => {
               performers={props.users}
               onDelete={props.onDeleteUser}
             />
+          )}
+          {tabState.tabTwoIsActive && (
+            <ProgramTab />
           )}
           {tabState.tabThreeIsActive && (
             <NewsTable news={props.news} onDelete={props.onDeleteNews} />

@@ -56,6 +56,7 @@ const Input = (props) => {
         onChange={changeHandler}
         onBlur={touchHandler}
         value={inputState.value}
+        readOnly={props.readonly}
       />
     );
   } else if (props.element === "textarea") {
@@ -66,6 +67,7 @@ const Input = (props) => {
         onChange={changeHandler}
         onBlur={touchHandler}
         value={inputState.value}
+        readOnly={props.readOnly}
       />
     );
   } else if (props.element === "select") {

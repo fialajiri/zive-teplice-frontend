@@ -10,7 +10,7 @@ module.exports = (phase) => {
         domains: ["zive-teplice.s3.eu-central-1.amazonaws.com"],
       },
       env: {        
-        REACT_APP_BACKEND_URL: "https://zive-teplice-backend.herokuapp.com",
+        REACT_APP_BACKEND_URL: "http://localhost:8081",
       },
     };
   }

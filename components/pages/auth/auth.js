@@ -58,7 +58,7 @@ const Auth = () => {
         }
       );
 
-      auth.login(responseData.token, responseData.role);
+      auth.login(responseData.token, responseData.user);
 
       notificationCtx.showNotification({
         title: "Skvělé!!!",

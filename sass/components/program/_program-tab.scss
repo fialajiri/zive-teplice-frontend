@@ -1,0 +1,82 @@
+.program-tab {
+  &__container {
+    // background-color: $color-grey-light-1;
+    
+  }
+
+  &__head {
+    &__heading {
+      font-size: 2.8rem;
+      color: $color-grey-dark-3;
+    }
+
+    & span {
+      color: $color-primary-dark-2;
+    }
+  }
+
+  &__body {
+      background-color: $color-grey-light-1;
+      margin-top: 3rem;
+      padding: 3rem 2rem;
+      border-radius: $border-radius;
+    &__title {
+      font-size: 2.5rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    &__container {
+      margin-top: 2rem;
+      display: flex;
+      gap: 5rem;
+      align-items: flex-start;
+    }
+
+    &__image {
+      
+      border-radius: $border-radius;
+      overflow: hidden;
+      width: 30%;
+      height: 50rem;
+      position: relative;
+
+      align-self: flex-start;      
+    }
+
+    &__message {
+      width: 70%;
+      font-size: 1.6rem;      
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      justify-content: center;
+      
+    &:empty{
+        background-color: black;
+    }
+
+      & ol {
+          grid-row: 2 / 3;
+
+      }
+
+      & p {
+          grid-row: 1 /2;
+         
+
+      }
+    }
+
+    &__actions {
+        display: flex;
+        justify-content: flex-end;
+    }
+  }
+
+  &__tail {
+      margin-top: 5rem;      
+      border-radius: $border-radius;
+      display: flex;
+      justify-content: flex-end;
+  }
+}
