@@ -35,8 +35,6 @@
   &__body {
     display: flex;
     gap: 3rem;
-    
-
 
     &__image {
       margin: 3rem 0;
@@ -44,8 +42,28 @@
       border-radius: $border-radius;
       overflow: hidden;
       height: 40rem;
-      position: relative;      
-      
+      position: relative;
+    }
+
+    &__request {
+      font-size: 2.6rem;
+      text-align: center;
+      font-weight: 600;
+      text-transform: uppercase;
+
+      letter-spacing: 0.25px;
+
+      &--pending {
+        color: $color-blue;
+      }
+
+      &--rejected {
+        color: $color-red;
+      }
+
+      &--confirmed {
+        color: $color-primary;
+      }
       
     }
 

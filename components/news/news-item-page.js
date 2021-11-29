@@ -18,7 +18,7 @@ const NewsItemPage = ({ newsItem }) => {
         <div className="news-item__abstract">{newsItem.abstract}</div>
         <figure className="news-item__image">
           <Image className='news-item__img' src={newsItem.image.imageUrl} layout='fill'
-            objectFit='cover' />
+            objectFit='cover' alt={newsItem.title}/>
         </figure>
         <div
           className="news-item__message"

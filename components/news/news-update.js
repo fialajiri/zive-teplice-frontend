@@ -23,7 +23,7 @@ const UpdateNews = (props) => {
 
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [editorLoaded, setEditorLoaded] = useState(false);
-  const [data, setData] = useState("");
+  const [data, setData] = useState(newsItem.message);
   const auth = useContext(AuthContext);
   const router = useRouter();
   const notificationCtx = useContext(NotificationContext);

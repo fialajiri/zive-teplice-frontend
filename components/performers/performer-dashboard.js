@@ -14,14 +14,14 @@ const DashboardHead = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const auth = useContext(AuthContext);
   const user = auth.user;
-  console.log(user);
+  const notificationCtx = useContext(NotificationContext);
 
   const showDeleteWarningHandler = () => setShowConfirmModal(true);
   const cancelDeleteHandler = () => setShowConfirmModal(false);
   const confirmDeleteHandler = async () => {
     try {
       await sendRequest(
-        `${process.env.REACT_APP_BACKEND_URL}/users/${id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/users/${user._id}`,
         "DELETE",
         null,
         { Authorization: "Bearer " + auth.token }
@@ -30,6 +30,72 @@ const DashboardHead = (props) => {
       router.push("/");
     } catch (err) {}
   };
+
+  const registerToEventHandler = async () => {
+    console.log(auth.user);
+    notificationCtx.showNotification({
+      title: "Přihlašuji...",
+      message: "Přihlašuji vás na aktuální Živé Teplice.",
+      status: "pending",
+    });
+    try {
+      const responseData = await sendRequest(
+        `${process.env.REACT_APP_BACKEND_URL}/users/request/${user.id}`,
+        "POST",
+        null,
+        { Authorization: "Bearer " + auth.token }
+      );
+      notificationCtx.showNotification({
+        title: "Skvělé!!!",
+        message: "Přihlášení proběhlo úspěšně.",
+        status: "success",
+      });
+      auth.login(auth.token, responseData.user);
+    } catch (err) {
+      console.log(err);
+      notificationCtx.showNotification({
+        title: "Chyba!!!",
+        message: "Něco se pokazilo, zkuste to znovu",
+        status: "error",
+      });
+    }
+  };
+
+  let requestStatusElement;
+
+  switch (user.request) {
+    case "notsend":
+      requestStatusElement = (
+        <Button onClick={registerToEventHandler} size="big" pulsating shake>
+          Přihlásit na Živé Teplice
+        </Button>
+      );
+      break;
+    case "pending":
+      requestStatusElement = (
+        <div className="dashboard__body__request--pending dashboard__body__request" >
+          Vaše přihláška se vyhodnocuje.
+        </div>
+      );
+      break;
+    case "rejected":
+      requestStatusElement = (
+        <div className="dashboard__body__request--rejected dashboard__body__request">
+          Vaše přihláška byla zamítnuta. Pro více informací kontaktujte
+          organizátory.
+        </div>
+      );
+      break;
+    case "confirmed":
+      requestStatusElement = (
+        <div className="dashboard__body__request--confirmed dashboard__body__request">
+          Gratulujeme Vaše příhláška byla schválena.
+        </div>
+      );
+      break;
+    default:
+      requestStatusElement = <div></div>;
+  }
 
   return (
     <Fragment>
@@ -63,18 +129,29 @@ const DashboardHead = (props) => {
         <div className="dashboard__body">
           <div className="dashboard__body__actions">
             <p className="dashboard__body__description">{user.description}</p>
-            <Button size="big" pulsating shake>
-              Přihlásit na Živé Teplice
-            </Button>
+          {requestStatusElement}
           </div>
           <figure className="dashboard__body__image">
-            <Image src={user.image.imageUrl} layout="fill" objectFit="cover" />
+            <Image
+              src={user.image.imageUrl}
+              layout="fill"
+              objectFit="cover"
+              priority
+              alt={user.username}
+            />
           </figure>
         </div>
         <div className="dashboard__actions">
           <Button link={`performers/edit/${user._id}`}>Editovat</Button>
-          <a className='dashboard__actions__send-mail' href="mailto:seifrtova.nikola@gmail.com">Napište nám</a>
-          <Button  onClick={showDeleteWarningHandler} danger>Smazat Profil</Button>
+          <a
+            className="dashboard__actions__send-mail"
+            href="mailto:seifrtova.nikola@gmail.com"
+          >
+            Napište nám
+          </a>
+          <Button onClick={showDeleteWarningHandler} danger>
+            Smazat Profil
+          </Button>
         </div>
       </div>
     </Fragment>

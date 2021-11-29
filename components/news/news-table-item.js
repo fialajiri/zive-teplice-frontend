@@ -14,6 +14,9 @@ const NewsTableItem = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const auth = useContext(AuthContext);
 
+  
+
+
   let humanReadableDate = new Date(createdAt).toLocaleDateString(
     "cs-CZ",
     {
@@ -22,6 +25,8 @@ const NewsTableItem = (props) => {
       year: "numeric",
     }
   );
+
+  
 
   const showDeleteWarningHandler = () => setShowConfirmModal(true);
   const cancelDeleteHandler = () => setShowConfirmModal(false);

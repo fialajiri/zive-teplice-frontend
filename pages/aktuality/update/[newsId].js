@@ -10,7 +10,7 @@ const EditNewsItem = ({ loadedNewsItem }) => {
   const [isLoading, setIsLoading] = useState(true);
   const auth = useContext(AuthContext);
 
-  const isAuth = auth.token && auth.userRole === "admin";
+  const isAuth = auth.token && auth.user.role === "admin";
 
   useEffect(() => {
     if (!isAuth) {

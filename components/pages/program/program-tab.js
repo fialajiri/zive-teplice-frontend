@@ -9,6 +9,7 @@ import Button from "../../ui-elements/button";
 import ErrorModal from "../../ui-elements/error-modal";
 import Modal from "../../ui-elements/modal";
 import LoadingSpinner from "../../ui-elements/loading-spinner";
+import ShowProgram from "./program-show";
 
 const ProgramTab = (props) => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -28,9 +29,7 @@ const ProgramTab = (props) => {
           "Content-Type": "application/json",
         }
       );
-      console.log(responseData.event.program.message);
       setCurrentEvent(responseData.event);
-      
     } catch (err) {
       console.log(err);
     }
@@ -40,34 +39,36 @@ const ProgramTab = (props) => {
     getCurrentEvent();
   }, []);
 
-  const showDeleteWarningHandler = () => setShowConfirmModal(true);
-  const cancelDeleteHandler = () => setShowConfirmModal(false);
-  const confirmDeleteHandler = async () => {
-    try {
-      await sendRequest(
-        `${process.env.REACT_APP_BACKEND_URL}/news/${id}`,
-        "DELETE",
-        null,
-        { Authorization: "Bearer " + auth.token }
-      );
-      setShowConfirmModal(false);
-      props.onDelete(id);
-    } catch (err) {}
+  const showNewEventWarningHandler = () => setShowConfirmModal(true);
+  const cancelNewEventHandler = () => setShowConfirmModal(false);
+  const confirmNewEventHandler = () => {
+    router.push("/event/create");
   };
-
-  const createMarkup = (html) => {
-    return { __html: html };
-  };
-
- 
 
   if (!currentEvent) {
     return <LoadingSpinner asOverlay />;
   } else if (currentEvent.length === 0) {
     return (
-      <div>
-        <Button>Vytvořit novou událost</Button>
-      </div>
+      <Fragment>
+        <Modal
+          show={showConfirmModal}
+          onCancel={cancelNewEventHandler}
+          header="Opravdu chcete vytvořit novou událost?"
+          footer={
+            <Fragment>
+              <Button pulsating onClick={cancelNewEventHandler}>
+                Zrušit
+              </Button>
+              <Button danger shake onClick={confirmNewEventHandler}>
+                Vytvořit
+              </Button>
+            </Fragment>
+          }
+        />
+        <Button onClick={showNewEventWarningHandler}>
+          Vytvořit novou událost
+        </Button>
+      </Fragment>
     );
   } else {
     return (
@@ -75,14 +76,14 @@ const ProgramTab = (props) => {
         <ErrorModal error={error} onClear={clearError} />
         <Modal
           show={showConfirmModal}
-          onCancel={cancelDeleteHandler}
+          onCancel={cancelNewEventHandler}
           header="Opravdu chcete vytvořit novou událost?"
           footer={
             <Fragment>
-              <Button pulsating onClick={cancelDeleteHandler}>
+              <Button pulsating onClick={cancelNewEventHandler}>
                 Zrušit
               </Button>
-              <Button danger shake onClick={confirmDeleteHandler}>
+              <Button danger shake onClick={confirmNewEventHandler}>
                 Vytvořit
               </Button>
             </Fragment>
@@ -94,38 +95,17 @@ const ProgramTab = (props) => {
               Aktuální Událost: <span>{currentEvent.title}</span>
             </div>
           </div>
-          <div className="program-tab__body">
-            <div className="program-tab__body__title">
-              {currentEvent.program.title}
-            </div>
-            <div className="program-tab__body__container">
-              <figure className="program-tab__body__image">
-                <Image
-                  src={currentEvent.program.image.imageUrl}
-                  layout="fill"
-                  objectFit="cover"
-                />
-              </figure>
-              <div
-                className="program-tab__body__message"
-                dangerouslySetInnerHTML={createMarkup(
-                  currentEvent.program.message
-                )}
-              ></div>
-            </div>
-            <div className="program-tab__body__actions">
-              {currentEvent.program && (
-                <Button link="program/edit">Editovat Program</Button>
-              )}
-              {currentEvent.program && (
-                <Button link="program/insert">
-                  Vyvořit program pro tuto událost
-                </Button>
-              )}
-            </div>
-          </div>
+
+          {currentEvent.program && <ShowProgram />}
+
           <div className="program-tab__tail">
-            <Button danger onClick={showDeleteWarningHandler}>
+            {!currentEvent.program && (
+              <Button link="program/insert">
+                Vyvořit program pro tuto událost
+              </Button>
+            )}
+
+            <Button danger onClick={showNewEventWarningHandler}>
               Vytvořit novou událost
             </Button>
           </div>

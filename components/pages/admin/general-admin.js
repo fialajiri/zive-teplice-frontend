@@ -8,7 +8,7 @@ import TabButton from "../../ui-elements/tabs/tab-button";
 import PerformerTable from "../../performers/performer-table";
 import NewsTable from "../../news/news-table";
 
-import { getNews, getPerformers } from "../../../lib/dummy_data";
+
 import ProgramTab from "../program/program-tab";
 
 const tabStateReducer = (currTabState, action) => {
@@ -37,6 +37,7 @@ const tabStateReducer = (currTabState, action) => {
 };
 
 const GeneralAdmin = (props) => {
+  
   const [tabState, dispatch] = useReducer(tabStateReducer, {
     tabOneIsActive: true,
     tabTwoIsActive: false,
@@ -71,6 +72,7 @@ const GeneralAdmin = (props) => {
             <PerformerTable
               performers={props.users}
               onDelete={props.onDeleteUser}
+              onUpdate={props.onUpdateUser}
             />
           )}
           {tabState.tabTwoIsActive && (

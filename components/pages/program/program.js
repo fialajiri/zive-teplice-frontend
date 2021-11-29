@@ -9,6 +9,7 @@ import TabButton from "../../ui-elements/tabs/tab-button";
 
 import { getPerformers } from "../../../lib/dummy_data";
 import ProgramTab from "./program-tab";
+import ShowProgram from "./program-show";
 
 const tabStateReducer = (currTabState, action) => {
   switch (action.type) {
@@ -67,7 +68,7 @@ const Program = (props) => {
         </TabHead>
         <TabBody>
           {tabState.tabOneIsActive && (
-           <ProgramTab />
+           <ShowProgram />
           )}
           {tabState.tabTwoIsActive && (
             <PerformerList performers={performers} type="prodejce" />

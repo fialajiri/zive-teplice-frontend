@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import NewsTableHead from "./news-table-head";
 import NewsTableItem from "./news-table-item";
 import NewsTableTail from "./news-table-tail";
@@ -12,6 +12,11 @@ const sortNews = (newsArray) => {
 const NewsTable = (props) => {
   const [loadedNews, setLoadedNews] = useState(sortNews(props.news));
   const [filteredNews, setFilteredNews] = useState(sortNews(props.news));
+
+  useEffect(() => {
+    setLoadedNews(sortNews(props.news));
+    setFilteredNews(sortNews(props.news));
+  }, [props.news]);
 
   const findEventsHandler = (year, month) => {
     let filtered = [];

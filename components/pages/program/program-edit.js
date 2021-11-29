@@ -39,6 +39,7 @@ const EditProgram = () => {
       );
       console.log(responseData.event);
       setCurrentEvent(responseData.event);
+      setData(responseData.event.program.message)
       setEditorLoaded(true);
     } catch (err) {
       console.log(err);
@@ -57,7 +58,7 @@ const EditProgram = () => {
       },
       image: {
         value: "",
-        isValid: false,
+        isValid: true,
       },
     },
     false
@@ -76,8 +77,8 @@ const EditProgram = () => {
       formData.append("message", data);
       formData.append("image", formState.inputs.image.value);
       await sendRequest(
-        process.env.REACT_APP_BACKEND_URL + "/program",
-        "POST",
+        `${process.env.REACT_APP_BACKEND_URL}/events/program/${currentEvent._id}`,
+        "PATCH",
         formData,
         {
           Authorization: "Bearer " + auth.token,
@@ -109,7 +110,7 @@ const EditProgram = () => {
       <ErrorModal error={error} onClear={clearError} />
       <div className="add-news">
         {isLoading && <LoadingSpinner asOverlay />}
-        <h2 className="heading-secondary">Přidej program</h2>
+        <h2 className="heading-secondary">Editovat program</h2>
         <hr />
         <form className="add-news__form" onSubmit={placeSubmitHandler}>
           {isLoading && <LoadingSpinner asOverlay />}
@@ -142,6 +143,7 @@ const EditProgram = () => {
             center
             onInput={inputHandler}
             errorText="Prosím vyberte obrázek."
+            image={currentEvent.program.image.imageUrl}
           />
 
           <Button className="add-news__button" disabled={!formState.isValid}>

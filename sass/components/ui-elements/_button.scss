@@ -1,6 +1,6 @@
 .button {
   line-height: 1.2 !important;
-  
+
   text-decoration: 0;
   font-family: $font-primary;
   font-size: 1.6rem;
@@ -10,8 +10,8 @@
   color: $color-grey-dark-3;
 
   padding: 1rem 3rem;
-  
-    border: 2px solid transparent;
+
+  border: 2px solid transparent;
   border-radius: $border-radius;
   background-color: $color-primary;
   cursor: pointer;
@@ -54,38 +54,26 @@
 
   &--inverse {
     background: transparent;
-    color: $color-secondary-light;
-    border: 2px solid $color-secondary-light;
+    color: $color-primary;
+    border: 2px solid $color-primary;
     &::after {
-      background-color: transparent;
+      display: none;
     }
   }
 
-  &--inverse:hover,
-  &--inverse:active {
-    color: $color-primary-dark-3;
-    background: $color-secondary-light;
-  }
+  
 
   &--danger {
-    background: #830000;
-    border-color: #830000;
-    color: $color-white;
+    background: $color-red;
+    border-color: $color-red;
+    color: $color-grey-dark-2;
     &::after {
       background-color: transparent;
-    }
-
-    &:hover {
-      &::after {
-        background-color: #830000;
-      }
     }
   }
 
   &--danger:hover,
   &--danger:active {
-    background: #f34343;
-    border-color: #f34343;
     color: $color-grey-dark-3;
   }
 

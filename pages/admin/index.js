@@ -20,12 +20,22 @@ const AdminPage = (props) => {
   };
 
   const userDeleteHandler = (deletedUserId) => {
-    setLoadedUsers((prevUser) => {
-      prevUser.filter((user) => user.id !== deletedUserId);
-    });
+    setLoadedUsers((prevUser) =>
+      prevUser.filter((user) => user.id !== deletedUserId)
+    );
   };
 
-  
+  const userUpdateHandler = (userIndex, user) => {
+    setLoadedUsers((prevUsers) =>
+      prevUsers.map((userItem, index) => {
+        if (index === userIndex) {
+          return user;
+        } else {
+          return userItem;
+        }
+      })
+    );
+  };
 
   if (auth.user && auth.user.role === "admin") {
     return (
@@ -34,14 +44,14 @@ const AdminPage = (props) => {
         users={loadedUsers}
         onDeleteNews={newsDeleteHandler}
         onDeleteUser={userDeleteHandler}
+        onUpdateUser={userUpdateHandler}
       />
     );
   } else if (auth.user && auth.user.role === "user") {
     return <PerformerAdmin />;
   }
 
-  return <LoadingSpinner asOverlay/>
-
+  return <LoadingSpinner asOverlay />;
 };
 
 export default AdminPage;
@@ -52,3 +62,12 @@ export const getStaticProps = async () => {
 
   return { props: { news: news, users: users }, revalidate: 60 * 60 };
 };
+
+// export const getServerSideProps = async() => {
+//   const news = await getAllNews();
+//   const users = await  getAllUsers();
+
+//   return {
+//      props: { news: news, users: users }
+//   }
+// }

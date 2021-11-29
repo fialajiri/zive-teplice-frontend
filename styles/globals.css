@@ -681,6 +681,7 @@ body {
       .performer-table__item__icon {
         font-size: 2.5rem; } }
   .performer-table__item__helper-text {
+    color: #fff;
     width: 6rem;
     text-align: center;
     font-size: 1.4rem;
@@ -689,7 +690,7 @@ body {
     display: none;
     bottom: 0;
     left: 50%;
-    transform: translate(-50%, 60%); }
+    transform: translate(-50%, 70%); }
   .performer-table__item__email__helper-text {
     transform: translate(-100%, 60%); }
 
@@ -732,6 +733,18 @@ body {
       overflow: hidden;
       height: 40rem;
       position: relative; }
+    .dashboard__body__request {
+      font-size: 2.6rem;
+      text-align: center;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.25px; }
+      .dashboard__body__request--pending {
+        color: #8cb8e1; }
+      .dashboard__body__request--rejected {
+        color: #e65035; }
+      .dashboard__body__request--confirmed {
+        color: #a6d637; }
     .dashboard__body__description {
       padding: 4rem;
       font-size: 1.6rem; }
@@ -802,24 +815,17 @@ body {
     background-color: #a6d637; }
   .button--inverse {
     background: transparent;
-    color: #e7a944;
-    border: 2px solid #e7a944; }
+    color: #a6d637;
+    border: 2px solid #a6d637; }
     .button--inverse::after {
-      background-color: transparent; }
-  .button--inverse:hover, .button--inverse:active {
-    color: #324010;
-    background: #e7a944; }
+      display: none; }
   .button--danger {
-    background: #830000;
-    border-color: #830000;
-    color: #fff; }
+    background: #e65035;
+    border-color: #e65035;
+    color: #474747; }
     .button--danger::after {
       background-color: transparent; }
-    .button--danger:hover::after {
-      background-color: #830000; }
   .button--danger:hover, .button--danger:active {
-    background: #f34343;
-    border-color: #f34343;
     color: #333333; }
   .button:disabled, .button:hover:disabled, .button:active:disabled {
     background: #c2c2c2;
@@ -1285,16 +1291,18 @@ body {
 
 .program-tab__head__heading {
   font-size: 2.8rem;
-  color: #333333; }
+  color: #333333;
+  margin-bottom: 2rem; }
 
 .program-tab__head span {
   color: #536b1c; }
 
 .program-tab__body {
   background-color: #757575;
-  margin-top: 3rem;
   padding: 3rem 2rem;
   border-radius: 3rem; }
+  .program-tab__body__no-program {
+    font-size: 2rem; }
   .program-tab__body__title {
     font-size: 2.5rem;
     font-weight: 500;
@@ -1307,22 +1315,23 @@ body {
   .program-tab__body__image {
     border-radius: 3rem;
     overflow: hidden;
-    width: 30%;
+    width: 50%;
     height: 50rem;
     position: relative;
     align-self: flex-start; }
   .program-tab__body__message {
-    width: 70%;
+    width: 50%;
     font-size: 1.6rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: center; }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem; }
     .program-tab__body__message:empty {
       background-color: black; }
     .program-tab__body__message ol {
-      grid-row: 2 / 3; }
-    .program-tab__body__message p {
-      grid-row: 1 /2; }
+      display: flex;
+      flex-direction: column;
+      list-style: none; }
   .program-tab__body__actions {
     display: flex;
     justify-content: flex-end; }
@@ -1331,7 +1340,7 @@ body {
   margin-top: 5rem;
   border-radius: 3rem;
   display: flex;
-  justify-content: flex-end; }
+  justify-content: space-between; }
 
 .tab__container {
   padding: 2rem;

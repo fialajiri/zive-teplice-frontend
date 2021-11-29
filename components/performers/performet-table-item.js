@@ -8,21 +8,35 @@ import ErrorModal from "../ui-elements/error-modal";
 import LoadingSpinner from "../ui-elements/loading-spinner";
 import Button from "../ui-elements/button";
 
-import { Trash, Pencil, Circle, CalendarCheck, Envelope } from "phosphor-react";
+import {
+  Trash,
+  Pencil,
+  Circle,
+  CalendarCheck,
+  Envelope,
+  Hourglass,
+  HandPalm,
+  Prohibit,
+} from "phosphor-react";
 import foodTruck from "../../public/icons/food-truck.svg";
 import artist from "../../public/icons/artist.svg";
 
 const PerformerTableItem = (props) => {
   const { performer } = props;
-
+  
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [showConfirmRegisterModal, setShowConfirmRegisterModal] =
+    useState(false);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const auth = useContext(AuthContext);
 
   const isActiveTrue = performer.verified.status === "true";
-  const isregisteredToCurrentTrue = performer.verified.status === "true";
   const isSeller = performer.type === "prodejce";
   const performerType = isSeller ? "prodejce" : "umělec";
+
+  const isregisteredToCurrentTrue = performer.verified.status === "true";
+
+  let currentEventStatusElement;
 
   const typeImage = (
     <Image
@@ -34,24 +48,117 @@ const PerformerTableItem = (props) => {
     />
   );
 
+  const showPerformerRegisterModal = () => setShowConfirmRegisterModal(true);
+  const hidePerformerRigisterModal = () => setShowConfirmRegisterModal(false);
+  const confirmPerformerHandler = async () => {
+    try {
+      const responseData = await sendRequest(
+        `${process.env.REACT_APP_BACKEND_URL}/users/request/${performer.id}`,
+        "PATCH",
+        JSON.stringify({
+          request: "confirmed",
+        }),
+        {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + auth.token,
+        }
+      );
+      setShowConfirmRegisterModal(false);      
+      props.onUpdate(props.index, responseData.user);      
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const rejectPerformerHandler = async () => {
+    try {
+      const responseData = await sendRequest(
+        `${process.env.REACT_APP_BACKEND_URL}/users/request/${performer.id}`,
+        "PATCH",
+        JSON.stringify({
+          request: "rejected",
+        }),
+        {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + auth.token,
+        }
+      );
+      setShowConfirmRegisterModal(false);
+      props.onUpdate(props.index, responseData.user);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const showDeleteWarningHandler = () => setShowConfirmModal(true);
   const cancelDeleteHandler = () => setShowConfirmModal(false);
   const confirmDeleteHandler = async () => {
     try {
       await sendRequest(
-        `${process.env.REACT_APP_BACKEND_URL}/users/${id}`,
+        `${process.env.REACT_APP_BACKEND_URL}/users/${performer.id}`,
         "DELETE",
         null,
         { Authorization: "Bearer " + auth.token }
       );
       setShowConfirmModal(false);
-      props.onDelete(id);
+      props.onDelete(performer.id);
     } catch (err) {}
   };
+
+  if (performer.request === "pending") {
+    currentEventStatusElement = (
+      <Button
+        unstyled
+        onClick={showPerformerRegisterModal}
+        className="performer-table__item__actions  performer-table__item__icon"
+      >
+        <Hourglass color="#E19315" />
+        <p className="performer-table__item__helper-text">čeká na potvrzení</p>
+      </Button>
+    );
+  } else if (performer.request === "confirmed") {
+    currentEventStatusElement = (
+      <div className="performer-table__item__actions  performer-table__item__icon">
+        <CalendarCheck weight="fill" color="#a6d637" />
+        <p className="performer-table__item__helper-text">účast potvrzena</p>
+      </div>
+    );
+  } else if (performer.request === "rejected") {
+    currentEventStatusElement = (
+      <div className="performer-table__item__actions  performer-table__item__icon">
+        <HandPalm weight="fill" color="#e65035" />
+        <p className="performer-table__item__helper-text">účast odmítnuta</p>
+      </div>
+    );
+  } else {
+    currentEventStatusElement = (
+      <div className="performer-table__item__actions  performer-table__item__icon">
+        <Prohibit weight="fill" color="#301D19" />
+        <p className="performer-table__item__helper-text">nepřihlášen</p>
+      </div>
+    );
+  }
 
   return (
     <Fragment>
       <ErrorModal error={error} onClear={clearError} />
+      <Modal
+        show={showConfirmRegisterModal}
+        onCancel={hidePerformerRigisterModal}
+        header="Vyberte, zda chcete potvrdit nebo odmítnout uživatelovu přihlášku"
+        footer={
+          <Fragment>
+            <Button inverse onClick={hidePerformerRigisterModal}>
+              Zpět
+            </Button>
+            <Button pulsating onClick={confirmPerformerHandler}>
+              Potvrdit
+            </Button>
+            <Button danger onClick={rejectPerformerHandler}>
+              Odmítnout
+            </Button>
+          </Fragment>
+        }
+      />
       <Modal
         show={showConfirmModal}
         onCancel={cancelDeleteHandler}
@@ -99,16 +206,10 @@ const PerformerTableItem = (props) => {
         <div className="performer-table__item__description">
           {performer.description}
         </div>
-
-        <div className="performer-table__item__actions  performer-table__item__icon">
-          <CalendarCheck
-            color={isregisteredToCurrentTrue ? "#a6d637" : "#e65035"}
-          />
-          <p className=" performer-table__item__helper-text">potvrzena účast</p>
-        </div>
+        {currentEventStatusElement}
         <div className="performer-table__item__actions  performer-table__item__icon">
           <Circle weight="fill" color={isActiveTrue ? "#a6d637" : "#e65035"} />
-          <p className="performer-table__item__helper-text">aktivovat</p>
+          <p className="performer-table__item__helper-text">aktivní</p>
         </div>
         <Button
           link={`performers/edit/${performer.id}`}

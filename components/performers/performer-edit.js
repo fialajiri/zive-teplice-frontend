@@ -79,7 +79,10 @@ const EditPerformer = (props) => {
       const responseData = await sendRequest(
         `${process.env.REACT_APP_BACKEND_URL}/users/${performer.id}`,
         "PATCH",
-        formData
+        formData,
+        {
+          Authorization: "Bearer " + auth.token,
+        }
       );      
       
       
@@ -88,7 +91,8 @@ const EditPerformer = (props) => {
         message: "Editace proběhla úspěšně",
         status: "success",
       });
-      router.push("/admin");
+      auth.login(auth.token, responseData.user)  
+      router.push("/admin");   
     } catch (err) {
       notificationCtx.showNotification({
         title: "Chyba!!!",
