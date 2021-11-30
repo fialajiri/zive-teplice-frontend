@@ -19,6 +19,11 @@
     gap: 4rem;
   }
 
+  &__button {
+    margin-top: 4rem;
+    align-self: center;
+  }
+
   &__item {
     display: flex;
     flex-direction: column;
@@ -55,10 +60,11 @@
       z-index: 10;
     }
 
-    & img {
-      width: 100%;
+    & img {     
+      width: 30rem;
+      height: 30rem; 
       object-fit: cover;
-      height: 10rem;
+      
     }
   }
 }

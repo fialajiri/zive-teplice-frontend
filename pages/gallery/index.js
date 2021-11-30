@@ -1,37 +1,25 @@
 import { Fragment } from "react";
-import { getImagesForYear } from "../../lib/utils";
 
 import Gallery from "../../components/pages/gallery/gallery";
+import { getAllGalleries } from "../../lib/api-util";
 
 const GalleryPage = (props) => {
-  
-
   return (
     <Fragment>
-      <Gallery images={props.images} />
+      <Gallery galleries={props.galleries} />
     </Fragment>
-  )
-}
+  );
+};
 
 export default GalleryPage;
 
-export const getStaticProps = async() => {
-  const images = [];
-
-  const all2021Images = await getImagesForYear("2021");
-  const all2020Images = await getImagesForYear("2020");
-  const all2019Images = await getImagesForYear("2019");
-  const all2018Images = await getImagesForYear("2018");
-
-  images.push(all2021Images);
-  images.push(all2020Images);
-  images.push(all2019Images);
-  images.push(all2018Images);
+export const getStaticProps = async () => {
+  const galleries = await getAllGalleries();
 
   return {
     props: {
-      images: images,
+      galleries: galleries,
     },
-    revalidate: 60 * 60 * 24,
+    revalidate: 60 * 60,
   };
 };

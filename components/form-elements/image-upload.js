@@ -33,7 +33,7 @@ const ImageUpload = (props) => {
     let fileIsValid = isValid;
     if (event.target.files && event.target.files.length === 1) {
       pickedFile = event.target.files[0];
-      setFile(pickedFile);
+      setFile(pickedFile);     
       setIsValid(true);
       fileIsValid = true;
     } else {
@@ -58,10 +58,10 @@ const ImageUpload = (props) => {
         <div className='image-upload__preview'>
           {previewUrl && <img src={previewUrl} alt="preview" />}
           {!previewUrl && (
-            <p>vyberte obrázek (typu png/jpg/jpeg a max. vel. 500kb) </p>
+            <p>vyberte obrázek (typu png/jpg/jpeg) </p>
           )}
         </div>
-        <Button  type="button" size='small'  onClick={pickImageHandler} >Vyberte obrázek</Button>
+        <Button  type="button" size='small' inverse  onClick={pickImageHandler} >Vyberte obrázek</Button>
       </div>
       {!isValid && <p>{props.errorText}</p>}
     </div>

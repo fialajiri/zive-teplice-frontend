@@ -1715,6 +1715,10 @@ body {
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   gap: 4rem; }
 
+.gallery__button {
+  margin-top: 4rem;
+  align-self: center; }
+
 .gallery__item {
   display: flex;
   flex-direction: column;
@@ -1744,9 +1748,9 @@ body {
     transform: translateX(-50%);
     z-index: 10; }
   .gallery__item img {
-    width: 100%;
-    object-fit: cover;
-    height: 10rem; }
+    width: 30rem;
+    height: 30rem;
+    object-fit: cover; }
 
 .photos__list {
   display: grid;
@@ -1765,6 +1769,96 @@ body {
     cursor: pointer; }
   .photos__list__heading {
     align-self: flex-start; }
+
+.create-gallery__container {
+  padding: 4rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; }
+  .create-gallery__container p {
+    text-align: center; }
+
+.create-gallery__heading {
+  text-align: center; }
+
+.create-gallery__featured-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem; }
+  .create-gallery__featured-image img {
+    margin: 2rem 0;
+    width: 30rem;
+    height: 20rem; }
+  .create-gallery__featured-image button {
+    margin: 0 auto;
+    margin-top: 2rem; }
+
+.create-gallery__button {
+  align-self: center; }
+
+.create-gallery__select {
+  width: 100%;
+  text-align: center; }
+  .create-gallery__select__input {
+    display: none; }
+  .create-gallery__select__icon {
+    color: #e7a944; }
+
+.create-gallery__result {
+  margin: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; }
+
+.upload-gallery__container {
+  padding: 8rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; }
+  .upload-gallery__container p {
+    text-align: center; }
+
+.upload-gallery__heading {
+  text-align: center; }
+
+.upload-gallery__featured-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem; }
+  .upload-gallery__featured-image img {
+    margin: 2rem 0;
+    width: 30rem;
+    height: 20rem; }
+  .upload-gallery__featured-image button {
+    margin: 0 auto;
+    margin-top: 2rem; }
+
+.upload-gallery__button {
+  align-self: center; }
+
+.upload-gallery__select {
+  width: 100%;
+  text-align: center; }
+  .upload-gallery__select__input {
+    display: none; }
+  .upload-gallery__select__icon {
+    color: #e7a944;
+    cursor: pointer; }
+
+.upload-gallery__actions {
+  align-self: center;
+  display: flex;
+  gap: 6rem; }
+
+.upload-gallery__result {
+  margin: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; }
 
 .program {
   padding: 0 2rem;

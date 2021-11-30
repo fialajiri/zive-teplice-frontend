@@ -1,27 +1,34 @@
+import { useContext } from "react";
+import { AuthContext } from "../../../context/auth-context";
 import Image from "next/image";
 import Link from "next/link";
-import { Fragment } from "react";
+import Button from "../../ui-elements/button";
 
 const Gallery = (props) => {
-  console.log(props);
+  const auth = useContext(AuthContext)
+  
+
+  const isAdmin = (auth.user && auth.user.role === 'admin')
+
   return (
     <div className="gallery__container">
       <h2 className="heading-secondary gallery__heading">Galerie</h2>
       <div className="gallery__years">
-        {props.images.map((element, index) => (
-          <Link key={index} href={`/gallery/${element.year}`}>
+        {props.galleries.map((gallery, index) => (
+          <Link key={index} href={`/gallery/${gallery.id}`}>
             <a className="gallery__item">
-              <div className="gallery__item__year">{element.year}</div>
+              <div className="gallery__item__year">{gallery.name}</div>
               <Image
-                src={`/img/${element.year}/${element.images[0]}`}
+                src={gallery.featuredImage.imageUrl}
                 width={300}
                 height={300}
-                alt={`obrázek z roku ${element.year}`}
+                alt={gallery.name}
               />
             </a>
           </Link>
         ))}
       </div>
+     {isAdmin && <Button size='big' className="gallery__button" link="gallery/create">Vytvoř galerii</Button>}
     </div>
   );
 };
