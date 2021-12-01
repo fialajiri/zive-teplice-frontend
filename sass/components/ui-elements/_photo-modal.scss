@@ -6,7 +6,6 @@
   right: 0;
   width: 100%;
 
-  
   box-shadow: $shadow-dark;
 
   &__header {
@@ -16,10 +15,16 @@
     position: relative;
   }
 
+  &__image--container {
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 66.66666667vw;
+  }
+
   &__image {
     display: flex;
-    width: 100%;
-    object-fit: contain;
   }
 
   &__icon {
@@ -75,7 +80,7 @@
       transition: all 300ms;
 
       &:hover {
-        transform:  translate(-50%, 0%) scale(1.2);
+        transform: translate(-50%, 0%) scale(1.2);
         color: $color-black;
       }
     }

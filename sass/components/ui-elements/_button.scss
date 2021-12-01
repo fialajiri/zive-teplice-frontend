@@ -77,6 +77,20 @@
     color: $color-grey-dark-3;
   }
 
+  &--danger--inverse {
+    background: transparent;
+    border-color: $color-red;
+    color: $color-red;
+    &::after {
+      background-color: transparent;
+    }
+  }
+
+  &--danger--inverse:hover,
+  &--danger--inverse:active {
+    color: $color-red;
+  }
+
   &:disabled,
   &:hover:disabled,
   &:active:disabled {

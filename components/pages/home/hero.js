@@ -12,11 +12,10 @@ import kidsIcon from "../../../public/icons/kids.svg";
 const Hero = (props) => {
   return (
     <section className="hero">
-     
       <h2 className="heading-secondary hero__heading">
         Nějvětší sousedská slavnost v Teplicích
       </h2>
-     
+
       <div className="hero__cards">
         <div className="hero__card">
           <Image
@@ -109,10 +108,7 @@ const Hero = (props) => {
         </p>
       </div>
 
-      <Button size="big" pulsating shake className="hero__button--1">
-        Obděr novinek
-      </Button>
-      <Button size="big" pulsating shake className="hero__button--2">
+      <Button link='/register' size="big" pulsating shake className="hero__button--1">
         Chci prodávat/hrát na ŽT
       </Button>
     </section>

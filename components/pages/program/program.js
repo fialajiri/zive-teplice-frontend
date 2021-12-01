@@ -7,7 +7,6 @@ import TabHead from "../../ui-elements/tabs/tab-head";
 import TabBody from "../../ui-elements/tabs/tab-body";
 import TabButton from "../../ui-elements/tabs/tab-button";
 
-import { getPerformers } from "../../../lib/dummy_data";
 import ProgramTab from "./program-tab";
 import ShowProgram from "./program-show";
 
@@ -43,7 +42,7 @@ const Program = (props) => {
     tabThreeIsActive: false,
   });
 
-  const performers = getPerformers();
+  
 
   return (
     <div className="program">
@@ -62,7 +61,7 @@ const Program = (props) => {
           />
           <TabButton
             onClick={() => dispatch({ type: "tabThree" })}
-            title="Účinkující"
+            title="Umělci"
             isSelected={tabState.tabThreeIsActive}
           />
         </TabHead>
@@ -71,10 +70,10 @@ const Program = (props) => {
            <ShowProgram />
           )}
           {tabState.tabTwoIsActive && (
-            <PerformerList performers={performers} type="prodejce" />
+            <PerformerList performers={props.users} type="prodejce" />
           )}
           {tabState.tabThreeIsActive && (
-            <PerformerList performers={performers} type="učinkující" />
+            <PerformerList performers={props.users} type="umělec" />
           )}
         </TabBody>
       </TabContainer>

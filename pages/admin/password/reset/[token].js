@@ -4,7 +4,7 @@ import ResetPasswordStepTwo from "../../../../components/pages/admin/password/re
 const ConfirmResetPasswordPage = () => {
     const router = useRouter();
     const token = router.query.token;
-    console.log(token);
+    
 
     return <ResetPasswordStepTwo token={token} />
 }

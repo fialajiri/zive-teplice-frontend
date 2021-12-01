@@ -8,7 +8,7 @@ import { getAllGalleries, getGalleryById } from "../../lib/api-util";
 const GalleryByYear = (props) => {
   const auth = useContext(AuthContext);
 
-  const isAdmin = (auth.user && auth.user.role)
+  const isAdmin = (auth.user && auth.user.role==='admin')
   
 
   return (
@@ -30,7 +30,7 @@ export const getStaticProps = async (context) => {
     props: {
       gallery: gallery,
     },
-    revalidate: 60 * 60 * 24,
+    revalidate: 60 * 60,
   };
 };
 

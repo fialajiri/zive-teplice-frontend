@@ -5,3 +5,5 @@ const CreateNewGalleryPage = () => {
 };
 
 export default CreateNewGalleryPage;
+
+CreateNewGalleryPage.requireAuth = true;

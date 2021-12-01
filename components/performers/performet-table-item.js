@@ -5,13 +5,11 @@ import { AuthContext } from "../../context/auth-context";
 import { useHttpClient } from "../../hooks/http-hook";
 import Modal from "../ui-elements/modal";
 import ErrorModal from "../ui-elements/error-modal";
-import LoadingSpinner from "../ui-elements/loading-spinner";
 import Button from "../ui-elements/button";
 
 import {
   Trash,
   Pencil,
-  Circle,
   CalendarCheck,
   Envelope,
   Hourglass,
@@ -23,18 +21,15 @@ import artist from "../../public/icons/artist.svg";
 
 const PerformerTableItem = (props) => {
   const { performer } = props;
-  
+
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [showConfirmRegisterModal, setShowConfirmRegisterModal] =
     useState(false);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const auth = useContext(AuthContext);
 
-  const isActiveTrue = performer.verified.status === "true";
   const isSeller = performer.type === "prodejce";
   const performerType = isSeller ? "prodejce" : "umělec";
-
-  const isregisteredToCurrentTrue = performer.verified.status === "true";
 
   let currentEventStatusElement;
 
@@ -63,8 +58,8 @@ const PerformerTableItem = (props) => {
           Authorization: "Bearer " + auth.token,
         }
       );
-      setShowConfirmRegisterModal(false);      
-      props.onUpdate(props.index, responseData.user);      
+      setShowConfirmRegisterModal(false);
+      props.onUpdate(props.index, responseData.user);
     } catch (err) {
       console.log(err);
     }
@@ -207,10 +202,7 @@ const PerformerTableItem = (props) => {
           {performer.description}
         </div>
         {currentEventStatusElement}
-        <div className="performer-table__item__actions  performer-table__item__icon">
-          <Circle weight="fill" color={isActiveTrue ? "#a6d637" : "#e65035"} />
-          <p className="performer-table__item__helper-text">aktivní</p>
-        </div>
+
         <Button
           link={`performers/edit/${performer.id}`}
           unstyled

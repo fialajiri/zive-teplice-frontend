@@ -11,17 +11,17 @@ const EditPerformerPage = ({ loadedPerformer }) => {
   const auth = useContext(AuthContext);
   const router = useRouter()
 
-  // there news to be an userId in auth oh oh oh
+  
   const isAuth = auth.token && (auth.user.role === "admin" || auth.user._id === router.query.performerId)
  
   useEffect(() => {
     if (!isAuth) {
-      console.log("redirecting");
+      
       router.replace("/");
     } else {
       setIsLoading(false);
     }
-  }, [isAuth]);
+  }, [isAuth, router]);
 
   if (isLoading || !loadedPerformer) {
     return <LoadingSpinner asOverlay />;

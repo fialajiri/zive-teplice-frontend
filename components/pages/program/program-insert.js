@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect, useState } from "react";
+import React, { Fragment, useCallback, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import { AuthContext } from "../../../context/auth-context";
@@ -24,7 +24,7 @@ const InsertProgram = () => {
   const notificationCtx = useContext(NotificationContext);
   const [currentEvent, setCurrentEvent] = useState(null);
 
-  const getCurrentEvent = async () => {
+  const getCurrentEvent = useCallback( async () => {
     try {
       const responseData = await sendRequest(
         `${process.env.REACT_APP_BACKEND_URL}/events/current`,
@@ -33,18 +33,17 @@ const InsertProgram = () => {
         {
           "Content-Type": "application/json",
         }
-      );
-      console.log(responseData.event);
+      );      
       setCurrentEvent(responseData.event);
       setEditorLoaded(true);
     } catch (err) {
       console.log(err);
     }
-  };
+  }, [sendRequest]);
 
   useEffect(() => {
     getCurrentEvent();
-  }, []);
+  }, [getCurrentEvent]);
   const [formState, inputHandler] = useForm(
     {
       title: {

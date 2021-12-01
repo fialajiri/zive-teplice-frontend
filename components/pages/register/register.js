@@ -98,7 +98,7 @@ const Register = (props) => {
         message: "Registrace proběhla úspěšně",
         status: "success",
       });
-      router.push("/login");
+      router.push("/");
     } catch (err) {
       notificationCtx.showNotification({
         title: "Chyba!!!",
@@ -176,7 +176,7 @@ const Register = (props) => {
               <Input
                 id="type"
                 element="select"
-                options={["", "Prodejce", "Umělec"]}
+                options={["", "prodejce", "umělec"]}
                 label="Zvolte zdali jste umělec nebo prodejce"
                 validators={[VALIDATOR_REQUIRE()]}
                 errorText="Prosím vyberte jednu z možností."

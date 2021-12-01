@@ -27,6 +27,7 @@ const DashboardHead = (props) => {
         { Authorization: "Bearer " + auth.token }
       );
       setShowConfirmModal(false);
+      auth.logout();
       router.push("/");
     } catch (err) {}
   };
@@ -73,7 +74,7 @@ const DashboardHead = (props) => {
       break;
     case "pending":
       requestStatusElement = (
-        <div className="dashboard__body__request--pending dashboard__body__request" >
+        <div className="dashboard__body__request--pending dashboard__body__request">
           Vaše přihláška se vyhodnocuje.
         </div>
       );
@@ -89,7 +90,7 @@ const DashboardHead = (props) => {
     case "confirmed":
       requestStatusElement = (
         <div className="dashboard__body__request--confirmed dashboard__body__request">
-          Gratulujeme Vaše příhláška byla schválena.
+          Gratulujeme Vaše přihláška byla schválena.
         </div>
       );
       break;
@@ -116,43 +117,40 @@ const DashboardHead = (props) => {
         }
       />
       <div className="dashboard">
-        <div className="dashboard__info">
-          <h4 className="heading-tertiary dashboard__info__heading ">
-            Dobrý den <span> {user.username}</span>
-          </h4>
-          {/* <p className="dashboard__info__email">{auth.userEmail}</p> */}
-          <p className="dashboard__info__text">
-            Zde se můžete příhlásit na další Živé Teplice nebo editovat svoje
-            údaje.
-          </p>
-        </div>
-        <div className="dashboard__body">
-          <div className="dashboard__body__actions">
-            <p className="dashboard__body__description">{user.description}</p>
-          {requestStatusElement}
+        <div className="dashboard__content">
+          <div className="dashboard__info">
+            <h4 className="heading-tertiary dashboard__info__heading ">
+              Dobrý den, <span> {user.username}.</span>
+            </h4>
+
+            <p className="dashboard__info__text">
+              Zde se můžete příhlásit na další Živé Teplice nebo editovat svoje
+              údaje.
+            </p>
           </div>
-          <figure className="dashboard__body__image">
-            <Image
-              src={user.image.imageUrl}
-              layout="fill"
-              objectFit="cover"
-              priority
-              alt={user.username}
-            />
-          </figure>
+          <div className="dashboard__body">{requestStatusElement}</div>
+          <div className="dashboard__actions">
+            <Button link={`performers/edit/${user._id}`}>Editovat</Button>
+            <a
+              className="dashboard__actions__send-mail"
+              href="mailto:seifrtova.nikola@gmail.com"
+            >
+              Napište nám
+            </a>
+            <Button onClick={showDeleteWarningHandler} dangerInverse>
+              Smazat Profil
+            </Button>
+          </div>
         </div>
-        <div className="dashboard__actions">
-          <Button link={`performers/edit/${user._id}`}>Editovat</Button>
-          <a
-            className="dashboard__actions__send-mail"
-            href="mailto:seifrtova.nikola@gmail.com"
-          >
-            Napište nám
-          </a>
-          <Button onClick={showDeleteWarningHandler} danger>
-            Smazat Profil
-          </Button>
-        </div>
+        <figure className="dashboard__image">
+          <Image
+            src={user.image.imageUrl}
+            layout="fill"
+            objectFit="cover"
+            priority
+            alt={user.username}
+          />
+        </figure>
       </div>
     </Fragment>
   );

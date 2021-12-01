@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState, useContext } from "react";
+import { Fragment, useEffect, useState, useContext, useCallback } from "react";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { useHttpClient } from "../../../hooks/http-hook";
@@ -19,7 +19,7 @@ const ProgramTab = (props) => {
   const [currentEvent, setCurrentEvent] = useState(null);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
 
-  const getCurrentEvent = async () => {
+  const getCurrentEvent = useCallback( async () => {
     try {
       const responseData = await sendRequest(
         `${process.env.REACT_APP_BACKEND_URL}/events/current`,
@@ -33,11 +33,11 @@ const ProgramTab = (props) => {
     } catch (err) {
       console.log(err);
     }
-  };
+  }, [sendRequest]);
 
   useEffect(() => {
     getCurrentEvent();
-  }, []);
+  }, [getCurrentEvent]);
 
   const showNewEventWarningHandler = () => setShowConfirmModal(true);
   const cancelNewEventHandler = () => setShowConfirmModal(false);

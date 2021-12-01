@@ -1,4 +1,5 @@
-import { useContext, useState } from "react";
+import router from "next/router";
+import { useContext, useState, useEffect } from "react";
 
 import GeneralAdmin from "../../components/pages/admin/general-admin";
 import PerformerAdmin from "../../components/pages/admin/performer-admin";
@@ -12,6 +13,7 @@ const AdminPage = (props) => {
   const auth = useContext(AuthContext);
   const [loadedNews, setLoadedNews] = useState(props.news);
   const [loadedUsers, setLoadedUsers] = useState(props.users);
+  const [isLoading, setIsLoading] = useState(true);
 
   const newsDeleteHandler = (deletedNewsId) => {
     setLoadedNews((prevNews) =>
@@ -36,6 +38,14 @@ const AdminPage = (props) => {
       })
     );
   };
+
+  useEffect(() => {
+    if (!auth.token) {
+      router.push("/");
+    } else {
+      setIsLoading(false);
+    }
+  }, [auth.token, setIsLoading]);
 
   if (auth.user && auth.user.role === "admin") {
     return (
@@ -62,12 +72,3 @@ export const getStaticProps = async () => {
 
   return { props: { news: news, users: users }, revalidate: 60 * 60 };
 };
-
-// export const getServerSideProps = async() => {
-//   const news = await getAllNews();
-//   const users = await  getAllUsers();
-
-//   return {
-//      props: { news: news, users: users }
-//   }
-// }

@@ -8,6 +8,7 @@ const Button = (props) => {
       } ${props.danger && "button--danger"}
     ${props.shake && "button--animated--shake"}
     ${props.moveIn && "button--animated--move-in"}
+    ${props.dangerInverse && "button--danger--inverse"}
     ${props.pulsating && "button--pulsating"} 
     ${props.className}`;
 

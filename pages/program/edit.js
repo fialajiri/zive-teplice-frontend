@@ -5,3 +5,5 @@ const EditProgramPage = () => {
 };
 
 export default EditProgramPage;
+
+EditProgramPage.requireAuth = true;

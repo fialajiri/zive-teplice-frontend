@@ -1,9 +1,8 @@
 import React, { Fragment } from "react";
-import ReactDOM from "react-dom";
-import Image from "next/image";
-import Modal from "./modal";
 
-import {ArrowLeft, ArrowRight, X } from 'phosphor-react'
+import Image from "next/image";
+
+import { ArrowLeft, ArrowRight, X } from "phosphor-react";
 
 import Backdrop from "./backdrop";
 import { CSSTransition } from "react-transition-group";
@@ -15,30 +14,37 @@ const PhotoModalOverlay = (props) => {
         <h2>{props.header}</h2>
       </div>
       <div className="photo-modal__content">
-        <img src={props.src} alt='gallery photo' className="photo-modal__image"/>
+        <figure className="photo-modal__image--container">
+          <Image
+            src={props.src}
+            alt="gallery photo"
+            className="photo-modal__image"
+            layout="fill"
+            objectFit="cover"
+          />
+        </figure>
 
         <div className="photo-modal__buttons">
-        <button
-          className="photo-modal__button photo-modal__button--left"
-          onClick={props.prev}
-        >
-          <ArrowLeft className='photo-modal__icon' weight='bold' />
-        </button>
-        <button
-          className="photo-modal__button photo-modal__button--right"
-          onClick={props.next}
-        >
-          <ArrowRight className='photo-modal__icon' weight='bold'/>
-        </button>
-        <button
-          className="photo-modal__button photo-modal__button--close"
-          onClick={props.onCancel}
-        >
-          <X className='photo-modal__icon' weight='bold'/>
-        </button>
+          <button
+            className="photo-modal__button photo-modal__button--left"
+            onClick={props.prev}
+          >
+            <ArrowLeft className="photo-modal__icon" weight="bold" />
+          </button>
+          <button
+            className="photo-modal__button photo-modal__button--right"
+            onClick={props.next}
+          >
+            <ArrowRight className="photo-modal__icon" weight="bold" />
+          </button>
+          <button
+            className="photo-modal__button photo-modal__button--close"
+            onClick={props.onCancel}
+          >
+            <X className="photo-modal__icon" weight="bold" />
+          </button>
+        </div>
       </div>
-      </div>
-      
     </div>
   );
 };

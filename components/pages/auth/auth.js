@@ -65,7 +65,7 @@ const Auth = () => {
         message: "Přihlašení proběhlo úspěšně",
         status: "success",
       });
-      router.push("/");
+      router.push("/admin");
     } catch (err) {
       notificationCtx.showNotification({
         title: "Chyba!!!",

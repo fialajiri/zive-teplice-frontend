@@ -160,7 +160,7 @@ const EditPerformer = (props) => {
             <Input
               id="type"
               element="select"
-              options={["", "Prodejce", "Umělec"]}
+              options={["", "prodejce", "umělec"]}
               label="Zvolte zdali jste umělec nebo prodejce"
               validators={[VALIDATOR_REQUIRE()]}
               errorText="Prosím vyberte jednu z možností."

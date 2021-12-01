@@ -1,17 +1,18 @@
 import { useRouter } from "next/router";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useHttpClient } from "./http-hook";
 
 export const useAuth = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [token, setToken] = useState(false);
   const [user, setUser] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
 
   const login = useCallback((token, user) => {
     setToken(token);
-    setUser(user);
-    
+    setUser((prevUser) => {
+      return { ...prevUser, ...user };
+    });
   }, []);
 
   const logout = useCallback(async (token) => {
@@ -29,10 +30,41 @@ export const useAuth = () => {
     } finally {
       setToken(null);
       setUser(null);
-      router.push('/')
-
+      router.push("/");
       window.localStorage.setItem("logout", Date.now());
     }
+  }, []);
+
+  useEffect(() => {
+    const verifyUser = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/auth/refreshToken`,
+          {
+            method: "POST",
+            credentials: "include",
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+
+        if (response.ok) {
+          const responseData = await response.json();
+          setUser((prevUser) => {
+            return { ...prevUser, ...responseData.user };
+          });
+          setToken(responseData.token);
+          console.log('token refreshed')
+        } else {
+          login(null);
+        }
+
+        setTimeout(verifyUser, 5 * 60 * 1000);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    verifyUser();
   }, []);
 
   return {

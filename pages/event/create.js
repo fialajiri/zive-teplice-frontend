@@ -1,9 +1,9 @@
 import CreateNewEvent from "../../components/pages/event/create-new-event";
 
-
-
 const CreateNewEventPage = () => {
- return <CreateNewEvent />
-}
+  return <CreateNewEvent />;
+};
 
 export default CreateNewEventPage;
+
+CreateNewEventPage.requireAuth = true;
