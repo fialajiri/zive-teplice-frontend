@@ -1,4 +1,4 @@
-import Button from '../../ui-elements/button'
+import Button from "../../ui-elements/button";
 
 const SummaryText = (props) => {
   if (props.year === 2021) {
@@ -23,11 +23,16 @@ const SummaryText = (props) => {
             sdílejte. Ať nám příjemné naladění vydrží ještě pár dní...🥰{" "}
           </p>
         </div>
-        
-        <Button link='/gallery/2021' size='big' pulsating shake className='summary__text__btn' >
+
+        <Button
+          link="/gallery/2021"
+          size="big"
+          pulsating
+          shake
+          className="summary__text__btn"
+        >
           kompletní galerie
         </Button>
-       
       </div>
     );
   } else if (props.year === 2020) {
@@ -57,7 +62,13 @@ const SummaryText = (props) => {
             slavnost užívají...
           </p>
         </div>
-        <Button link='/gallery/2020' size='big' pulsating shake className='summary__text__btn'>
+        <Button
+          link="/gallery/2020"
+          size="big"
+          pulsating
+          shake
+          className="summary__text__btn"
+        >
           kompletní galerie
         </Button>
       </div>
@@ -89,7 +100,13 @@ const SummaryText = (props) => {
             roku 2020.
           </p>
         </div>
-        <Button link='/gallery/2019' size='big' pulsating shake className='summary__text__btn'>
+        <Button
+          link="/gallery/2019"
+          size="big"
+          pulsating
+          shake
+          className="summary__text__btn"
+        >
           kompletní galerie
         </Button>
       </div>
@@ -116,7 +133,13 @@ const SummaryText = (props) => {
             Pokud byste se chtěli jakkoliv zapojit, neváhejte mne kontaktovat.
           </p>
         </div>
-        <Button link='/gallery/2018' size='big' pulsating shake className='summary__text__btn'>
+        <Button
+          link="/gallery/2018"
+          size="big"
+          pulsating
+          shake
+          className="summary__text__btn"
+        >
           kompletní galerie
         </Button>
       </div>
@@ -152,7 +175,13 @@ const SummaryText = (props) => {
             specialitami, lákaly k ochutnán
           </p>
         </div>
-        <Button link='/gallery/2017' size='big' pulsating shake className='summary__text__btn'>
+        <Button
+          link="/gallery/2017"
+          size="big"
+          pulsating
+          shake
+          className="summary__text__btn"
+        >
           kompletní galerie
         </Button>
       </div>
@@ -191,7 +220,50 @@ const SummaryText = (props) => {
             úspěch a přilákala další posluchače.
           </p>
         </div>
-        <Button link='/gallery/2016' size='big' pulsating shake className='summary__text__btn'>
+        <Button
+          link="/gallery/2016"
+          size="big"
+          pulsating
+          shake
+          className="summary__text__btn"
+        >
+          kompletní galerie
+        </Button>
+      </div>
+    );
+  } else if (props.year === "2021-muzeum") {
+    return (
+      <div
+        className={`summary__text ${
+          props.flip === true ? "summary__text--flip" : ""
+        }`}
+      >
+        <h2 className="heading-secondary summary__text__heading-secondary">
+          Děkujeme za jedinečnou atmosféru.
+        </h2>
+        <h3 className="heading-tertiary summary__text__heading-tertiary">
+          20.11.2021 - v Jízdárně teplického zámku
+        </h3>
+        <div className="summary__text__paragraphs">
+          <p className="paragraph summary__text__paragraph">
+            Díky ve všem, kteří se zapojili, pomáhali a také těm, kteří se
+            přišli na Živé Teplice v Muzeu podívat. Taková nálož pozitivní
+            atmosféry v kombinaci se skvělou hudbou, krásnou výstavou a spoustou
+            cideru, to mě bude hřát na duši ještě dlouho. Jste skvělí, že jste
+            se nenechali zastavit všemožným omezením a přišli podpořit kulturu i
+            tvůrce. Mrkněte na úžasný fotoreport od Lukyho Vandlise.
+          </p>
+          <p className="paragraph summary__text__paragraph">
+            Těším se na vás zase v červnu v Šanovském parku!
+          </p>
+        </div>
+        <Button
+          link="/gallery/2016"
+          size="big"
+          pulsating
+          shake
+          className="summary__text__btn"
+        >
           kompletní galerie
         </Button>
       </div>

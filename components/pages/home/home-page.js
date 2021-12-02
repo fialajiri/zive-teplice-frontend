@@ -2,16 +2,16 @@ import HeroGallery from './hero-gallery.js';
 import Hero from './hero.js'
 import NewsSection from '../../news/news-section.js';
 import YearSummary from "./year-summary";
-import LoadingSpinner from '../../ui-elements/loading-spinner.js';
+
 
 const HomePage = (props) => {
   return (
-    <div className="home__container">
-      {/* <LoadingSpinner  asOverlay logo/> */}
+    <div className="home__container">     
       <HeroGallery />
       <NewsSection news={props.news}/>
 
       <Hero />
+      <YearSummary year='2021-muzeum' flip={true} heading='Živé Teplice 2021 v Muzeu' />
       <YearSummary year={2021} heading='Živé Teplice 2021' />
       <YearSummary year={2020} flip={true} heading='Živé Teplice 2020'/>
       <YearSummary year={2019} heading='Živé Teplice 2019' />

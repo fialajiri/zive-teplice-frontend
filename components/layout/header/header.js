@@ -1,4 +1,3 @@
-import HeaderGallery from "./header-gallery";
 import MainNavigation from "../navigation/main-navigation";
 import HeaderHeading from "./header-heading";
 
@@ -14,8 +13,7 @@ const Header = (props) => {
   return (
     <header className="header">
       <MainNavigation isVisible={isVisible} />
-      <HeaderHeading containerRef={containerRef} />
-      {/* <HeaderGallery containerRef={containerRef} /> */}
+      <HeaderHeading containerRef={containerRef} />      
     </header>
   );
 };

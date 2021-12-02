@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useCallback, useEffect } from "react";
+import { Component, useCallback, useEffect } from "react";
 import Layout from "../components/layout/layout";
 
 import { AuthContext } from "../context/auth-context";
@@ -76,9 +76,15 @@ function MyApp({ Component, pageProps }) {
             />
           </Head>
           {Component.requireAuth ? (
-            <AuthGuard>
-              <Component {...pageProps} />
-            </AuthGuard>
+            Component.requireAdmin ? (
+              <AuthGuard admin={true}>
+                <Component {...pageProps} />
+              </AuthGuard>
+            ) : (
+              <AuthGuard>
+                <Component {...pageProps} />
+              </AuthGuard>
+            )
           ) : (
             <Component {...pageProps} />
           )}

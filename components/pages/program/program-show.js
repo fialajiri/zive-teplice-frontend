@@ -10,7 +10,7 @@ const ShowProgram = () => {
   const [currentEvent, setCurrentEvent] = useState(null);
   const auth = useContext(AuthContext);
 
-  const getCurrentEvent = useCallback( async () => {
+  const getCurrentEvent = useCallback(async () => {
     try {
       const responseData = await sendRequest(
         `${process.env.REACT_APP_BACKEND_URL}/events/current`,
@@ -24,7 +24,7 @@ const ShowProgram = () => {
     } catch (err) {
       console.log(err);
     }
-  },[sendRequest]);
+  }, [sendRequest]);
 
   useEffect(() => {
     getCurrentEvent();
@@ -40,7 +40,7 @@ const ShowProgram = () => {
 
   if (!currentEvent.program) {
     return (
-      <p className="program-tab__body__no-program">
+      <p className="program-show__body__no-program">
         Pro tuto událost zatím není vytvořený program.
       </p>
     );
@@ -48,30 +48,30 @@ const ShowProgram = () => {
 
   return (
     <Fragment>
-      <div className="program-tab__body">
-        <div className="program-tab__body__title">
-          {currentEvent.program.title}
-        </div>
-        <div className="program-tab__body__container">
-          <figure className="program-tab__body__image">
-            <Image
-              src={currentEvent.program.image.imageUrl}
-              layout="fill"
-              objectFit="cover"
-              alt='doprovodný obrázek k programu'
-            />
-          </figure>
+      <div className="program-show__body">
+        <div className="program-show__body__container">
+          <div className="program-show__body__title">
+            {currentEvent.program.title}
+          </div>
           <div
-            className="program-tab__body__message"
+            className="program-show__body__message"
             dangerouslySetInnerHTML={createMarkup(currentEvent.program.message)}
           ></div>
         </div>
-        <div className="program-tab__body__actions">
-          {currentEvent.program &&
-            (auth.user && auth.user.role) === "admin" && (
-              <Button link="program/edit">Editovat Program</Button>
-            )}
-        </div>
+        <figure className="program-show__body__image">
+          <Image
+            src={currentEvent.program.image.imageUrl}
+            layout="fill"
+            objectFit="contain"
+            alt="doprovodný obrázek k programu"
+          />
+        </figure>
+
+        {currentEvent.program && auth.user && auth.user.role === "admin" && (
+          <div className="program-show__body__actions">
+            <Button link="program/edit">Editovat Program</Button>
+          </div>
+        )}
       </div>
     </Fragment>
   );

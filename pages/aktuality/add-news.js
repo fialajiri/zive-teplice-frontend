@@ -7,3 +7,4 @@ const AddNewsPage = (props) => {
 export default AddNewsPage;
 
 AddNewsPage.requireAuth = true;
+AddNewsPage.requireAdmin = true;

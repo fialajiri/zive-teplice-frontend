@@ -1,85 +1,30 @@
 .program-tab {
   &__container {
-    // background-color: $color-grey-light-1;
+    background-color: $color-grey-light-1;
+    padding: 2rem;
+    border-radius: 0.5rem;
   }
 
   &__head {
+    display: flex;
+    justify-content: center;
+
     &__heading {
-      font-size: 2.8rem;
-      color: $color-grey-dark-3;
+      font-size: 3.5rem;
+      color: $color-grey-light-5;
       margin-bottom: 2rem;
-    }
-
-    & span {
-      color: $color-primary-dark-2;
-    }
-  }
-
-  &__body {
-    background-color: $color-grey-light-1;
-    padding: 3rem 2rem;
-    border-radius: $border-radius;
-
-    &__no-program {
-      font-size: 2rem;
-    }
-
-    &__title {
-      font-size: 2.5rem;
-      font-weight: 500;
       letter-spacing: 1px;
     }
 
-    &__container {
-      margin-top: 2rem;
-      display: flex;
-      gap: 5rem;
-      align-items: flex-start;
-    }
-
-    &__image {
-      border-radius: $border-radius;
-      overflow: hidden;
-      width: 50%;
-      height: 50rem;
-      position: relative;
-
-      align-self: flex-start;
-    }
-
-    &__message {
-      width: 50%;
-      font-size: 1.6rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      
-
-      &:empty {
-        background-color: black;
-      }
-
-      & ol {
-        display: flex;
-        flex-direction: column;
-        list-style: none;
-        
-      }
-
-      & p {
-      }
-    }
-
-    &__actions {
-      display: flex;
-      justify-content: flex-end;
+    & span {
+      color: $color-primary;
+      text-transform: uppercase;
     }
   }
 
   &__tail {
     margin-top: 5rem;
-    border-radius: $border-radius;
+    border-radius: $border-radius;    
     display: flex;
     justify-content: space-between;
   }

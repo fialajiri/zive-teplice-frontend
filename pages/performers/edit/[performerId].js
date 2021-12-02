@@ -9,14 +9,14 @@ import { AuthContext } from "../../../context/auth-context";
 const EditPerformerPage = ({ loadedPerformer }) => {
   const [isLoading, setIsLoading] = useState(true);
   const auth = useContext(AuthContext);
-  const router = useRouter()
+  const router = useRouter();
 
-  
-  const isAuth = auth.token && (auth.user.role === "admin" || auth.user._id === router.query.performerId)
- 
+  const isAuth =
+    auth.token &&
+    (auth.user.role === "admin" || auth.user._id === router.query.performerId);
+
   useEffect(() => {
     if (!isAuth) {
-      
       router.replace("/");
     } else {
       setIsLoading(false);
@@ -37,7 +37,6 @@ export const getStaticProps = async (context) => {
 
   const performerId = params.performerId;
 
-
   const performer = await getUserById(performerId);
 
   return {
@@ -47,30 +46,6 @@ export const getStaticProps = async (context) => {
     revalidate: 30,
   };
 };
-
-// export const getServerSideProps = async (context) => {
-//   const { params } = context;
-
-//   const performerId = params.performerId;
-
-//   const performer = await getUserById(performerId);
-
-//   if (!performer) {
-//     return {
-//       redirect: {
-//         destination: "/admin",
-//         permanent: false,
-//       },
-//     };
-//   }
-
-//   return {
-//     props: {
-//       loadedPerformer: performer,
-//     }
-    
-//   };
-// };
 
 export const getStaticPaths = async () => {
   const users = await getAllUsers();

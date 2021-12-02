@@ -1,12 +1,17 @@
 .photo-modal {
   z-index: 100;
   position: fixed;
-  margin: auto;
+  margin: 0 auto;
   left: 0;
   right: 0;
+  top: 0;
   width: 100%;
-
   box-shadow: $shadow-dark;
+
+  // @include respond(tab-land) {
+  //   top: 5%;
+  // }
+
 
   &__header {
   }
@@ -20,7 +25,12 @@
     overflow: hidden;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 66.66666667vw;
+    grid-template-rows: 100vh;
+
+    @include respond(tab-land) {
+    grid-template-rows: 100vh;
+  }
+
   }
 
   &__image {

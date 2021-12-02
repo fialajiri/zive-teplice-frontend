@@ -13,7 +13,7 @@ const PerformerAdmin = (props) => {
   const auth = useContext(AuthContext);
 
   return (
-    <div className="general-admin__container">
+    <div className="general-admin__container home__container">
       <h2 className="heading-secondary general-admin__heading">
         Administrativní Sekce
       </h2>

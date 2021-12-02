@@ -9,7 +9,6 @@
 
 @import "layout/header/header-headings";
 @import "layout/header/header";
-@import "layout/header/header-gallery";
 @import "layout/navigation/main-navigation";
 @import "layout/navigation/nav-links";
 @import "layout/navigation/side-drawer";
@@ -47,6 +46,7 @@
 @import "components/news/news-search";
 
 @import 'components/program/program-tab';
+@import "components/program/program-show";
 
 @import "components/ui-elements/tabs";
 @import "components/editor/editor";

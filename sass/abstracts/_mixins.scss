@@ -22,6 +22,7 @@
 
 // MEDIA QUERY MANAGER
 // $breakpoint argument choices:
+// - small-phone
 // - phone
 // - tab-port
 // - tab-land
@@ -30,6 +31,9 @@
 // ORDER: Base + typography > general layout + grid > page layout > components
 
 @mixin respond($breakpoint) {
+  @if $breakpoint == phone-small {
+    @media only screen and (max-width: 22.5em) {@content};
+  }
   @if $breakpoint == phone {
     @media only screen and (max-width: 37.5em) {@content};
   }

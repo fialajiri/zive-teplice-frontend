@@ -20,7 +20,7 @@ const PhotoModalOverlay = (props) => {
             alt="gallery photo"
             className="photo-modal__image"
             layout="fill"
-            objectFit="cover"
+            objectFit="contain"
           />
         </figure>
 

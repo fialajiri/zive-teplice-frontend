@@ -8,6 +8,8 @@
     align-items: center;
     padding: 0.25rem;
 
+   
+
     &--odd {
       background-color: $color-grey-dark;
     }
@@ -25,7 +27,7 @@
       margin-left: 0.5rem;
 
       @include respond(phone) {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
       }
     }
 
@@ -33,14 +35,14 @@
       font-size: 1.4rem;
 
       @include respond(phone) {
-        font-size: 1.2rem;
+        font-size: 1.0rem;
       }
     }
 
     &__abstract {
       font-size: 1.4rem;
       @include respond(phone) {
-        font-size: 1rem;
+        font-size: .9rem;
       }
     }
 

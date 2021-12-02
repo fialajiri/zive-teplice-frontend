@@ -45,7 +45,7 @@ const Program = (props) => {
   
 
   return (
-    <div className="program">
+    <div className="program home__container">
       <h2 className="heading-secondary program__heading">Program </h2>
       <TabContainer>
         <TabHead>

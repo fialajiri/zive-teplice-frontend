@@ -3,29 +3,15 @@ import router from "next/router";
 
 import UpdateNews from "../../../components/news/news-update";
 import { getNewsById, getAllNews } from "../../../lib/api-util";
-import LoadingSpinner from "../../../components/ui-elements/loading-spinner";
-import { AuthContext } from "../../../context/auth-context";
+
 
 const EditNewsItem = ({ loadedNewsItem }) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const auth = useContext(AuthContext);
-
-  const isAuth = auth.token && auth.user.role === "admin";
-
-  useEffect(() => {
-    if (!isAuth) {
-      router.replace("/aktuality");
-    } else {
-      setIsLoading(false);
-    }
-  }, [isAuth]);
-
-  if (isLoading || !loadedNewsItem) {
-    return <LoadingSpinner asOverlay />;
-  }
-
   return <UpdateNews newsItem={loadedNewsItem} />;
 };
+
+EditNewsItem.requireAuth = true;
+EditNewsItem.requireAdmin = true;
+
 
 export default EditNewsItem;
 

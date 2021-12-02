@@ -9,25 +9,32 @@ const AuthGuard = (props) => {
   const auth = useContext(AuthContext);
 
   useEffect(() => {
-    let isAuth;
-    if (props.admin) {
-      isAuth = auth.user && auth.user.role === "admin";
-    } else {
-      isAuth = auth.user;
-    }
+    if (auth.user) {
+      let isValid = false;
 
-    if (!isAuth) {
-      router.push("/login");
-    } else {
-      setIsLoading(false);
+      if (props.admin) {
+        if (auth.user.role === "admin") {
+          isValid = true;
+        }
+      } else {
+        if (auth.user.id) {
+          isValid = true;
+        }
+      }
+
+      if (!isValid && isValid !== undefined) {
+        router.push("/login");
+      } else if (isValid) {
+        setIsLoading(false);
+      }
     }
-  }, [auth.user,  props.admin]);
+  }, [auth.user, props.admin]);
 
   if (isLoading) {
-    return <LoadingSpinner />;
+    return <LoadingSpinner asOverlay />;
   }
 
-  if (!isLoading && auth.user) {
+  if (!isLoading && auth.token) {
     return <Fragment>{props.children}</Fragment>;
   }
 

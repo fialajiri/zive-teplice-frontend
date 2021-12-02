@@ -7,3 +7,4 @@ const CreateNewEventPage = () => {
 export default CreateNewEventPage;
 
 CreateNewEventPage.requireAuth = true;
+CreateNewEventPage.requireAdmin = true;

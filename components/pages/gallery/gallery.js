@@ -11,7 +11,7 @@ const Gallery = (props) => {
   const isAdmin = (auth.user && auth.user.role === 'admin')
 
   return (
-    <div className="gallery__container">
+    <div className="gallery__container home__container">
       <h2 className="heading-secondary gallery__heading">Galerie</h2>
       <div className="gallery__years">
         {props.galleries.map((gallery, index) => (

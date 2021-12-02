@@ -1,0 +1,110 @@
+.program-show {
+  &__body {
+    background-color: $color-grey;
+    padding: 2rem 0;
+    border-radius: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+
+    @include respond(tab-port) {
+      grid-template-columns: repeat(1, 1fr);  
+      gap: 4rem;
+      
+    }
+
+    &__no-program {
+      font-size: 2rem;
+    }
+
+    &__title {
+      text-align: center;
+      color: $color-primary;
+      text-transform: uppercase;
+      font-size: 3.2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+
+      @include respond(tab-land) {
+        font-size: 2.6rem;
+        font-weight: 600;
+      }
+    }
+
+    &__container {
+      grid-column: 1 /7;
+      display: flex;
+      flex-direction: column;
+      gap: 4rem;
+      align-items: center;
+
+      @include respond(tab-land) {
+        grid-column: 1 /6;
+      }
+
+      @include respond(tab-port) {
+        grid-column: 1 / -1;
+        grid-row: 1 / 2;
+      }
+    }
+
+    &__image {
+      grid-column: 7 / 13;
+      overflow: hidden;
+      border-radius: 0.5rem;
+      display: flex;
+      height: 80rem;
+      position: relative;
+
+      @include respond(tab-land) {
+        height: 70rem;
+        grid-column: 6 / 13;
+      }
+
+      @include respond(tab-port) {
+        grid-column: 1 / -1;
+        grid-row: 2 / 3;
+      }
+    }
+
+    &__message {
+      color: $color-white;
+      justify-self: center;
+      font-size: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+
+      & ul,
+      ol {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        gap: 0.5rem;
+        font-size: 2rem;
+      }
+
+      & li {
+      }
+
+      & strong {
+        font: inherit;
+        font-size: 2.2rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      & p {
+      }
+    }
+
+    &__actions {
+      padding: 5rem 2rem 0rem 2rem;
+
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+}

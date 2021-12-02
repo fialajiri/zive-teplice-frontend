@@ -19,7 +19,7 @@ const ProgramTab = (props) => {
   const [currentEvent, setCurrentEvent] = useState(null);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
 
-  const getCurrentEvent = useCallback( async () => {
+  const getCurrentEvent = useCallback(async () => {
     try {
       const responseData = await sendRequest(
         `${process.env.REACT_APP_BACKEND_URL}/events/current`,
@@ -45,26 +45,30 @@ const ProgramTab = (props) => {
     router.push("/event/create");
   };
 
+  const createNewEventModalElement = (
+    <Modal
+      show={showConfirmModal}
+      onCancel={cancelNewEventHandler}
+      header="Opravdu chcete vytvořit novou událost?"
+      footer={
+        <Fragment>
+          <Button pulsating onClick={cancelNewEventHandler}>
+            Zrušit
+          </Button>
+          <Button danger shake onClick={confirmNewEventHandler}>
+            Vytvořit
+          </Button>
+        </Fragment>
+      }
+    />
+  );
+
   if (!currentEvent) {
     return <LoadingSpinner asOverlay />;
   } else if (currentEvent.length === 0) {
     return (
       <Fragment>
-        <Modal
-          show={showConfirmModal}
-          onCancel={cancelNewEventHandler}
-          header="Opravdu chcete vytvořit novou událost?"
-          footer={
-            <Fragment>
-              <Button pulsating onClick={cancelNewEventHandler}>
-                Zrušit
-              </Button>
-              <Button danger shake onClick={confirmNewEventHandler}>
-                Vytvořit
-              </Button>
-            </Fragment>
-          }
-        />
+        {createNewEventModalElement}
         <Button onClick={showNewEventWarningHandler}>
           Vytvořit novou událost
         </Button>
@@ -74,25 +78,11 @@ const ProgramTab = (props) => {
     return (
       <Fragment>
         <ErrorModal error={error} onClear={clearError} />
-        <Modal
-          show={showConfirmModal}
-          onCancel={cancelNewEventHandler}
-          header="Opravdu chcete vytvořit novou událost?"
-          footer={
-            <Fragment>
-              <Button pulsating onClick={cancelNewEventHandler}>
-                Zrušit
-              </Button>
-              <Button danger shake onClick={confirmNewEventHandler}>
-                Vytvořit
-              </Button>
-            </Fragment>
-          }
-        />
+        {createNewEventModalElement}
         <div className="program-tab__container">
           <div className="program-tab__head">
             <div className="program-tab__head__heading heading-tertiary">
-              Aktuální Událost: <span>{currentEvent.title}</span>
+              Aktuální událost: <span>{currentEvent.title}</span>
             </div>
           </div>
 
@@ -105,7 +95,7 @@ const ProgramTab = (props) => {
               </Button>
             )}
 
-            <Button danger onClick={showNewEventWarningHandler}>
+            <Button dangerInverse onClick={showNewEventWarningHandler}>
               Vytvořit novou událost
             </Button>
           </div>

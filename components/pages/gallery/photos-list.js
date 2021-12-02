@@ -45,7 +45,7 @@ const PhotoList = ({gallery}) => {
         next={nextImage}
         prev={prevImage}
       />
-      <div className="photos__list__container">
+      <div className="photos__list__container home__container">
         <h2 className="heading-secondary photos__list__heading">
           {gallery.name}
         </h2>

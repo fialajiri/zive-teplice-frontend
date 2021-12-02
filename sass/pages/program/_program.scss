@@ -5,7 +5,7 @@
   flex-direction: column;
 
   @include respond(tab-port) {
-    padding: 0 1rem;
+    padding: 0;
   }
 
   &__heading {

@@ -38,6 +38,10 @@ body {
     letter-spacing: 2rem;
   }
 
+  @include respond(phone-small) {
+    font-size: 6rem;
+  }
+
   &--main {
     animation-name: moveInLeft;
     animation-duration: 1s;
