@@ -1,4 +1,5 @@
 import { Fragment, useContext } from "react";
+import Head from "next/head";
 
 import { AuthContext } from "../../context/auth-context";
 
@@ -13,6 +14,12 @@ const GalleryByYear = (props) => {
 
   return (
     <Fragment>
+      <Head>
+        <title>{props.gallery.name}</title>
+        <meta charSet="utf-8"/>
+        <meta name="keywords" content="Živé Teplice, galerie, fotografie, fotky"/>
+        <meta name="description" content={`Fotogalerie Živých Teplic - ${props.gallery.name}`}/>
+      </Head>
       <PhotoList gallery={props.gallery} />;
       {isAdmin && <UploadGalleryImages id={props.gallery.id} />}
     </Fragment>

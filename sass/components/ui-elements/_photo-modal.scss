@@ -8,10 +8,11 @@
   width: 100%;
   box-shadow: $shadow-dark;
 
-  // @include respond(tab-land) {
-  //   top: 5%;
-  // }
-
+  @media screen and (orientation: portrait) {
+    top: 15%;
+    
+  }
+  
 
   &__header {
   }
@@ -27,10 +28,13 @@
     grid-template-columns: 1fr;
     grid-template-rows: 100vh;
 
-    @include respond(tab-land) {
-    grid-template-rows: 100vh;
-  }
+    @media screen and (orientation: portrait) {
+      grid-template-rows: 100vw;
+    }
 
+    @media screen and (orientation: landscape) {
+      grid-template-rows: 100vh;
+    }
   }
 
   &__image {
@@ -84,10 +88,18 @@
 
     &--close {
       position: absolute;
-      bottom: 0%;
       left: 50%;
-      transform: translate(-50%, 0%);
       transition: all 300ms;
+
+      @media screen and (orientation: portrait) {
+        bottom: 16%;
+        transform: translate(-50%, 0%);
+      }
+
+      @media screen and (orientation: landscape) {
+        bottom: 0%;
+        transform: translate(-50%, 0%);
+      }
 
       &:hover {
         transform: translate(-50%, 0%) scale(1.2);

@@ -28,7 +28,7 @@ const PhotoList = ({gallery}) => {
   const prevImage = () => {
     const prevIndex = parseInt(currentIndex) - 1;    
     if (prevIndex < 0) prevIndex = gallery.images.length - 1;
-    setModalImagePath(gallery.images[prevIndex],imageUrl);
+    setModalImagePath(gallery.images[prevIndex].imageUrl);
     setCurrentIndex(prevIndex);
   };
 

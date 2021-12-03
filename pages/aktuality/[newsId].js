@@ -1,3 +1,6 @@
+import { Fragment } from "react";
+import Head from "next/head";
+
 import NewsItemPage from "../../components/news/news-item-page";
 import LoadingSpinner from "../../components/ui-elements/loading-spinner";
 import { getAllNews, getNewsById } from "../../lib/api-util";
@@ -7,7 +10,17 @@ const NewsPage = ({ loadedNewsItem }) => {
     return <LoadingSpinner asOverlay />;
   }
 
-  return <NewsItemPage newsItem={loadedNewsItem} />;
+  return (
+    <Fragment>
+       <Head>
+        <title>Aktualita</title>
+        <meta charSet="utf-8"/>
+        <meta name="keywords" content="Živé Teplice, aktuality, novinky"/>
+        <meta name="description" content={loadedNewsItem.title}/>
+      </Head>
+      <NewsItemPage newsItem={loadedNewsItem} />;
+    </Fragment>
+  );
 };
 
 export default NewsPage;

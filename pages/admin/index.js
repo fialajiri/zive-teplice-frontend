@@ -1,4 +1,5 @@
-import { useContext, useState } from "react";
+import { Fragment, useContext, useState } from "react";
+import Head from "next/head";
 
 import GeneralAdmin from "../../components/pages/admin/general-admin";
 import PerformerAdmin from "../../components/pages/admin/performer-admin";
@@ -38,16 +39,30 @@ const AdminPage = (props) => {
 
   if (auth.user && auth.user.role === "admin") {
     return (
-      <GeneralAdmin
-        news={loadedNews}
-        users={loadedUsers}
-        onDeleteNews={newsDeleteHandler}
-        onDeleteUser={userDeleteHandler}
-        onUpdateUser={userUpdateHandler}
-      />
+      <Fragment>
+        <Head>
+          <title>Admin</title>
+          <meta charSet="utf-8" />
+        </Head>
+        <GeneralAdmin
+          news={loadedNews}
+          users={loadedUsers}
+          onDeleteNews={newsDeleteHandler}
+          onDeleteUser={userDeleteHandler}
+          onUpdateUser={userUpdateHandler}
+        />
+      </Fragment>
     );
   } else if (auth.user && auth.user.role === "user") {
-    return <PerformerAdmin />;
+    return (
+      <Fragment>
+        <Head>
+          <title>Administrace</title>
+          <meta charSet="utf-8" />
+        </Head>
+        <PerformerAdmin />;
+      </Fragment>
+    );
   }
 
   return null;

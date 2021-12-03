@@ -1,8 +1,16 @@
+import { Fragment } from "react";
+import Head from "next/head";
 import InsertProgram from "../../components/pages/program/program-insert";
-import AuthGuard from "../../components/pages/auth/auth-guard";
 
 const InsertProgramPage = () => {
-  return <InsertProgram />;
+  return (
+    <Fragment>
+      <Head>
+        <title>Vložit Program</title>
+      </Head>
+      <InsertProgram />;
+    </Fragment>
+  );
 };
 
 export default InsertProgramPage;

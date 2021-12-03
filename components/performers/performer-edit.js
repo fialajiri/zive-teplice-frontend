@@ -186,6 +186,9 @@ const EditPerformer = (props) => {
           <Button pulsating type="submit" disabled={!formState.isValid}>
             Uložit změny
           </Button>
+          <Button inverse type="button" link='/admin/password/change' >
+            Změna hesla
+          </Button>
         </div>
       </form>
     </div>

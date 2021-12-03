@@ -1,7 +1,16 @@
+import { Fragment } from "react";
+import Head from "next/head";
 import CreateGallery from "../../components/pages/gallery/gallery-create";
 
 const CreateNewGalleryPage = () => {
-  return <CreateGallery />;
+  return (
+    <Fragment>
+      <Head>
+        <title>Nová Galerie</title>
+      </Head>
+      <CreateGallery />
+    </Fragment>
+  );
 };
 
 export default CreateNewGalleryPage;

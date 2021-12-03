@@ -1,17 +1,23 @@
-import { useContext, useEffect, useState } from "react";
-import router from "next/router";
+import { Fragment, } from "react";
+import Head from "next/head";
 
 import UpdateNews from "../../../components/news/news-update";
 import { getNewsById, getAllNews } from "../../../lib/api-util";
 
-
 const EditNewsItem = ({ loadedNewsItem }) => {
-  return <UpdateNews newsItem={loadedNewsItem} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>Editace aktuality</title>
+        <meta charSet="utf-8"/>        
+      </Head>
+      <UpdateNews newsItem={loadedNewsItem} />;
+    </Fragment>
+  );
 };
 
 EditNewsItem.requireAuth = true;
 EditNewsItem.requireAdmin = true;
-
 
 export default EditNewsItem;
 

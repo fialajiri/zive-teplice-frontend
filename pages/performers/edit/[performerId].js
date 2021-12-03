@@ -1,5 +1,7 @@
+import { Fragment } from "react";
+import Head from "next/head";
 import { useContext, useEffect, useState } from "react";
-import router, { useRouter } from "next/router";
+import { useRouter } from "next/router";
 
 import EditPerformer from "../../../components/performers/performer-edit";
 import { getAllUsers, getUserById } from "../../../lib/api-util";
@@ -27,7 +29,14 @@ const EditPerformerPage = ({ loadedPerformer }) => {
     return <LoadingSpinner asOverlay />;
   }
 
-  return <EditPerformer performer={loadedPerformer} />;
+  return (
+    <Fragment>
+       <Head>
+        <title>Editovat Uživatele</title>
+      </Head>
+      <EditPerformer performer={loadedPerformer} />;
+    </Fragment>
+  );
 };
 
 export default EditPerformerPage;
