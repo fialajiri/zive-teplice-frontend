@@ -32,8 +32,7 @@ html {
 
 body {
   box-sizing: border-box;
-  background-color: #666666;
-  height: 50rem; }
+  background-color: #666666; }
 
 ::selection {
   background-color: #85ab2c;
@@ -731,6 +730,8 @@ body {
         color: #e65035; }
       .dashboard__body__request--confirmed {
         color: #a6d637; }
+      .dashboard__body__request--noevent {
+        color: #e0e0e0; }
     .dashboard__body__actions button {
       width: 70%; }
   .dashboard__actions {
@@ -1665,11 +1666,11 @@ body {
       grid-row: 3 / 5; }
 
 .summary__gallery {
-  grid-column: 3 / -1;
+  grid-column: 1 / -1;
   padding: 2rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, minmax(15vw, 1fr));
+  grid-template-rows: repeat(3, minmax(20vw, 1fr));
   gap: 2rem; }
   @media only screen and (max-width: 56.25em) {
     .summary__gallery {
@@ -1683,18 +1684,6 @@ body {
       grid-template-rows: repeat(4, minmax(25vh, 1fr));
       padding: 1rem;
       gap: 1rem; } }
-  .summary__gallery--flip {
-    grid-column: 1 / 5; }
-    @media only screen and (max-width: 56.25em) {
-      .summary__gallery--flip {
-        grid-column: 1 / -1;
-        grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(3, minmax(20vh, 1fr)); } }
-    @media only screen and (max-width: 37.5em) {
-      .summary__gallery--flip {
-        grid-column: 1 / -1;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: repeat(4, minmax(25vh, 1fr)); } }
   .summary__gallery__img {
     transition: all 300ms; }
     .summary__gallery__img:hover {

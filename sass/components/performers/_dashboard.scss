@@ -122,6 +122,10 @@
       &--confirmed {
         color: $color-primary;
       }
+
+      &--noevent {
+        color: $color-grey-light-5;
+      }
     }
 
     &__actions {

@@ -64,6 +64,16 @@ const DashboardHead = (props) => {
 
   let requestStatusElement;
 
+  if (props.currentEvent.length ===0){
+    requestStatusElement = (
+      <div className="dashboard__body__request--noevent dashboard__body__request">
+        Zatím není vytvořena žádná událost na kterou byste se mohli přihlásit.
+      </div>
+    );
+  } else {
+
+  
+
   switch (user.request) {
     case "notsend":
       requestStatusElement = (
@@ -97,6 +107,7 @@ const DashboardHead = (props) => {
     default:
       requestStatusElement = <div></div>;
   }
+}
 
   return (
     <Fragment>

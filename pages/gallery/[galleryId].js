@@ -2,14 +2,20 @@ import { Fragment, useContext } from "react";
 import Head from "next/head";
 
 import { AuthContext } from "../../context/auth-context";
-
+import LoadingSpinner from "../../components/ui-elements/loading-spinner";
 import PhotoList from "../../components/pages/gallery/photos-list";
 import UploadGalleryImages from "../../components/pages/gallery/gallery-upload";
 import { getAllGalleries, getGalleryById } from "../../lib/api-util";
+
+
 const GalleryByYear = (props) => {
   const auth = useContext(AuthContext);
 
   const isAdmin = (auth.user && auth.user.role==='admin')
+
+  if (!props.gallery) {
+    return <LoadingSpinner asOverlay />;
+  }
   
 
   return (
@@ -49,6 +55,6 @@ export const getStaticPaths = async () => {
 
   return {
     paths: pathWithParams,
-    fallback: false,
+    fallback: true,
   };
 };

@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import Head from "next/head";
 import ChangePassword from "../../../../components/pages/admin/password/change";
 
+
 const ChangePasswordPage = () => {
   return (
     <Fragment>
@@ -17,3 +18,5 @@ const ChangePasswordPage = () => {
 export default ChangePasswordPage;
 
 ChangePasswordPage.requireAuth = true;
+
+

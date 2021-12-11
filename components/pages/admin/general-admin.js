@@ -76,7 +76,7 @@ const GeneralAdmin = (props) => {
             />
           )}
           {tabState.tabTwoIsActive && (
-            <ProgramTab />
+            <ProgramTab currentEvent={props.currentEvent} />
           )}
           {tabState.tabThreeIsActive && (
             <NewsTable news={props.news} onDelete={props.onDeleteNews} />

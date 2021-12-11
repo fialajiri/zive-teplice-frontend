@@ -97,7 +97,7 @@ const Auth = () => {
             id="password"
             type="password"
             label="Heslo"
-            validators={[VALIDATOR_MINLENGTH(6)]}
+            validators={[VALIDATOR_MINLENGTH(8)]}
             errorText="Prosím zadejte platné heslo."
             onInput={inputHandler}
           />

@@ -6,7 +6,7 @@ import PerformerAdmin from "../../components/pages/admin/performer-admin";
 
 import { AuthContext } from "../../context/auth-context";
 
-import { getAllNews, getAllUsers } from "../../lib/api-util";
+import { getAllNews, getAllUsers, getCurrentEvent } from "../../lib/api-util";
 
 const AdminPage = (props) => {
   const auth = useContext(AuthContext);
@@ -47,6 +47,7 @@ const AdminPage = (props) => {
         <GeneralAdmin
           news={loadedNews}
           users={loadedUsers}
+          currentEvent={props.currentEvent}
           onDeleteNews={newsDeleteHandler}
           onDeleteUser={userDeleteHandler}
           onUpdateUser={userUpdateHandler}
@@ -60,7 +61,7 @@ const AdminPage = (props) => {
           <title>Administrace</title>
           <meta charSet="utf-8" />
         </Head>
-        <PerformerAdmin />;
+        <PerformerAdmin currentEvent={props.currentEvent} />;
       </Fragment>
     );
   }
@@ -75,6 +76,10 @@ export default AdminPage;
 export const getStaticProps = async () => {
   const news = await getAllNews();
   const users = await getAllUsers();
+  const currentEvent = await getCurrentEvent();
 
-  return { props: { news: news, users: users }, revalidate: 60 * 60 };
+  return {
+    props: { news: news, users: users, currentEvent: currentEvent },
+    revalidate: 60 * 60,
+  };
 };

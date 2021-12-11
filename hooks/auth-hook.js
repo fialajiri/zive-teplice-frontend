@@ -53,15 +53,13 @@ export const useAuth = () => {
             return { ...prevUser, ...responseData.user };
           });
           setToken(responseData.token);
-          console.log('token refreshed')
+          console.log("token refreshed");
         } else {
           login(null);
         }
 
         setTimeout(verifyUser, 5 * 60 * 1000);
-      } catch (err) {
-        console.log(err);
-      }
+      } catch (err) {}
     };
 
     verifyUser();

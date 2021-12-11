@@ -11,7 +11,7 @@ const YearSummary = (props) => {
     >
       <h2 className="heading-forth u-margin-bottom-medium section__summary__heading">{props.heading}</h2>
 
-      <SummaryText year={props.year} flip={props.flip} />
+      {/* <SummaryText year={props.year} flip={props.flip} /> */}
       <SummaryGallery year={props.year} flip={props.flip} />
     </section>
   );

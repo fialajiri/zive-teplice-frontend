@@ -12,32 +12,10 @@ import LoadingSpinner from "../../ui-elements/loading-spinner";
 import ShowProgram from "./program-show";
 
 const ProgramTab = (props) => {
-  const { isLoading, error, sendRequest, clearError } = useHttpClient();
-  const auth = useContext(AuthContext);
   const router = useRouter();
-  const notificationCtx = useContext(NotificationContext);
-  const [currentEvent, setCurrentEvent] = useState(null);
+
+  const [currentEvent, setCurrentEvent] = useState(props.currentEvent);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
-
-  const getCurrentEvent = useCallback(async () => {
-    try {
-      const responseData = await sendRequest(
-        `${process.env.REACT_APP_BACKEND_URL}/events/current`,
-        "GET",
-        JSON.stringify(),
-        {
-          "Content-Type": "application/json",
-        }
-      );
-      setCurrentEvent(responseData.event);
-    } catch (err) {
-      console.log(err);
-    }
-  }, [sendRequest]);
-
-  useEffect(() => {
-    getCurrentEvent();
-  }, [getCurrentEvent]);
 
   const showNewEventWarningHandler = () => setShowConfirmModal(true);
   const cancelNewEventHandler = () => setShowConfirmModal(false);
@@ -76,8 +54,7 @@ const ProgramTab = (props) => {
     );
   } else {
     return (
-      <Fragment>
-        <ErrorModal error={error} onClear={clearError} />
+      <Fragment>       
         {createNewEventModalElement}
         <div className="program-tab__container">
           <div className="program-tab__head">
