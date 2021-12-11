@@ -36,7 +36,7 @@ export const getStaticProps = async (context) => {
     props: {
       loadedNewsItem: NewsItem,
     },
-    revalidate: 60 * 60,
+    revalidate: 60,
   };
 };
 
