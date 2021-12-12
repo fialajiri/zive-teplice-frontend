@@ -58,7 +58,7 @@ export const useAuth = () => {
           login(null);
         }
 
-        setTimeout(verifyUser, 5 * 60 * 1000);
+        setTimeout(verifyUser, 10 * 60 * 1000);
       } catch (err) {}
     };
 

@@ -24,6 +24,8 @@
 
 html {
   font-size: 62.5%;
+  
+  
 
   @include respond(tab-land) {
     font-size: 56.25%; // 1 rem = 9px
@@ -40,16 +42,28 @@ html {
 
 body {
   box-sizing: border-box;
-  background-color: $color-grey;
+  background-color: $color-grey;  
+  
+
+}
+
+main {
+  padding-bottom: 200px;
+
+
 }
 
 ::selection {
   background-color: $color-primary-dark-1;
-
   color: $color-white;
 }
 
 .home__container {
   max-width: $grid-width;
   margin: 0 auto;
+}
+
+.page-container {
+  position: relative;
+  min-height: 100vh;
 }

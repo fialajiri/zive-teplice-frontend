@@ -21,6 +21,9 @@ const NavLinks = (props) => {
       <li className={router.pathname === "/gallery" ? "nav__list__item nav__list__item--active" : "nav__list__item"}>
         <Link href="/gallery">Galerie</Link>
       </li>
+      <li className={router.pathname === "/kontakt" ? "nav__list__item nav__list__item--active" : "nav__list__item"}>
+        <Link href="/kontakt">Kontakt</Link>
+      </li>
      {auth.token && <li className={router.pathname === "/admin" ? "nav__list__item nav__list__item--active" : "nav__list__item"}>
         <Link href="/admin">Admin</Link>
       </li>}

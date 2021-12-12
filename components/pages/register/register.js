@@ -24,6 +24,7 @@ const Register = (props) => {
   const auth = useContext(AuthContext);
   const notificationCtx = useContext(NotificationContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const [passwordNotMatch, setPasswordNotMatch] = useState(null);
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -65,6 +66,14 @@ const Register = (props) => {
   );
 
   const submitFormHandler = async (event) => {
+    event.preventDefault();
+    if (
+      formState.inputs.password.value !== formState.inputs.confirmPassword.value
+    ) {
+      setPasswordNotMatch("Hesla se musí shodovat!");
+      return;
+    }
+
     notificationCtx.showNotification({
       title: "Registruji...",
       message: "Registruji Vás do aplikace. Chvilku strpení.",
@@ -75,24 +84,27 @@ const Register = (props) => {
 
     try {
       const formData = new FormData();
-      
+
       formData.append("email", formState.inputs.email.value);
       formData.append("phoneNumber", formState.inputs.phoneNumber.value);
       formData.append("password", formState.inputs.password.value);
-      formData.append("confirmPassword", formState.inputs.confirmPassword.value);
-      formData.append("username", formState.inputs.username.value);      
+      formData.append(
+        "confirmPassword",
+        formState.inputs.confirmPassword.value
+      );
+      formData.append("username", formState.inputs.username.value);
       formData.append("description", formState.inputs.description.value);
       formData.append("type", formState.inputs.type.value);
       formData.append("image", formState.inputs.image.value);
-      
+
       const responseData = await sendRequest(
         `${process.env.REACT_APP_BACKEND_URL}/auth/signup`,
         "POST",
         formData
-      );      
+      );
 
       auth.login(responseData.token, responseData.role);
-      
+
       notificationCtx.showNotification({
         title: "Skvělé!!!",
         message: "Registrace proběhla úspěšně",
@@ -110,6 +122,7 @@ const Register = (props) => {
 
   return (
     <Fragment>
+      <ErrorModal error={passwordNotMatch} onClear={() => setPasswordNotMatch(null)} />
       <ErrorModal error={error} onClear={clearError} />
       <div className="registration">
         {isLoading && <LoadingSpinner asOverlay />}

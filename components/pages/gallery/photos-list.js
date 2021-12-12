@@ -56,7 +56,7 @@ const PhotoList = ({gallery}) => {
               className="photos__list__image"
               onClick={showPhotoModalHandler}
             >
-              <Image id={index} src={image.imageUrl} layout="fill" objectFit="cover" alt='obrázek v galerii' />
+              <Image id={index} src={image.imageUrl} layout="fill" objectFit="cover" alt='obrázek v galerii' quality='50' />
             </a>
           ))}
         </div>

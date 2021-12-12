@@ -9,6 +9,7 @@
 
 @import "layout/header/header-headings";
 @import "layout/header/header";
+@import "layout/footer/footer";
 @import "layout/navigation/main-navigation";
 @import "layout/navigation/nav-links";
 @import "layout/navigation/side-drawer";
@@ -33,6 +34,7 @@
 @import "components/ui-elements/notification";
 @import "components/ui-elements/backdrop";
 @import "components/ui-elements/photo-modal";
+@import "components/ui-elements/error_modal";
 
 @import "components/news/news-card";
 @import "components/news/news-list";
@@ -68,3 +70,5 @@
 
 @import "pages/auth/auth";
 @import "pages/register/register";
+
+@import "pages/kontakt/kontakt";
