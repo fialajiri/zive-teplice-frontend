@@ -7,10 +7,12 @@ module.exports = (phase) => {
   if (phase === PHASE_DEVELOPMENT_SERVER) {
     return {
       images: {
-        domains: ["zive-teplice.s3.eu-central-1.amazonaws.com"],
-        domains: ["d374dusjcsfayx.cloudfront.net"],
+        domains: [
+          "zive-teplice.s3.eu-central-1.amazonaws.com",
+          "d374dusjcsfayx.cloudfront.net",
+        ],
       },
-      env: {        
+      env: {
         REACT_APP_BACKEND_URL: "https://zive-teplice-backend.herokuapp.com",
       },
     };
@@ -18,11 +20,13 @@ module.exports = (phase) => {
 
   return {
     images: {
-      domains: ["zive-teplice.s3.eu-central-1.amazonaws.com"],
-      domains: ["d374dusjcsfayx.cloudfront.net"],
+      domains: [
+        "zive-teplice.s3.eu-central-1.amazonaws.com",
+        "d374dusjcsfayx.cloudfront.net",
+      ],
     },
 
-    env: {      
+    env: {
       REACT_APP_BACKEND_URL: "https://zive-teplice-backend.herokuapp.com",
     },
   };
