@@ -5,16 +5,17 @@ import Link from "next/link";
 import Button from "../../ui-elements/button";
 
 const Gallery = (props) => {
-  const auth = useContext(AuthContext)
-  
+  const auth = useContext(AuthContext);
 
-  const isAdmin = (auth.user && auth.user.role === 'admin')
+  const  sortedGalleries = props.galleries.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+  const isAdmin = auth.user && auth.user.role === "admin";
 
   return (
     <div className="gallery__container home__container">
       <h2 className="heading-secondary gallery__heading">Galerie</h2>
       <div className="gallery__years">
-        {props.galleries.map((gallery, index) => (
+        {sortedGalleries.map((gallery, index) => (
           <Link key={index} href={`/gallery/${gallery.id}`}>
             <a className="gallery__item">
               <div className="gallery__item__year">{gallery.name}</div>
@@ -23,13 +24,17 @@ const Gallery = (props) => {
                 width={300}
                 height={300}
                 alt={gallery.name}
-                quality='50'
+                quality="50"
               />
             </a>
           </Link>
         ))}
       </div>
-     {isAdmin && <Button size='big' className="gallery__button" link="gallery/create">Vytvoř galerii</Button>}
+      {isAdmin && (
+        <Button size="big" className="gallery__button" link="gallery/create">
+          Vytvoř galerii
+        </Button>
+      )}
     </div>
   );
 };
