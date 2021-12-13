@@ -12,7 +12,7 @@ const Home = (props) => {
         <meta name="keywords" content="Živé Teplice, Zažít město jinak, sousedská slavnost, kultura, Teplice, trhy, jídlo a pití"/>
         <meta name="description" content="Živé Teplice - největší sousedská slavnost v Teplicích"/>
       </Head>
-      <HomePage news={props.news} />;
+      <HomePage news={props.news} />
     </Fragment>
   );
 };

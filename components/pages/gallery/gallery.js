@@ -23,6 +23,7 @@ const Gallery = (props) => {
                 width={300}
                 height={300}
                 alt={gallery.name}
+                quality='50'
               />
             </a>
           </Link>

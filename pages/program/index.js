@@ -12,7 +12,7 @@ const ProgramPage = (props) => {
         <meta name="keywords" content="Živé Teplice, Zažít město jinak, program, kultura, Teplice, trhy, jídlo a pití"/>
         <meta name="description" content="Program na nejbližší událost Živé Teplice"/>
       </Head>
-      <Program users={props.users} />;
+      <Program users={props.users} />
     </Fragment>
   );
 };

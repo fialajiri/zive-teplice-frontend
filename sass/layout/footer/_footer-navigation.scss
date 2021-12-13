@@ -1,0 +1,20 @@
+.footer__nav__list{
+    list-style: none;
+    display: flex;
+    gap: 4rem;
+
+    font-size: 1.4rem;
+    
+    
+    
+    &__item {
+        
+        & a {
+            text-decoration: none;
+            color: $color-primary;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+    }
+}

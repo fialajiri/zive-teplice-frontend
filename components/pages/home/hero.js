@@ -13,7 +13,7 @@ const Hero = (props) => {
   return (
     <section className="hero">
       <h2 className="heading-secondary hero__heading">
-        Nějvětší sousedská slavnost v Teplicích
+      Sousedská slavnost v Teplicích
       </h2>
 
       <div className="hero__cards">
@@ -121,7 +121,7 @@ const Hero = (props) => {
         shake
         className="hero__button--1"
       >
-        Chci prodávat/hrát na ŽT
+        Chci se zúčastnit
       </Button>
     </section>
   );
