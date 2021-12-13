@@ -8,6 +8,7 @@ module.exports = (phase) => {
     return {
       images: {
         domains: ["zive-teplice.s3.eu-central-1.amazonaws.com"],
+        domains: ["d374dusjcsfayx.cloudfront.net"],
       },
       env: {        
         REACT_APP_BACKEND_URL: "https://zive-teplice-backend.herokuapp.com",
@@ -18,6 +19,7 @@ module.exports = (phase) => {
   return {
     images: {
       domains: ["zive-teplice.s3.eu-central-1.amazonaws.com"],
+      domains: ["d374dusjcsfayx.cloudfront.net"],
     },
 
     env: {      
