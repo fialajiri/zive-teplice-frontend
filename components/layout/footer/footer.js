@@ -1,10 +1,17 @@
 import FooterNavigation from "./footer-navigation";
+import Image from 'next/image'
+
+import codeFactory from '../../../public/img/codeLogo.svg'
+
 
 const Footer = () => {
   return <div className="footer__container">
       <div className='footer__created-by'>
           <p className='footer__created-by__text'>created by:</p>
-          <p className='footer__created-by__name'>CODEFACTORY</p>
+          <div className='footer__created-by__logo'>
+             <Image src={codeFactory} className='footer__image' layout='fill'
+            objectFit='contain' alt="codeFactory s.r.o."/>
+          </div>
           <a className='footer__created-by__email' href='mailto:main@codefactory.cz'>main@codefactory.cz</a>
       </div>
       <div className='footer__navigation'>

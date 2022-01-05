@@ -1,14 +1,12 @@
-import { Fragment, useContext, useState } from "react";
+import { Fragment, useContext } from "react";
 import { useRouter } from "next/router";
 
 import Input from "../../form-elements/input";
 import LoadingSpinner from "../../ui-elements/loading-spinner";
-import ErrorModal from "../../ui-elements/error-modal";
 import Button from "../../ui-elements/button";
 
 import {
-  VALIDATOR_EMAIL,
-  VALIDATOR_REQUIRE,
+  VALIDATOR_EMAIL,  
   VALIDATOR_MINLENGTH,
 } from "../../../validators/validators";
 
@@ -69,15 +67,14 @@ const Auth = () => {
     } catch (err) {
       notificationCtx.showNotification({
         title: "Chyba!!!",
-        message: "Něco se pokazilo, zkuste to znovu",
+        message: "Neplatné uživatelské jméno nebo heslo.",
         status: "error",
       });
     }
   };
 
   return (
-    <Fragment>
-      <ErrorModal error={error} onClear={clearError} />
+    <Fragment>     
       <div className="authentication">
         {isLoading && <LoadingSpinner asOverlay />}
         <h2 className="heading-secondary">Přihlašte se, prosím.</h2>

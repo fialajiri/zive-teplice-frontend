@@ -1,11 +1,11 @@
 import React, { Fragment, useContext, useState } from "react";
 import { useRouter } from "next/dist/client/router";
 import Button from "../../ui-elements/button";
-import Imag from "next/image";
+import Image from "next/image";
 import { useHttpClient } from "../../../hooks/http-hook";
 import NotificationContext from "../../../context/notification-context";
 
-import { Image } from "phosphor-react";
+import { Image as Img } from "phosphor-react";
 import { AuthContext } from "../../../context/auth-context";
 import ErrorModal from "../../ui-elements/error-modal";
 import Modal from "../../ui-elements/modal";
@@ -105,7 +105,7 @@ const UploadGalleryImages = (props) => {
 
   const renderPhotos = (source) => {
     return source.map((photo) => {
-      return <Imag src={photo} key={photo} height={150} width={225} alt='Obrázek v galerii'/>;
+      return <Image src={photo} key={photo} height={150} width={225} alt='Obrázek v galerii'/>;
     });
   };
 
@@ -146,7 +146,7 @@ const UploadGalleryImages = (props) => {
             accept=".jpg,.png,.jpeg"
           >
             <i className="upload-gallery__select__icon">
-              <Image size={100} />
+              <Img size={100} />
             </i>
           </label>
         </div>
