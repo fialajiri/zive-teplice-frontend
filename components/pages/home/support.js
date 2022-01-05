@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import dekImg from "../../../public/img/support/logo_DEK_stavebniny_2.png";
+import dekImg from "../../../public/img/support/logo_DEK_Stavebniny_2.png";
 import hanzlikLogo from "../../../public/img/support/logo_hanzlik_2.png";
 import tpLogo from "../../../public/img/support/znakTp2.png";
 import sayfyLogo from "../../../public/img/support/sayfy-logo-png.webp";
