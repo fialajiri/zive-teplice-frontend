@@ -18,7 +18,7 @@ const NewsPage = ({ loadedNewsItem }) => {
         <meta name="keywords" content="Živé Teplice, aktuality, novinky"/>
         <meta name="description" content={loadedNewsItem.title}/>
       </Head>
-      <NewsItemPage newsItem={loadedNewsItem} />;
+      <NewsItemPage newsItem={loadedNewsItem} />
     </Fragment>
   );
 };

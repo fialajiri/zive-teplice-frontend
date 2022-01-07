@@ -18,7 +18,7 @@ const Footer = () => {
         <FooterNavigation />
       </div>
       <div className='footer__photos-by'>
-          <p className='footer__photos-by__text'>Fotografie by:</p>
+          <p className='footer__photos-by__text'>Photos by:</p>
           <p className='footer__photos-by__name'>Vandlis</p>
           <a className='footer__photos-by__email' href='mailto:vandlisphoto@gmail.com'>vandlisphoto@gmail.com</a>
       </div>
