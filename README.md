@@ -1,4 +1,4 @@
-# Živé Teplice - Frontend
+# [Živé Teplice - Frontend](https://zive-teplice-frontend.vercel.app/)
 
 ## Obecné informace
 Tento projekt představuje frontend k webové aplikaci Živé Teplice. Tato webová aplikace slouží jednak jako prostor pro prezentaci kulturní akce Živé Teplice, naleznete zde mimi jiné:
