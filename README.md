@@ -1,4 +1,4 @@
-# zive-teplice-frontend
+# Živé Teplice - Frontend
 
 ## Obecné informace
 Tento projekt představuje frontend k webové aplikaci Živé Teplice. Tato webová aplikace slouží jednak jako prostor pro prezentaci kulturní akce Živé Teplice, naleznete zde mimi jiné:
@@ -32,6 +32,7 @@ Zárověn také slouží jako podpora organizátorům akce. Aplikace umožňuje 
   - Styling je napsaný v CSS, speciáně s použitím SASS
     
   - Backend je napsaný v javascriptu s použitím NodeJs
+    - kód je k prohlédnutí [zde](https://github.com/fialajiri/zive-teplice-backend)
     
 
    
