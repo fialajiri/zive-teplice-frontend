@@ -1,0 +1,23 @@
+.sliding-banner {
+  // white-space: nowrap;
+  // animation: bannermove 10s linear infinite;
+  display: flex;
+  align-items: center;
+}
+
+.banner {
+  &-text {
+    margin: 0 auto;
+
+    @include respond(phone){
+        font-size: 2rem;
+
+    
+      } 
+  }
+}
+
+// @keyframes bannermove {
+//     0% { transform: translateX(100%); }
+//     100% { transform: translateX(-100%); }
+// }

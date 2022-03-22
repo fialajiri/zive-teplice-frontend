@@ -3,10 +3,12 @@ import Hero from "./hero.js";
 import NewsSection from "../../news/news-section.js";
 import YearSummary from "./year-summary";
 import Support from "./support.js";
+import Banner from "../../ui-elements/banner.js";
 
 const HomePage = (props) => {
   return (
     <div className="home__container">
+      <Banner />
       <HeroGallery />
       <NewsSection news={props.news} />
       <Hero />
