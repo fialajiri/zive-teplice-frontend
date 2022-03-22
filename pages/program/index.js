@@ -27,6 +27,6 @@ export const getStaticProps = async () => {
     props: {
       users: filteredUsers,
     },
-    revalidate: 60 * 60,
+    revalidate: 60,
   };
 };
