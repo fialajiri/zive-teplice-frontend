@@ -1425,14 +1425,13 @@ body {
 
 .program-show__body {
   background-color: #666666;
-  padding: 2rem 0;
+  padding: 2rem 2rem;
   border-radius: 0.5rem;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr); }
+  display: flex;
+  flex-direction: column; }
   @media only screen and (max-width: 56.25em) {
     .program-show__body {
-      grid-template-columns: repeat(1, 1fr);
-      gap: 4rem; } }
+      font-size: 1.5rem; } }
   .program-show__body__no-program {
     font-size: 2rem; }
   .program-show__body__title {
@@ -1460,11 +1459,10 @@ body {
         grid-column: 1 / -1;
         grid-row: 1 / 2; } }
   .program-show__body__image {
-    grid-column: 7 / 13;
     overflow: hidden;
-    border-radius: 0.5rem;
+    border-radius: 2rem;
     display: flex;
-    height: 80rem;
+    height: 60rem;
     position: relative; }
     @media only screen and (max-width: 75em) {
       .program-show__body__image {
@@ -1477,11 +1475,18 @@ body {
   .program-show__body__message {
     color: #fff;
     justify-self: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem; }
+    gap: 2rem; }
+    .program-show__body__message table {
+      border-spacing: 2.5rem;
+      font-style: normal;
+      font-size: 1.5rem; }
+    .program-show__body__message th,
+    .program-show__body__message td {
+      border-spacing: 10px; }
     .program-show__body__message ul,
     .program-show__body__message ol {
       display: flex;
@@ -1491,10 +1496,12 @@ body {
       font-size: 2rem; }
     .program-show__body__message strong {
       font: inherit;
-      font-size: 2.2rem;
-      font-weight: 500;
+      font-size: 2rem;
+      font-weight: 400;
       text-transform: uppercase;
       letter-spacing: 0.5px; }
+    .program-show__body__message p {
+      font-size: 2.5rem; }
   .program-show__body__actions {
     padding: 5rem 2rem 0rem 2rem;
     grid-column: 1 / -1;
