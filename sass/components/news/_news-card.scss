@@ -21,16 +21,16 @@
     transition: all 200ms;
 
     &:not(:first-child) {
-      margin-left: -13rem;
+      margin-left: 4rem;
       box-shadow: -3rem 0 3rem -2rem #000;
     }
 
     &:first-child:hover {
-      transform: translate(-0.5rem, -1rem) rotate(3deg);
+      transform:  rotate(3deg);
     }
 
     &:hover {
-      transform: translateY(-1rem) rotate(3deg);
+      transform:  rotate(3deg);
     }
 
     &__date {
@@ -65,7 +65,7 @@
   }
 
   &__item:hover + &__item {
-    margin-left: 0;
+    margin-left: 3rem;
   }
 }
 
