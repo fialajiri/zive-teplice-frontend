@@ -15,6 +15,7 @@ import { useHttpClient } from "../../../../../hooks/http-hook";
 const ResetPasswordStepOne = (props) => {
   const notificationCtx = useContext(NotificationContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
+  const router = useRouter()
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -46,16 +47,14 @@ const ResetPasswordStepOne = (props) => {
         }
       );
 
-      console.log(responseData);
-
       notificationCtx.showNotification({
         title: "Skvělé!!!",
-        message:
-          "Odeslaní proběhlo úspěšně, zkontolujete svůj email pro další instrukce.",
+        message: "Odeslaní proběhlo úspěšně, zkontolujete svůj email pro další instrukce.",
         status: "success",
       });
       router.push("/");
     } catch (err) {
+      console.log(err);
       notificationCtx.showNotification({
         title: "Chyba!!!",
         message: "Něco se pokazilo, zkuste to znovu",
