@@ -5,6 +5,7 @@ import {
   Medal,
   MapTrifold,
   Phone,
+  InstagramLogo
 } from "phosphor-react";
 
 const Kontakt = () => {
@@ -41,11 +42,21 @@ const Kontakt = () => {
         <div className="contact-page__actions__location">
           <FacebookLogo className='contact-page__actions__icon'/>
           <a
-            href="https://www.facebook.com/ziveteplice"
+            href="https://www.facebook.com/ZiveTeplice2023"
             rel="noopener noreferrer"
             target="_blank"
           >
             Sledujte nás na Facebooku
+          </a>
+        </div>
+        <div className="contact-page__actions__location">
+          <InstagramLogo className='contact-page__actions__icon'/>
+          <a
+            href="https://www.instagram.com/zive_teplice/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Sledujte nás na Instagramu
           </a>
         </div>
       </div>

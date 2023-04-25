@@ -9,7 +9,7 @@ import { Trash, Pencil } from "phosphor-react";
 import Button from "../ui-elements/button";
 
 const NewsTableItem = (props) => {
-  const { title, createdAt, abstract, id } = props.newsItem;
+  const { title, createdAt, id } = props.newsItem;
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const auth = useContext(AuthContext);
@@ -64,7 +64,7 @@ const NewsTableItem = (props) => {
       <li className={`news-table__item ${props.className}`}>
         <h4 className="news-table__item__title">{title}</h4>
         <time className="news-table__item__date">{humanReadableDate}</time>
-        <p className="news-table__item__abstract">{abstract}</p>
+        
 
         <Button         
           unstyled

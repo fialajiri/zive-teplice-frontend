@@ -16,9 +16,7 @@ const NewsCard = (props) => {
       <Button unstyled link={`/aktuality/${props.newsItem.id}`} className="news__list__item__title-button">
         {props.newsItem.title}
       </Button>
-      <div className="news__list__item__abstract">
-        {props.newsItem.abstract}
-      </div>
+     
     </li>
   );
 };

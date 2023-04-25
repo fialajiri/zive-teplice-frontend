@@ -14,8 +14,7 @@ const NewsItemPage = ({ newsItem }) => {
         <div className="news-item__title heading-secondary">
           {newsItem.title}
         </div>
-        <div className="news-item__date">{humanReadableDate}</div>
-        <div className="news-item__abstract">{newsItem.abstract}</div>
+        <div className="news-item__date">{humanReadableDate}</div>       
         <figure className="news-item__image">
           <Image className='news-item__img' src={newsItem.image.imageUrl} layout='fill'
             objectFit='cover' alt={newsItem.title}/>

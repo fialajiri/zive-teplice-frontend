@@ -37,11 +37,7 @@ const UpdateNews = (props) => {
       title: {
         value: "",
         isValid: false,
-      },
-      abstract: {
-        value: "",
-        isValid: false,
-      },
+      },     
       image: {
         value: "",
         isValid: true,
@@ -60,8 +56,7 @@ const UpdateNews = (props) => {
 
     try {
       const formData = new FormData();
-      formData.append("title", formState.inputs.title.value);
-      formData.append("abstract", formState.inputs.abstract.value);
+      formData.append("title", formState.inputs.title.value);     
       formData.append("message", data);
       formData.append("image", formState.inputs.image.value);
       await sendRequest(
@@ -109,17 +104,7 @@ const UpdateNews = (props) => {
             initialValue={newsItem.title}
             initialValid={true}
           />
-          <Input
-            id="abstract"
-            element="textarea"
-            label="abstract"
-            rows={3}
-            validators={[VALIDATOR_MINLENGTH(50), VALIDATOR_MAXLENGTH(175)]}
-            errorText="abstract musí mít minimálně 50 a maximálně 175 znaků."
-            onInput={inputHandler}
-            initialValue={newsItem.abstract}
-            initialValid={true}
-          />
+          
           <div className="editor">
             <label>Zpráva</label>
             <Editor
