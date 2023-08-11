@@ -13,8 +13,8 @@ module.exports = (phase) => {
         ],
       },
       env: {
-        // REACT_APP_BACKEND_URL: "https://zive-teplice-backend.herokuapp.com",
-        REACT_APP_BACKEND_URL: "http://localhost:8081",
+        REACT_APP_BACKEND_URL: "https://zive-teplice-backend.herokuapp.com",
+        //REACT_APP_BACKEND_URL: "http://localhost:8081",
       },
     };
   }
