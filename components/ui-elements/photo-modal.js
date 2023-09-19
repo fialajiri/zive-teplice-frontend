@@ -76,4 +76,4 @@ const PhotoModal = (props) => {
 
 export default PhotoModal;
 
-// hello
+
