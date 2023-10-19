@@ -25,7 +25,7 @@ const EditPerformer = (props) => {
   const notificationCtx = useContext(NotificationContext);
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
-  const {performer} = props
+  const {performer} = props  
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -50,6 +50,10 @@ const EditPerformer = (props) => {
         value: "",
         isValid: false,
       },
+      request: {
+        value: "",
+        isValid: false
+      },      
       image: {
         value: null,
         isValid: true,
@@ -74,6 +78,7 @@ const EditPerformer = (props) => {
       formData.append("username", formState.inputs.username.value);      
       formData.append("description", formState.inputs.description.value);
       formData.append("type", formState.inputs.type.value);
+      formData.append("request", formState.inputs.request.value);
       formData.append("image", formState.inputs.image.value);
       
       const responseData = await sendRequest(
@@ -91,7 +96,7 @@ const EditPerformer = (props) => {
         message: "Editace proběhla úspěšně",
         status: "success",
       });
-      auth.login(auth.token, responseData.user)  
+      //auth.login(auth.token, responseData.user)  
       router.push("/admin");   
     } catch (err) {
       notificationCtx.showNotification({
@@ -171,6 +176,22 @@ const EditPerformer = (props) => {
 
             />
           </div>
+          {auth.user.role === "admin" && <div className="registration__form__select">
+            <Input
+              id="request"
+              element="select"
+              options={["confirmed", "rejected"]}
+              label="Přihlášen(confirmed)/Odmítnut(rejected) "
+              validators={[VALIDATOR_REQUIRE()]}
+              errorText="Prosím vyberte jednu z možností."
+              onInput={inputHandler}
+              initialValue={performer.request}
+              initialValid={true}
+              readonly="readonly"
+
+            />
+          </div>}
+          </div>
           <ImageUpload
             id="image"
             onInput={inputHandler}
@@ -178,7 +199,6 @@ const EditPerformer = (props) => {
             image={performer.image.imageUrl}
             
           />
-        </div>
         <div className="registration__form__button performer-edit__buttons">
           <Button inverse type="button" onClick={()=>router.back()}>
             Zpět

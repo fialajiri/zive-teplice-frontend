@@ -101,9 +101,9 @@ const Hero = (props) => {
         </p>
       </div>
 
-      <Button link="/register" size="big" pulsating shake className="hero__button--1">
+      {/* <Button link="/register" size="big" pulsating shake className="hero__button--1">
         Chci se zúčastnit
-      </Button>
+      </Button> */}
     </section>
   );
 };

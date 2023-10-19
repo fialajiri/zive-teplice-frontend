@@ -52,7 +52,7 @@ export const getStaticProps = async (context) => {
     props: {
       loadedPerformer: performer,
     },
-    revalidate: 60,
+    revalidate: 10,
   };
 };
 

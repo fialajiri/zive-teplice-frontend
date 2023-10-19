@@ -80,6 +80,6 @@ export const getStaticProps = async () => {
 
   return {
     props: { news: news, users: users, currentEvent: currentEvent },
-    revalidate: 60,
+    revalidate: 5,
   };
 };

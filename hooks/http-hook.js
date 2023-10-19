@@ -30,12 +30,12 @@ export const useHttpClient = () => {
         );
 
         if (!response.ok) {
-          throw new Error(responseData.message);
+          const msg = responseData.message + (Array.isArray(responseData.data) ? `. ${responseData.data[0].msg}` : '');     
+          throw new Error(msg);
         }
         setIsLoading(false);
         return responseData;
-      } catch (err) {
-        console.log(err)
+      } catch (err) {        
         setError(err.message);
         setIsLoading(false);
         throw err;
