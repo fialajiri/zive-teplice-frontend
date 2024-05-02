@@ -103,9 +103,9 @@ const Auth = () => {
               Přihlásit se
             </Button>
 
-            <Button size='small' pulsating link="/register" inverse>
+            {/* <Button size='small' pulsating link="/register" inverse>
               Registrovat
-            </Button>
+            </Button> */}
 
             <Button  size='small'  pulsating link="/admin/password/reset" inverse>
               Zapomenuté heslo

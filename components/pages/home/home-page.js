@@ -8,7 +8,7 @@ import Banner from "../../ui-elements/banner.js";
 const HomePage = (props) => {
   return (
     <div className="home__container">
-      {/* <Banner /> */}
+      <Banner />
       <HeroGallery />
       <NewsSection news={props.news} />
       <Hero />
