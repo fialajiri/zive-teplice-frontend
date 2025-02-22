@@ -13,6 +13,7 @@ const HomePage = (props) => {
       <NewsSection news={props.news} />
       <Hero />
       <Support />
+      <YearSummary year={2024} heading="Živé Teplice 2024" />
       <YearSummary year={2023} heading="Živé Teplice 2023" />
       <YearSummary year={2022} heading="Živé Teplice 2022" />
       <YearSummary year="2021-muzeum" heading="Živé Teplice 2021 v Muzeu" />

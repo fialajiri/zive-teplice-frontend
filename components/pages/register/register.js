@@ -19,7 +19,7 @@ import { useHttpClient } from "../../../hooks/http-hook";
 import { AuthContext } from "../../../context/auth-context";
 import NotificationContext from "../../../context/notification-context";
 
-const Register = (props) => {
+const Register = () => {
   const router = useRouter();
   const auth = useContext(AuthContext);
   const notificationCtx = useContext(NotificationContext);

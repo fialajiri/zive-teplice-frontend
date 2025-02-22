@@ -75,13 +75,13 @@ const DashboardHead = (props) => {
   
 
   switch (user.request) {
-    // case "notsend":
-    //   requestStatusElement = (
-    //     <Button onClick={registerToEventHandler} size="big" pulsating shake>
-    //       Přihlásit na Živé Teplice
-    //     </Button>
-    //   );
-    //   break;
+    case "notsend":
+      requestStatusElement = (
+        <Button onClick={registerToEventHandler} size="big" pulsating shake>
+          Přihlásit na Živé Teplice
+        </Button>
+      );
+      break;
     case "pending":
       requestStatusElement = (
         <div className="dashboard__body__request--pending dashboard__body__request">

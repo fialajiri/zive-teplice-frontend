@@ -75,8 +75,8 @@ const Hero = (props) => {
           <h3 className="heading-tertiary hero__card__heading">Děti s sebou</h3>
           <p className="paragraph hero__card__paragraph">
             Slavnost každoročně nabízí bohatý program pro drobotinu všeho věku. Již
-            tradičně se dítka zabaví na divadelním představení, rozhýbou při lekci dětské
-            jógy nebo dalších sportovních aktivitách. Tvořílci se můžou těšit na několik
+            tradičně se dítka zabaví na divadelním představení, rozhýbou při sportovních
+            workshopech. Tvořílci se můžou těšit na několik
             různých workshopů a naučit se nové dovednosti. Obzory si mohou rozšířit díky
             neziskovým projektům, které se u nás prezentují.
           </p>
@@ -101,9 +101,9 @@ const Hero = (props) => {
         </p>
       </div>
 
-       {/* <Button link="/register" size="big" pulsating shake className="hero__button--1">
+       <Button link="/register" size="big" pulsating shake className="hero__button--1">
         Chci se zúčastnit
-      </Button>  */}
+      </Button> 
     </section>
   );
 };

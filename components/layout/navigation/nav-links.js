@@ -4,8 +4,6 @@ import { useRouter } from "next/router";
 import { AuthContext } from "../../../context/auth-context";
 import { FacebookLogo, InstagramLogo } from "phosphor-react";
 
-import Button from "../../ui-elements/button";
-
 const NavLinks = (props) => {
   const router = useRouter();
   const auth = useContext(AuthContext);
@@ -83,7 +81,7 @@ const NavLinks = (props) => {
       )}
       <li className="contact-page__actions__location">
         <a
-          href="https://www.facebook.com/ZiveTeplice2023"
+          href="https://www.facebook.com/ZiveTeplice2025"
           rel="noopener noreferrer"
           target="_blank"
         >
