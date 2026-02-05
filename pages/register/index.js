@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import Head from "next/head";
 import Register from "../../components/pages/register/register";
 import RegistrationClosed from "../../components/pages/register/registration-closed";
-import RegistrationClosed from "../../components/pages/register/registration-closed";
+
 
 const RegisterPage = (props) => {
   return (
