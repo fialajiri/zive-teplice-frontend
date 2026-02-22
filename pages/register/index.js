@@ -1,8 +1,7 @@
 import { Fragment } from "react";
 import Head from "next/head";
 import Register from "../../components/pages/register/register";
-import RegistrationClosed from "../../components/pages/register/registration-closed";
-
+//import RegistrationClosed from "../../components/pages/register/registration-closed";
 
 const RegisterPage = (props) => {
   return (
@@ -10,17 +9,11 @@ const RegisterPage = (props) => {
       <Head>
         <title>Registrace</title>
         <meta charSet="utf-8" />
-        <meta
-          name="keywords"
-          content="Živé Teplice, Zažít město jinak, registrace, zúčastnit se"
-        />
-        <meta
-          name="description"
-          content="Živé Teplice - registrace prodejců a umělců"
-        />
+        <meta name="keywords" content="Živé Teplice, Zažít město jinak, registrace, zúčastnit se" />
+        <meta name="description" content="Živé Teplice - registrace prodejců a umělců" />
       </Head>
-      {/* < Register /> */}
-      <RegistrationClosed />
+      <Register />
+      {/*<RegistrationClosed /> */}
     </Fragment>
   );
 };
