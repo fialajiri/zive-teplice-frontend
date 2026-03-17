@@ -72,22 +72,40 @@ const EditPerformer = (props) => {
     event.preventDefault();
 
     try {
-      const formData = new FormData();      
-      
-      formData.append("phoneNumber", formState.inputs.phoneNumber.value);      
-      formData.append("username", formState.inputs.username.value);      
-      formData.append("description", formState.inputs.description.value);
-      formData.append("type", formState.inputs.type.value);
-      formData.append("request", formState.inputs.request.value);
-      formData.append("image", formState.inputs.image.value);
-      
+      const url = `${process.env.REACT_APP_BACKEND_URL}/users/${performer.id}`;
+      const imageValue = formState.inputs.image.value;
+      const isNewImageSelected =
+        typeof File !== "undefined" && imageValue instanceof File;
+
+      const body = isNewImageSelected
+        ? (() => {
+            const formData = new FormData();
+            formData.append("phoneNumber", formState.inputs.phoneNumber.value);
+            formData.append("username", formState.inputs.username.value);
+            formData.append("description", formState.inputs.description.value);
+            formData.append("type", formState.inputs.type.value);
+            formData.append("request", formState.inputs.request.value);
+            formData.append("image", imageValue);
+            return formData;
+          })()
+        : JSON.stringify({
+            phoneNumber: formState.inputs.phoneNumber.value,
+            username: formState.inputs.username.value,
+            description: formState.inputs.description.value,
+            type: formState.inputs.type.value,
+            request: formState.inputs.request.value,
+          });
+
+      const headers = {
+        Authorization: "Bearer " + auth.token,
+        ...(isNewImageSelected ? {} : { "Content-Type": "application/json" }),
+      };
+
       const responseData = await sendRequest(
-        `${process.env.REACT_APP_BACKEND_URL}/users/${performer.id}`,
+        url,
         "PATCH",
-        formData,
-        {
-          Authorization: "Bearer " + auth.token,
-        }
+        body,
+        headers
       );      
       
       

@@ -1,69 +1,59 @@
-import { Fragment } from "react";
+import { Fragment, useContext, useEffect, useState } from "react";
 import Head from "next/head";
-import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import EditPerformer from "../../../components/performers/performer-edit";
-import { getAllUsers, getUserById } from "../../../lib/api-util";
 import LoadingSpinner from "../../../components/ui-elements/loading-spinner";
 import { AuthContext } from "../../../context/auth-context";
 
-const EditPerformerPage = ({ loadedPerformer }) => {
+const EditPerformerPage = () => {
+  const [performer, setPerformer] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const auth = useContext(AuthContext);
   const router = useRouter();
+  const { performerId } = router.query;
 
   const isAuth =
     auth.token &&
-    (auth.user.role === "admin" || auth.user._id === router.query.performerId);
+    (auth.user.role === "admin" || auth.user._id === performerId);
 
   useEffect(() => {
+    if (!router.isReady) return;
+
     if (!isAuth) {
       router.replace("/");
-    } else {
-      setIsLoading(false);
+      return;
     }
-  }, [isAuth, router]);
 
-  if (isLoading || !loadedPerformer) {
+    const fetchPerformer = async () => {
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_BACKEND_URL}/users/${performerId}`
+        );
+        const data = await response.json();
+        setPerformer(data.user);
+      } catch {
+        router.replace("/");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchPerformer();
+  }, [router.isReady, isAuth, performerId, router]);
+
+  if (isLoading || !performer) {
     return <LoadingSpinner asOverlay />;
   }
 
   return (
     <Fragment>
-       <Head>
+      <Head>
         <title>Editovat Uživatele</title>
       </Head>
-      <EditPerformer performer={loadedPerformer} />;
+      <EditPerformer performer={performer} />
     </Fragment>
   );
 };
 
 export default EditPerformerPage;
-
-export const getStaticProps = async (context) => {
-  const { params } = context;
-
-  const performerId = params.performerId;
-
-  const performer = await getUserById(performerId);
-
-  return {
-    props: {
-      loadedPerformer: performer,
-    },
-    revalidate: 10,
-  };
-};
-
-export const getStaticPaths = async () => {
-  const users = await getAllUsers();
-  const ids = users.map((user) => user.id);
-
-  const pathsWithParams = ids.map((id) => ({ params: { performerId: id } }));
-
-  return {
-    paths: pathsWithParams,
-    fallback: true,
-  };
-};
