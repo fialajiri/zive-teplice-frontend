@@ -52,7 +52,7 @@ const EditPerformer = (props) => {
       },
       request: {
         value: "",
-        isValid: false
+        isValid: true,
       },      
       image: {
         value: null,
@@ -77,6 +77,8 @@ const EditPerformer = (props) => {
       const isNewImageSelected =
         typeof File !== "undefined" && imageValue instanceof File;
 
+      const isAdmin = auth.user.role === "admin";
+
       const body = isNewImageSelected
         ? (() => {
             const formData = new FormData();
@@ -84,7 +86,9 @@ const EditPerformer = (props) => {
             formData.append("username", formState.inputs.username.value);
             formData.append("description", formState.inputs.description.value);
             formData.append("type", formState.inputs.type.value);
-            formData.append("request", formState.inputs.request.value);
+            if (isAdmin) {
+              formData.append("request", formState.inputs.request.value);
+            }
             formData.append("image", imageValue);
             return formData;
           })()
@@ -93,7 +97,7 @@ const EditPerformer = (props) => {
             username: formState.inputs.username.value,
             description: formState.inputs.description.value,
             type: formState.inputs.type.value,
-            request: formState.inputs.request.value,
+            ...(isAdmin && { request: formState.inputs.request.value }),
           });
 
       const headers = {
